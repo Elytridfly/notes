@@ -1,1 +1,6 @@
-{}
+{
+  "showLineNumber": true,
+  "vimMode": false,
+  "autoConvertHtml": true,
+  "livePreview": false
+}
