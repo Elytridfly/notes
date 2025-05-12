@@ -185,4 +185,77 @@
 	- does not have return type
 	- called (invoked) automatically when object is created via new keyword
 	- usually used to automate initialising of variables of the object
-	- 
+	- Overloading (Can call the class without a input for default value or call it with an input to set as the new value)
+- this keyword
+	- used tp differentiate internal attributes and incoming input parameters
+
+#### Array of Objects
+![[Pasted image 20250512131528.png]]
+
+- sort using "Arrays.sort(array,comparator)"
+
+
+### Object Reference
+- object types variables are not primitive types of variables
+- name of object variable represents the 'reference' to the object
+- eg c2 =c1
+	- c2 points to site storage of object c1
+	- it does not copy from one object to another
+	- object previously referenced by c2 is no longer accessible and is not garbage
+- to clone object with all its fields, implement java.lang.Cloneable 
+
+### String Class
+- String is not a primitive data date but rather an object
+- to modify original string object, use mutable classes like StringBuilder or StringBuffer
+
+
+### Static Variable
+- attached to a class
+- shared by all instances (objects) of the class
+- has only 'one copy' of the variable
+- is declared with static keyword
+- can be assessed by Class_name.variable_name (Circle.count)
+- can also be assessed by object_name.variable_name (x.count, z.count)
+
+
+
+### Static Method
+- attached to a class (not any specific obejct)
+- static modifier is added in front of a method
+- can be assessed by Class_name.method_name
+- can also be assessed by object_name.method_name
+- can call only other static methods and static variables defined in the class
+- if a non-static method and variable defined in the class, compiler will warn that all non-static variables or methods cannot be referenced from a static context
+
+
+### Encapsulation
+- 4 Characteristics commonly associated with OOP:
+	- Encapsulation
+	- Abstraction
+	- Inheritance
+	- Polymorphism
+- Encapsulation is hiding implementation details of object within itself and only allow access to necessary data/method from outside the class
+	- done by: employing various access modifiers
+	- organising programs in packages
+
+
+### Access Modifiers -- public vs private
+- public - variable or method in class is accessible and available to ALL other objects in the entire program
+- private - variable or method in class is accessible and available only within the class. Indirect access to private attributes in a class (from outside) can be achieved by using setter and getter methods provided by the class
+
+### Package in java
+- encapsulation can also be achieved by using packages
+- package is used for better organising various class in a program
+- with package, better accessibility control can be implemented
+![[Pasted image 20250512133640.png]]
+
+
+### Wrapper Class
+- wrapper class in java provides mechanism to convert primitive into object and the other way round
+- all classes of collection framework (ArrayList, LinkedList, Vector, HashSet, LinkedHashSet, TreeSet, PriorityQueue, ArrayDeque, etc.) deal with objects only
+![[Pasted image 20250512134007.png]]
+
+
+### Autoboxing
+- conversion of primitive type into an object is known as autoboxing and unboxing
+- 
