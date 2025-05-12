@@ -258,4 +258,24 @@
 
 ### Autoboxing
 - conversion of primitive type into an object is known as autoboxing and unboxing
-- 
+
+
+### Integer (wrapper class)
+- Integer class wraps a value of primitive type int in an object
+- integer object contains 1 field whose type is int
+- also several methods to convert int to String 
+![[Pasted image 20250512181018.png]]
+
+
+### Dependency Inversion Principle (DIP)
+- refers to coupling between different classes
+- main idea is that high level classes should rely on abstraction rather than concrete implementation of lower classes
+- 2 ways to implement DIP:
+	- setter method
+	- constructors
+
+
+
+## Inheritance Polymorphism and ArrayLists
+
+### Inheritance (extends)

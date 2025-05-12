@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "6bd467fcf8a14f28",
+    "id": "912ba0d8d2eeace9",
     "type": "split",
     "children": [
       {
-        "id": "1d78eba635d5763a",
+        "id": "6ec018bce952ee19",
         "type": "tabs",
         "children": [
           {
-            "id": "a7deb8699afdd760",
+            "id": "dec63b48129695e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -27,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "d8c36a38e779cd69",
+    "id": "620b4ca6c470fb4c",
     "type": "split",
     "children": [
       {
-        "id": "427aa0f3b2f8cc1f",
+        "id": "b484236d94deff98",
         "type": "tabs",
         "children": [
           {
-            "id": "24709e28fe3ad35f",
+            "id": "23fddea141914ba3",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +48,7 @@
             }
           },
           {
-            "id": "c8f4dc8629252d64",
+            "id": "2680746da15c3313",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +65,7 @@
             }
           },
           {
-            "id": "7b5c1b977b2d5f2b",
+            "id": "9d76ec3455d77ffd",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,18 +78,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "7893754bbd164299",
+    "id": "14b95f6b8894c51a",
     "type": "split",
     "children": [
       {
-        "id": "673f236d8a46e9e2",
+        "id": "f7d9df86abc8338a",
         "type": "tabs",
         "children": [
           {
-            "id": "da487d3351527601",
+            "id": "f37ca1fa3e3bae38",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -108,7 +109,7 @@
             }
           },
           {
-            "id": "42bca81618b4b486",
+            "id": "c721b259f99ceca3",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -122,7 +123,7 @@
             }
           },
           {
-            "id": "424d594a7182478d",
+            "id": "8a493b5d731c82d9",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,22 +138,21 @@
             }
           },
           {
-            "id": "ed11579fd6004b22",
+            "id": "915dc51df121058c",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "MLAI.md",
+                "file": "5G AIoT.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MLAI"
+              "title": "Outline of 5G AIoT"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -161,34 +161,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "command-palette:Open command palette": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
+      "switcher:Open quick switcher": true,
+      "graph:Open graph view": true,
+      "canvas:Create new canvas": true,
+      "daily-notes:Open today's daily note": true,
+      "templates:Insert template": true,
+      "command-palette:Open command palette": true,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a7deb8699afdd760",
+  "active": "dec63b48129695e8",
   "lastOpenFiles": [
+    "Pasted image 20250512181018.png",
     "Pasted image 20250512134007.png",
     "Pasted image 20250512133640.png",
     "Pasted image 20250512131528.png",
-    "Pasted image 20250430001256.png",
+    "MLAI.md",
     "5G AIoT.md",
     "Pasted image 20250510202604.png",
     "Pasted image 20250510202346.png",
-    "MLAI.md",
-    "Pasted image 20250507130706.png",
     "Pasted image 20250508223300.png",
     "Pasted image 20250508221942.png",
     "Pasted image 20250508215300.png",
     "Pasted image 20250508214247.png",
-    "OOP.md",
-    "2025-04-29.md",
-    "Untitled.canvas",
-    "Welcome.md",
-    "create a link.md"
+    "Pasted image 20250508213642.png",
+    "OOP.md"
   ]
 }
