@@ -278,4 +278,75 @@
 
 ## Inheritance Polymorphism and ArrayLists
 
+### Object Class
+- many methods such as  toString() and equals() method
+- parent class of all classes 
+
 ### Inheritance (extends)
+- allows creation of new classes by reusing existing classes and adding additional attributes and methods
+
+### Access Modifer
+- if subclass is defined in different package from parent class, access to attributes or methods are limited to public or protected
+![[Pasted image 20250512222348.png]]
+
+### super()
+- to be used in sub class's constructor
+- call the no-arg constructor in immediate super class
+- can happen automatically in sub class's constructor
+- can also invoked explicitly
+- when auto super call or explicit super call, it will activate the matching superclass constructor
+- the match is determined by the number and data types of the arguments of the methods
+![[Pasted image 20250512222737.png]]
+
+
+### this()
+- call the no-arg constructor of its own class
+- used in constructor only
+- if added,  must also be 1st statement
+- if added, auto super() will be disabled
+
+### Polymorphism
+- object of subclass can be used by any code designed to work with an object of its superclass
+- logical as subclas inherits everything from superclass
+- subclass can do everything that is designed to be done by superclass
+- 3allows same method name used in conjunction with different objects
+- correct method chosen during running depends on type of object its associated with
+
+
+### ArrayList
+- resides within Java core libraries
+- Linear and dynamic
+- base on dynamic array (resizeable)
+- can store different data types
+- stores data in consecutive memory locations
+- supports random access for elements (Index-based structure)
+- < > in ArrayList declaration indicates that container is generic class (able to take in different data types or objects)]
+- similar to other collections, arraylist does not take primitive types
+- to store primitive types, respective wrapper classes are needed
+- use add() to add new elements
+- use remove(index) or remove(object) to remove elements
+- use add(index, value) to insert new element 
+- use get(index) to retrieve element
+- use set(index, Object) to update element
+- use sort(comparator) to sort elements by comparator
+- use size() to find size of array
+- use contains() to find if element is present
+- use isEmpty() to check if list is empty
+
+- ArrayList is not strongly typed 
+- to create arraylist with mixed objects use:
+``` ArrayList a1 = new ArrayList();```
+
+### Generic Class
+- arraylist is a generic class as it is able to handle different data types
+``` ArrayList<String> a1 = new ArrayList<>();```
+- will create a list of strings
+``` ArrayList<Double> a2 = new ArrayList<>();```
+- will create a list of doubles
+
+### Custom Generic Class
+- use < E > to represent generic class
+
+![[Pasted image 20250512225555.png]]
+![[Pasted image 20250512225602.png]]
+![[Pasted image 20250512225607.png]]
