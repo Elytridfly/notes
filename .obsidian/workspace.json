@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "14b95f6b8894c51a",
@@ -171,6 +172,7 @@
   },
   "active": "38aeac4baca219ae",
   "lastOpenFiles": [
+    "Pasted image 20250513231413.png",
     "5G AIoT.md",
     "5G (Qualcomm).md",
     "MLAI.md",
