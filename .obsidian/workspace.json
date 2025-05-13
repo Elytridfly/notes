@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "dec63b48129695e8",
+            "id": "38aeac4baca219ae",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OOP.md",
+                "file": "5G (Qualcomm).md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "OOP"
+              "title": "5G (Qualcomm)"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "14b95f6b8894c51a",
@@ -170,8 +169,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dec63b48129695e8",
+  "active": "38aeac4baca219ae",
   "lastOpenFiles": [
+    "5G AIoT.md",
+    "5G (Qualcomm).md",
+    "MLAI.md",
+    "OOP.md",
     "Pasted image 20250512225607.png",
     "Pasted image 20250512225602.png",
     "Pasted image 20250512225555.png",
@@ -181,10 +184,6 @@
     "Pasted image 20250512222348.png",
     "Pasted image 20250512181018.png",
     "Pasted image 20250512134007.png",
-    "Pasted image 20250512133640.png",
-    "Pasted image 20250512131528.png",
-    "MLAI.md",
-    "5G AIoT.md",
-    "OOP.md"
+    "Pasted image 20250512133640.png"
   ]
 }
