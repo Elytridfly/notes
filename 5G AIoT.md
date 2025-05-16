@@ -308,3 +308,56 @@ System:
 - automation
 - agility in network administration
 - by enabling operators to optimise and dynamically allocate resources in response to real-time demand, SDN enhances responsiveness and efficiency
+
+
+## Fundamentals of AIoT
+
+### basics of AI and ML
+- AI gained widespread attention in 1997 when IBM Deep Blue defeated world best chess play Garry Kasparov
+- 2011, chatbot tricked people into thinking its real person, and also completed the Turing Test
+- Weak AI aka Narrow AI carry out single task for what its created for
+- Strong AI can think learn and adapt like people
+
+
+#### Reactive Machines AI
+- earliest kind of AI
+- incapable of learning or having grasp of past experiences
+- limited to the core activities which it was designed for
+- cannot grow
+
+#### Limited Memory AI
+- can learn from past data
+- brief window of time they can look back on past and draw lessons from it
+- large amounts of relevant training data are used to train
+- data from memory is utilized to build a reference model that is used to solve issues in the future
+- drives contemporary AI applications
+
+#### Theory of Mind AI
+- sophisticated system that can comprehend the entities it interacts with more fully
+- recognise the entities needs, emotions, beliefs, and thought process
+- development is currently ongoing
+- able to quickly identify facial and eye movements and adjust actions to suit the situation
+
+#### Self-aware AI
+- theoretical system that is the most sophisticated AI 
+- when it is self-aware, robots or machines understands their own intrinsic characteristics and are completely aware of who they are
+- capable of perceiving human emotions and comprehending a variety of situations and state
+
+![[Pasted image 20250517010932.png]]
+
+- machines can carry out tasks that require human intelligence such as reasoning, self-correction, and learning
+- Machine learning is used by AI to imitate human intelligence
+- process for reacting to select few particular actions must be taught to the system
+- thus creating a propensity model by combining algorithms with past data
+
+- ML is automated search for significant patterns in data
+- AI that enables system to learn from data instead of explicit programming is called ML
+- using variety of methods ML improves, describes, and predicts results by iteratively learning from available data
+- accurate models based on that particular data can be generated as the algorithms process the training data
+
+- Deep Learning (DL) is a subnet of ML 
+- part of ML that concentrates on how "abstractions and concepts" are formed
+- Massive amounts of data are usually ingested by DL algorithms which then use supervised or unsupervised learning to generalize the characteristics/ features and categories associated with that data
+- neural networks are foundation of deep learning systems
+
+pg9

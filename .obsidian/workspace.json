@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5G (Qualcomm).md",
+                "file": "5G AIoT.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "5G (Qualcomm)"
+              "title": "5G AIoT"
             }
           }
         ]
@@ -172,9 +172,10 @@
   },
   "active": "38aeac4baca219ae",
   "lastOpenFiles": [
+    "Pasted image 20250517010932.png",
+    "5G (Qualcomm).md",
     "Pasted image 20250513231413.png",
     "5G AIoT.md",
-    "5G (Qualcomm).md",
     "MLAI.md",
     "OOP.md",
     "Pasted image 20250512225607.png",
@@ -185,7 +186,6 @@
     "Pasted image 20250512222729.png",
     "Pasted image 20250512222348.png",
     "Pasted image 20250512181018.png",
-    "Pasted image 20250512134007.png",
-    "Pasted image 20250512133640.png"
+    "Pasted image 20250512134007.png"
   ]
 }
