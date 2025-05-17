@@ -468,3 +468,4 @@ System:
 ![[Pasted image 20250517121249.png]]
 
 - CNN are popular way that ANN are implemented
+pg 19
