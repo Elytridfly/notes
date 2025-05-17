@@ -343,6 +343,9 @@ System:
 - when it is self-aware, robots or machines understands their own intrinsic characteristics and are completely aware of who they are
 - capable of perceiving human emotions and comprehending a variety of situations and state
 
+
+### Types of AI and relation between AI, ML, DL
+
 ![[Pasted image 20250517010932.png]]
 
 - machines can carry out tasks that require human intelligence such as reasoning, self-correction, and learning
@@ -360,4 +363,108 @@ System:
 - Massive amounts of data are usually ingested by DL algorithms which then use supervised or unsupervised learning to generalize the characteristics/ features and categories associated with that data
 - neural networks are foundation of deep learning systems
 
-pg9
+###  Key AI Terms and Definitions
+
+![[Pasted image 20250517104951.png]]
+
+- ML is the class of algorithms that automatically get better with experience and data usage
+- DL is a significant subset in ML that use multi-layered neural networks
+- Convolutional Neural Networks (CNN) and Deep Neural Networks (DNN) are 2 examples of DL models
+
+- ML has recently evolved into a common tool for nearly any activity involving extraction of data from big data sets
+- Search Engines that provide us relevant results, anti-spam software learns to filter our emails, software that detects fraud learns to safeguard credit card transaction, all this are ML based technology
+- ML Algorithms are also used by cars to prevent accidents, digital cameras to detect faces, phone personal assistants to recognise voices
+- Application of ML are also frequently used in astronomy, medicine and bioinformatics
+
+
+- using many methods/algorithms, ML improves, describes, and predicts results by iteratively learning from available data
+- by feeding them with training data, exact models based on that particular dataset can be generated
+- when data is used to train the ML algorithm, the resulting output is actually the ML model
+- a predictive algorithm will provide a predictive model
+- a prediction based on data will be sent when model receives it
+- ML is a combination of the following:
+
+``` Data + Model -> Compute Prediction```
+
+- model comprises of our expectation based on prior info, which can come from transfer learning or can just be out convictions/beliefs
+- humans have biases built into our "models"
+- the prediction can be a classification, a course of action, or a quality rating
+
+- programs that learn and get better based on experience need ML due to the intricacy/complexity of the given situation and need for adaptation
+- tasks that are highly complex like driving, picture recognition, speech recognition are not easy to code and need ML
+- manually coded tools will limit its characteristic/features as it will stay the same once deployed and will not change despite the task varying over time
+- ML trains programs to change how they behave in response to incoming data, allowing them to adapt 
+
+- Supervised, Unsupervised, Reinforcement 
+- 3 most popular techniques in ML
+- Supervised uses manually labeled data
+- Unsupervised looks for patterns and structures in data automatically
+- Reinforcement combines rewards or penalties with trail-and-error method
+
+### Supervised Learning
+![[Pasted image 20250517110719.png]]
+
+- A data set with certain observations and labels of them is needed for supervised learning
+- they can subsequently be used with observations that were not know previously
+- when new unseen data is supplied, the algorithm generates an inference function to make predictions
+- by comparing actual output with intended output, the model can further refine, aka "backwards propagation" of errors
+
+- 2 main types of supervised models:
+	- Classification : output variable is category
+	- Regression : output variable is real continuous value
+
+- examples:
+	- Linear regression - mainly for regression problems
+	- Random forest - mainly for classification and regression problems
+	- Support vector machines - mainly for classification problems
+
+
+### Unsupervised Learning
+![[Pasted image 20250517111841.png]]
+
+- learns patterns from unlabeled data
+- finding patterns in data that were previously unknown
+
+- typical application of Unsupervised Learning:
+	- Clustering : auto split data set into groups according to similarity
+	- Anomaly detection : used to auto discover unusual data points in dataset 
+	- Association mining : used to identify sets of items that frequently occur together
+	- Latent variable model: used for data pre-processing (reducing no. features in data set - dimensionality reduction)
+
+### Reinforcement Learning
+![[Pasted image 20250517114236.png]]
+
+- Reinforcement Learning (RL) 3 common technique
+- "Agent" learns to accomplish the objective/goals
+- it will be rewarded or penalised for actions that it executes
+- objective is to maximize agent's reward
+
+- creation of appropriate simulation environment is 1 of the primary a challenges in RL
+- to train autonomous driving algorithms, RL environment ned to accurately mimic scenarios like breaks and crashes
+- advantage is that training model in simulated environment is typically less expensive than utilising immature models
+
+
+### Machine Learning Cycle
+![[Pasted image 20250517114545.png]]
+
+
+### Artificial Neural Networks and Deep Learning
+![[Pasted image 20250517114623.png]]
+
+- ANN are specialised field within ML
+- loose inspiration for ANN comes from neural networks that make up the brain
+- group of interconnected nodes called neurons serves as representation of ANN
+- "edges" allude to connections like synapses in the human brain
+- each edge can send messages to other neurons
+- after processing incoming signals, receiving neuron notifies its associated neurons
+- Signals are numbers, and statistical functions are used to compute them
+
+- there is a weighted relationship between neurons and edges that either increase or decrease a signal strength 
+- you can change the weights as you continue to learn
+- neurons are typically grouped into layers with each layer altering the input in a different way
+- these layers allow signals to pass through possibly several times 
+- employment of numerous layers in these networks are indicated by adjective "deep" in the context of deep learning
+
+![[Pasted image 20250517121249.png]]
+
+- CNN are popular way that ANN are implemented
