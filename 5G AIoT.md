@@ -467,5 +467,209 @@ System:
 
 ![[Pasted image 20250517121249.png]]
 
-- CNN are popular way that ANN are implemented
-pg 19
+- Convolutional Neural Networks (CNN) are popular way that ANN are implemented
+- variation to multilayer perceptrons is used by CNN
+- there are one or more convolutional layers in a CNN
+- its possible for these layers to be pools or fully interlocked
+- integral that quantifies the amount for 2 functions overlap as one passes over the other is called an convolution
+- convolution is the process of multiplying 2 functions to combine them
+- in convolutional layer, input operation is applied before passing to next layer
+- convolutional procedure allows network to use less parameters but still be substantially deeper
+- CNN perform incredibly well in systems for natural language processing and image and video recognition because of this ability
+- **Convolution** : Extracting features from input image, preserving spatial relationship between pixel by using small squares of input data (linear operation : performs well elementwise in matrix multiplication and addition)
+- **Non Linearity** : ReLU (Rectified Linear Unit) is an operation applied after convolution operations. ReLU introduces Non-linearity in the CNN which is important as most real-world data is non-linear
+- **Spatial Pooling/ down-sampling** : reduces dimensionality of each feature map, while retaining most important info
+- **Classification (Fully Connected Layer)** : outputs from first 3 layers are high-level features of input image. fully connected layers uses the features to classify the input image into various classes based on training dataset
+
+
+### Generative AI
+- subset of DL 
+- type of AI that creates new content based on what it has learned from existing content
+- learning process is abstracting data probability distribution by training large-scale datasets and producing a statistical model
+- users are usually interacting with Gen AI with a prompt
+- the prompt can include specifics like info on how the answer shld be structures
+
+- Gen AI creates new content using statistical model to predict the expected response to provided prompt
+- Gen Models can be divided into 2 types, generative language models and generative image/video models
+
+- Natural Language Processing (NLP) techniques are foundation of gen language models which use language laws and patterns to generate new text often referred to as Large Language Models (LLMs)
+- typically have billions or higher orders of magnitude of parameters due to training on large-scale textual data such as new, articles, books, web material
+
+- LLMs' core idea is based on DL model called "transformer" architecture
+- each word in input text is encoded by LLMs during model training 
+- result is a vector known as word embedding
+- the transformer architecture can handle long text dependencies well and make use of an attention mechanism to better comprehend the correlation between various word embeddings
+- LLMs can precisely predict the probability distribution of the next word by inferring correct context from the training task
+
+- foundation of generative image models is Computer Vision (CV) technology
+- which creates new images by learning structure and feature of original/existing images
+- the Generative Adversarial Network (GAN) is a more traditional approach
+- it consists of a discriminator that separates real images from fake and a generator that creates fake images
+- both networks compete to create realistic images through repeated iterations
+- Diffusion Models attracted a lot of attention due to its remarkable results on test-to-image task
+- the model is fed randomly sampled Gaussian noise and it learns how to denoise data in order to produce an output
+
+- Gen AI will transform manufacturing landscape by providing cutting-edge solutions for all industry's application domains
+- ability to produce alternative ideas based on pre-established criteria offers up possibilities for creativity and optimisation in product design
+- allowing engineers to effectively investigate a wide range of design options and create goods that are both highly inventive and functionally superior
+
+- gen AI is essential to material handling application domain since it generates synthetic data that can be used to pre-train robots to handle a variety of tasks
+- gen AI makes it easier to train robots to swiftly adapt to dynamic environments by simulating variety of real-life scenarios 
+- increasing robots dependability and efficiency when handling materials
+
+- ability of gen AI to produce program code for process automation makes automation engineering way faster
+- Gen AI  can reduce time and effort necessary for programming by producing optimised code that is suited to specific automation tasks by analysing input params and intended outcomes
+
+- by examining equipment data and previous maintenance records, gen AI automates synthesis of maintenance instructions in context of equipment maintenance
+- reducing downtime and improve reliability by facilitating early detection of possible equipment reliability by facilitating early detection of possible problems and creation of detailed maintenance instructions
+
+- automated development of standard operating procedures (SOPs) for operator support is greatly aided by gen AI
+- gen AI creates thorough SOPs that lead operators through challenging tasks and guarantee consistency and efficiency in operations by analysing operational data and best practices
+
+- Gen AI integrates robotics for task automation in sophisticated shop floor automation
+- allowing robots complex jobs on their own
+- robots learn and adapt to new tasks and environments with gen AI
+- which unlocks new levels of efficiency and flexibility in shop floor automation
+
+- Gen AI provides broad strategy for improving production environment
+- encompassing everything from material handling and product design to automation engineering and equipment upkeep
+- Gen AI uses algorithms and ML approaches to drive innovation, efficiency, and agility
+
+
+### AIoT Architectures and Integration of AI and IoT
+![[Pasted image 20250517142613.png]]
+- advanced framework that combines AI and IoT is knowns as AIoT architecture
+- produces potent ecosystem which gadgets are intelligent, able to make decisions and learn from their experiences in addition to being connected
+
+- seamless integration of AI tech into IoT systems is the core aspect of AIoT
+- AI gives IoT devices ability to think, allowing them to analyse data, spot trends, and decided for themselves
+- usually go in these stages
+
+1. **Data Collection** : Massive volumes of data gathered by IoT devices like wearables, cameras, sensors from their environment
+
+2. **Data Transmission** : gathered data is sent to a cloud platform or centralised server for additional processing
+
+3. **Data Processing and Analysis** : to extract insights, identify anomalies, and forecast trends, AI algorithms including ML and DL, process and analyse the data
+
+4. **Decision Making** : decisions are made with help of data analysis insights, AI gives the system the ability to make these decisions on its own with assistance from a person
+
+5. **Action and Control** : AIoT systems can set off actions or control other devices based on the decision made , resulting in automated and optimized operations
+
+6. **Continuous Learning** : AIoT systems made to continuously learn from new data and user interactions, which increases their efficiency and accuracy over time
+
+![[Pasted image 20250517143252.png]]
+
+- Integration of AI and IoT offers numerous benefits:
+1. **Real Time Data Processing and Analysis** : Real time data analysis of info produced by internet-connected devices are made possible by AIoT making it possible to respond and make decisions quickly
+
+2. **Predictive Maintenance** : Based on sensor data, AI models can predict equipment breakdowns or need for repair and take preventive measures to avoid expensive downtimes
+
+3. **Enhanced User Experience** : Personalization powered by AI enhances user experiences with IoT devices, consider customized advice from your smart home setup
+
+4. **Energy Efficiency** : AIoT optimises energy consumption by modifying configurations in response to real-time data, smart thermostats, for example adjust based on occupancy patterns
+
+5. **Security and Anomaly Detection** : AI algorithms find small anomalies or security flaws
+
+6. **New Business Models and Opportunities** : enabling smarter ecosystems and improving decision making processes
+
+- AIoT can reduce downtime in smart factory by predicting equipment breakdown and optimising production processes accordingly
+- AIoT can effectively regulate traffic flows in smart cities, lowering pollution and congestion
+
+- system architecture must be carefully planned when implementing AIoT
+- right tech must be chosen
+- seamless platform and device interoperability must be guaranteed
+
+- AIoT architecture is the result of fusion of the network of interconnected devices seen in IoT with analytical powers of AI
+- AIoT aims to create systems that capable of thought, learning adaptation by integrating intelligence into the very fabric of these connections, rather than merely linking objects
+
+
+#### Cloud Based implementation of AIoT Architecture
+![[Pasted image 20250517152419.png]]
+
+- Cloud based IoT, aka IoT cloud, is the use of cloud computing platforms to manage and process data from IoT devices
+- Since the cloud is where data is processed, stored, and accessible by numerous apps and services, connecting IoT devices to it is essential
+- Cloud-based AIoT is composed of the following 4 layers:
+	1. **Device Layer** : This covers a wide range of hardware such as automobiles, production equipment embedded devices, tags, beacons, sensors, and health and fitness gear
+	2. **Connectivity Layer** : connects cloud storage to controllers, sensors, and other intelligent devices through fields and cloud gateways, which are made up of a hardware or software element
+	3. **Cloud Layer** : includes data storage, data visualisation, analytics, data processing using an AI engine, and data access through an API
+	4. **User Communication Layer** : mobile applications and web portals make up this layer
+
+
+#### Edge-based implementation of AIoT architecture
+- Edge-based AIoT  refers to processing IoT device data near the devices as feasible to reduce bandwidth requirements and prevent potential delays in data analysis
+
+- consists of 3 layers:
+	1. **Collection Terminal Layer** : include variety of hardware items that are connected to gateway over existing power lines including embedded devices, vehicles, manufacturing equipment, tags, beacons, sensors, and health and fitness gear
+	2. **Connectivity Layer** : field gateways to which the collection terminal layer is connected via the power lines that are already in place
+	3. **Edge Layer** : Facilities for data processing, storage, insight generation
+
+![[Pasted image 20250517153204.png]]
+
+- near future will see a lot of AI applications on end devices
+
+### Real world examples of AIoT Applications
+1. Sports Performance monitoring
+- optimise training regiments and track players' performance
+- biometric data can be collected using wearable sensors
+- data analysed by AI algorithms to reveal info abt physical state of athletes 
+- pinpoint areas for development and prevent injuries
+
+2. Oceanography and Marine Biology
+- gathering and processing of data from remote ocean environments
+- data on ocean temperature, salinity, and marine life distribution are gathered using autonomous underwater vehicles (AUVs) with IoT sensors
+- data is process by AI algorithms that track migration patterns of marine species, assess health of ocean and predict environmental changes
+
+3. Wildlife Conservation
+- monitor endangered animals and preserve their habitats
+- data on movement of wildlife, population dynamics, environmental conditions gathered using IoT sensors like acoustic sensors, GPS trackers, camera traps
+- AI system examine and find evidence of poaching, monitor animal movements, evaluate success of conservation efforts
+
+4. Financial Services
+- risk management, fraud detection, customized banking services
+- real-time tracking of market trends, customer interactions and financial transactions are facilitated by IoT devices
+- AI examine info to spot questionable activity, determine person's creditworthiness, provide tailored financial guidance
+
+5. Wearable Technology for personalized nutrition
+- eating habits tacked by AIoT wearable devices
+- generates individualised nutrition recommendations
+- such as fitness trackers and smartwatches gathers info abt users caloric intake, food intake, and nutritional objectives
+- with assistances of AI algorithms, data is analysed to create customised meal plans, recommend dietary changes, and monitor users' progress towards health goals
+
+
+### (Edge Device) Example of AIoT Applications
+1. Surveillance and Monitoring
+- to monitor the environment in real time
+- edge processing-capable camera can examine video streams locally to find abnormalities like unauthorised intrusions, suspicious behaviour or object recognition
+- able to trigger actions or alerts based on preset rules
+- Benefits:
+	- real-time response: trigger alarms or alerts immediately 
+	- reduced network load: local processing minimises bandwidth requirements
+	- privacy : sensitive data stays locally
+
+2. Audio Event Detection
+- can analyse sound patterns in real time to perform audio event detection is edge device has microphone
+- include listening for strange noises that indicate a failure in machinery
+- identifying sounds like alarms or screaming
+- detecting glass shattering
+- identifying sounds from environment like sirens or traffic
+-  Benfits:
+	- timely response : immediate alerts for emergency situations
+	- privacy : sensitive data stays locally
+
+
+3. Body Monitoring
+- devices that are fitted with sensors such as gyroscopes, accelerometers, or biosensors allow for real time monitoring
+- Wearable medical technology can monitor vital signs like blood pressure, heart rate, respiration rate, and activity level
+- Edge processing makes it possible to analyse this data instantly, allowing for the prompt notification of anomalies or medical emergencies.
+- Wearable technology can measure performance indicators in sports and fitness, such as steps walked, calories burned, and workout intensity, and give users useful information for enhancing their fitness and overall health.
+- Benefits:
+	- Continuous monitoring: Real-time health insights. 
+	- Early intervention: Detecting health issues promptly.
+
+4. Test-to-Speech and Speech-to-Text
+- Edge devices are capable of doing local text-to-speech and speech-to-text conversions, as well as other speech processing activities including turning spoken words into text.
+- Voice-activated gadgets, accessibility tools, and smart assistants are just a few of the industries in which this capacity finds use
+- edge processing-capable smart speakers, for instance, can interpret voice instructions without requiring constant internet connectivity, resulting in faster response times and protecting user privacy.
+- Benefits:
+	- Low Latency: immediate response without internet delays
+	- Offline functionality: works even when connectivity is limited
