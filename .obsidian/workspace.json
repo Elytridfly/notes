@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "38aeac4baca219ae",
+            "id": "ad27f9281e716a7b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OOP.md",
+                "file": "ECS.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "OOP"
+              "title": "ECS"
             }
           }
         ]
@@ -170,8 +170,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "38aeac4baca219ae",
+  "active": "ad27f9281e716a7b",
   "lastOpenFiles": [
+    "Pasted image 20250520000521.png",
+    "Pasted image 20250519234020.png",
+    "OOP.md",
+    "ECS.md",
     "Pasted image 20250519110700.png",
     "Pasted image 20250519110657.png",
     "Pasted image 20250519110233.png",
@@ -182,10 +186,7 @@
     "Pasted image 20250517152758.png",
     "Pasted image 20250517152707.png",
     "Pasted image 20250517152419.png",
-    "Pasted image 20250517143252.png",
-    "Pasted image 20250517142613.png",
     "5G (Qualcomm).md",
-    "MLAI.md",
-    "OOP.md"
+    "MLAI.md"
   ]
 }
