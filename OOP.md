@@ -350,3 +350,387 @@
 ![[Pasted image 20250512225555.png]]
 ![[Pasted image 20250512225602.png]]
 ![[Pasted image 20250512225607.png]]
+
+
+## Exception Handling, Abstract Class and Interface
+
+### Exception
+- unexpected event caused by runtime errors
+- may terminate abnormally without codes handling exceptions
+- coded using try-catch or try-catch-finally structures
+- try block will house the intended operation code
+- execution of program will skip and jump to catch block is exception occurs during try block
+
+### Arithmetic Exception
+
+```
+try{ 
+	System.out.println (“Trying …"); 
+	int x=30, y=0; 
+	int z=x/y; 
+	System.out.println ("Answer: "+ z); 
+} 
+
+catch(ArithmeticException e){ 
+	System.out.println ("Cannot be divide a number by zero"); 
+}
+```
+
+Output:
+Trying … 
+Cannot be divide a number by zero
+
+
+### ArrayIndexOutOfBounds Exception
+
+```
+try{
+	System.out.println("Trying ...");
+	int x[] = new int[10];
+	x[10] = 88;
+	System.out.println("Done!");
+}
+
+catch (ArrayIndexOutOfBounds Exception e){
+	System.out.println("No index in array");
+}
+```
+
+Output:
+Trying … 
+No index in array
+
+
+### NumberFormat Exception
+
+```
+try{
+	System.out.println ("Trying …");
+	double x = Double.parseDouble ("SP123");
+	System.out.println (“x: "+ x);
+}
+
+catch(NumberFormatException e){
+	System.out.println (“Wrong format");
+}
+```
+
+Output: 
+Trying … 
+Wrong format
+
+
+### Multiple Catch
+
+```
+try{
+	int x[]=new int[7];
+	x[4]=88/0;
+	System.out.println("First print statement in try block");
+}
+
+catch(ArithmeticException e){
+	System.out.println("Warning: ArithmeticException");
+}
+
+catch(ArrayIndexOutOfBoundsException e){
+	System.out.println("Warning: ArrayIndexOutOfBoundsException");
+}
+
+catch(Exception e){
+	System.out.println("Warning: Some Other exception");
+}
+
+System.out.println("Out of try-catch block...");
+```
+
+Output: 
+Warning: ArithmeticException 
+Out of try-catch block...
+
+
+### try-catch-finally
+- finally block will always run even if theres no exception thrown from try block
+
+```
+try{
+	int x=888/0;
+	System.out.println(x);
+}
+
+catch(ArithmeticException e){
+	System.out.println("Number should not be divided by zero");
+}
+
+finally{
+	System.out.println("This is finally block");
+}
+
+System.out.println("Out of try-catch-finally");
+
+```
+
+Output:
+Number should not be divided by zero
+This is finally block
+Out of try-catch-finally
+
+
+### throw
+- keyword used inside a method
+- needed to throw exception explicitly
+- used in method signature
+- used when method has some statements that can lead to exceptions
+
+```
+public static void validate(int age) {
+
+	if(age<18) {
+		throw new ArithmeticException ("Person is not eligible for competition");
+	}
+	else {
+		System.out.println("Person is eligible for competition");
+	}
+}
+
+public class Test {
+	public static void main(String[] args) {
+	
+		try {
+			validate (7);
+		}
+		catch(ArithmeticException e) {
+			System.out.println(e.getMessage());
+		} 
+	}
+}
+```
+
+### Checked/Uncheck Exceptions
+- Unchecked Exceptions will not be checked by compiler during compile time
+- examples of unchecked exceptions:
+	- ArithmeticException
+	- NullPointerException
+	- ArrayIndexOutOfBoundsException
+	- IllegalArgumentException
+	- NumberFormatExcept
+
+- examples of checked exceptions:
+	- SQLException
+	- IOException
+	- ClassNotFoundException
+	- InvocationTragetException
+
+
+### Hierarchy of Exception Classes
+![[Pasted image 20250519105002.png]]
+
+### Try-with-resources
+
+```
+public class Test {
+	public static void main(String[] args) {
+	File myFile = new File("test.txt");
+	
+		try (Scanner scanner= new Scanner(myFile) {
+			while (scanner.hasNext()) {
+				System.out.println(scanner.nextLine());
+			}
+		}
+		
+		catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+```
+
+
+### Interface
+- interfaces can have methods and data
+- unlike class, it can only have constant data but not variables
+- methods declared in an interface are usually abstract(only method signature, no logic, no implementation)
+- it can also have static/default methods
+- it can extend from another interface
+- it cannot be instantiated
+- used across unrelated classes ("capable of -doing" relations)
+- can be used as return type for methods as long as the object returned implement the interface
+
+example:
+
+```
+public interface Investment {    // Defining Interface
+	double getInterest() ; 
+	// No details of method here
+	// NOT even empty body{};
+	// It is to be implemented in
+	// class(es) that inherit
+	// (implements) the interface
+}
+
+public class SavingAccount implements Investment {    // Implementing Interface
+	double balance;
+	double iRate;
+	public double getInterest() { // Details of method
+		return ( balance*iRate);
+	}
+}
+
+public class Test {
+	public static void main(String[] args) {   // Testing Interface
+		SavingAccount a1 = new SavingAccount();
+		a1.balance = 1000;
+		a1.iRate = 0.005;
+		System.out.println ( a1.getInterest() );
+	}
+}
+
+```
+
+
+#### UML
+- interface is indicated in italics in UML notation
+- implementation of interface is marked by dash-arrow leading from subclasses to interface
+![[Pasted image 20250519105613.png]]
+
+
+- when class has implements an interface, the class must provide implementation logic for all abstract methods specified in the interface
+- essentially, it enforces "consistency" in software development
+
+```
+// This will thrown error as SavingAccount must provide logic for getInterest()
+public interface Investment {
+	double getInterest() ;
+}
+
+public class SavingAccount implements Investement {
+	double balance;
+	double iRate;
+}
+
+
+//Fix
+public interface Investment {
+	double getInterest() ;
+}
+
+public class Property implements Investment {
+	double cost;
+	double rentalReturn;
+	double tax;
+	
+	public double getInterest() {
+		return ( cost*rentalReturn - tax);
+	}
+}
+
+
+
+```
+
+
+#### interfaces with default methods
+- classes implementing the interface can override the default method
+```
+public interface Investment {
+	double getInterest() ; // abstract method
+	
+	default void display() {
+		System.out.println("This is an investment.");
+	}
+} 
+```
+
+
+#### interface allows multiple inheritances
+```
+interface IncomeGain { double getInterest() ; }
+interface CapitalGain { double getProfit() ; }
+
+class SavingAccount implements IncomeGain, CapitalGain {
+
+	double balance, investAmount;
+	double iRate, ivProfit;
+	
+	public double getInterest() {
+		return ( (balance- investAmount)*iRate );
+	}
+	
+	public double getProfit() {
+			return ( ivProfit );
+	}
+}
+```
+
+
+#### interface can extend other interfaces
+```
+interface Edible {
+void serve();
+}
+interface Soluble {
+void dissolve();
+}
+interface Seasoning extends Edible, Soluble {
+void mix();
+void marinate();
+}
+
+```
+
+#### proper UML
+![[Pasted image 20250519110233.png]]
+
+
+### Abstract Class
+- similar to normal class but it contains at least 1 abstract method
+- abstract class can be extended using keyword "extends" (Interface can be implemented using keywords "implements")
+- abstract class can provide both abstract and non-abstract methods
+- it can contain no abstract methods
+- however, a class with 1 or more abstract methods must be defined as an abstract class
+- abstract class can have final, non-final, static and non-static variables (Interface has only static and final variables)
+- Abstract class and interface both cannot be instantiated
+- used in related classes ("is-a" relationships)
+
+```
+public abstract class BankAccount {
+	protected String acctNum;
+	protected double balance = 0, iRate;
+
+	public abstract double getInterest();
+	protected BankAccount(String a, double b) {
+		acctNum = a;
+		balance = b;
+	}
+}
+```
+
+#### Extends from abstract class
+
+```
+public class SavingAccount extends BankAccount {
+	SavingAccount(String a, double b, double iRate ) {
+		super (a,b);
+		this.iRate = iRate;
+	}
+	
+	public double getInterest() {
+		return ( balance*iRate);
+	}
+}
+
+
+public class currentAccount extends BankAccount {
+	CurrentAccount(String a, double b) {
+		super (a,b);
+	}
+	
+	public double getInterest() {
+		return ( 0.0);
+	}
+}
+```
+
+
+#### UML
+![[Pasted image 20250519110700.png]]
