@@ -568,13 +568,15 @@ public interface Investment {    // Defining Interface
 	// (implements) the interface
 }
 
+
 public class SavingAccount implements Investment {    // Implementing Interface
 	double balance;
 	double iRate;
 	public double getInterest() { // Details of method
-		return ( balance*iRate);
+		return (balance*iRate);
 	}
 }
+
 
 public class Test {
 	public static void main(String[] args) {   // Testing Interface

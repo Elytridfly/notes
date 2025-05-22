@@ -70,4 +70,14 @@
 - sophisticated control algorithms: fuzzy logic, neural network
 - Real-time processing: need faster speed
 
-#### 
+
+
+
+
+
+
+
+
+
+
+

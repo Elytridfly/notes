@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6ec018bce952ee19",
+        "id": "84323dbe7236799f",
         "type": "tabs",
         "children": [
           {
-            "id": "ad27f9281e716a7b",
+            "id": "dddd3c7177b4b281",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "ECS"
             }
+          },
+          {
+            "id": "1b8d02ab32a78210",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ECS tutorials.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "ECS tutorials"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -166,27 +181,28 @@
       "canvas:Create new canvas": true,
       "daily-notes:Open today's daily note": true,
       "templates:Insert template": true,
-      "command-palette:Open command palette": true,
-      "obsidian-git:Open Git source control": false
+      "command-palette:Open command palette": true
     }
   },
-  "active": "ad27f9281e716a7b",
+  "active": "1b8d02ab32a78210",
   "lastOpenFiles": [
+    "Pasted image 20250522112604.png",
+    "Pasted image 20250522112436.png",
+    "Pasted image 20250522112338.png",
+    "Pasted image 20250522112320.png",
+    "Pasted image 20250522112305.png",
+    "Pasted image 20250522111836.png",
+    "Pasted image 20250522111600.png",
+    "ECS.md",
+    "ECS tutorials.md",
+    "Untitled",
+    "5G AIoT.md",
+    "OOP.md",
+    "MLAI.md",
     "Pasted image 20250520000521.png",
     "Pasted image 20250519234020.png",
-    "OOP.md",
-    "ECS.md",
     "Pasted image 20250519110700.png",
     "Pasted image 20250519110657.png",
-    "Pasted image 20250519110233.png",
-    "Pasted image 20250519105613.png",
-    "Pasted image 20250519105002.png",
-    "5G AIoT.md",
-    "Pasted image 20250517153204.png",
-    "Pasted image 20250517152758.png",
-    "Pasted image 20250517152707.png",
-    "Pasted image 20250517152419.png",
-    "5G (Qualcomm).md",
-    "MLAI.md"
+    "5G (Qualcomm).md"
   ]
 }
