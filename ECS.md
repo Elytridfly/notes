@@ -547,3 +547,134 @@ iv) Jumps to that code and executes it.
 v) This code will have instructions to load other larger files which will continue to initialise the system. 
 
 This process is called “bootstrapping”. Other processors will jump to other locations upon start up but the startup process follows the same sequence.
+
+
+# Decoding on bus system
+- although 8080 has 16 bits for addressing
+- we consider these 16 bits for memory chips
+- then first 6 bits for IO devices
+
+## Accessing memory device
+### Memory address, data , control bus
+- memory address bus will tell a memory which particular location is being accessed
+- no. memory address lines required depends on size of memory device (eg device with 2048 locations required 11 address lines)
+
+- quantity of data stored at each memory location depends on particular memory device
+- it may be 1 bit, 4 , 8 or 16 bits per location
+- units of memory may be connected in parallel to meet processor data width
+- eg, 4 8 bit memory devices may be connected in parallel to a 32 bit processor
+
+### steps to access memory
+![[Pasted image 20250529225200.png]]
+1. address is placed on address bus, lower bits used by memory device for internal decoding higher bits go to decoder chip which will generate a chip select (CS) signal which will then select one of the several memory devices
+2. READ. if doing a read operation, processor will generate read  signal (RD) which is connected to output enable (OE) of memory chip. memory device will place data from memory location after a short delay. the processor then reads in the data
+3. WRITE . if doing a write operation, the processor will place data to be written on data bus then generate a write signal (WR) which is connected to write enable (WE) of memory chip. the memory device will then latch the data in
+
+### Partial and Full Address Decoding
+- in most practical situation, devices connected to processor address bus require fewer address bits than there are bits provided on address bus
+- 8080 has 16 pin while 6116 RAM has only 11 pins for addressing
+- Since 5 pins are unused by RAM chip, this is a case of partial address decoding
+- if we have a memory system where all address pins are used in memory access, then it is full address decoding
+![[Pasted image 20250529225658.png]]
+- pins A0 to A10 are the 11-bit address into to 2048 locations in RAM
+-  D0 to D8 are 8 data bits in each location
+- CS1 is chip select input that enable the chip
+![[Pasted image 20250529225757.png]]
+
+- when 6116 is connected to 8080 address bus, A0 to A10 will determine the location inside the RAM 
+- the other address lines will be ignored
+- hence location 000 0000 0000 B can be accessed by the address XXXX X000 0000 0000B
+- thus addresses from processor bus 0x0000, 0x0800, 0x1000 will all access the same memory location 0x0000H
+- this is inefficient way of using address bus since even though 2^16 = 65536 locations can be selected individually, only 2K are used
+- each responding to 65536/2048 = 32 different processor addresses
+
+### **Memory Foldover**
+- when memory address (or group of physical addresses) responds to several different processor addresses
+- in small systems, it is tolerable, but there are 2 problems
+	- first is that if more than 1 device needs to be attached to the bus. we cant fit it in
+	- secondly programmer may access data from wrong memory location
+- when connecting several memory ICs to an address bus, we can use logic gates as address decoders using K-maps or standard boolean logic
+- however it is much easier to use demultiplexer or decoder due to the way memory is laid out which in many cases is in sequential block of address 
+
+- commonly used is 74138 1 to 8 demux
+- pin goes to low will correspond to binary input at pins A B C 
+![[Pasted image 20250529233242.png]]
+- 74138 can select 1 of 8 possible devices based on its ABC input
+- if we add this to 13 inputs of 6116 now we have 14 inputs
+- to take care of the last 2 we can choose to use logic gates or to use another 74LS85 4 bit comparator which makes decoding more versatile
+- ![[Pasted image 20250529234433.png]]
+- only A = B output when digital value at A inputs equal B and IA = B s high, OA=B pin will go low
+- versatile as we do need inverted version
+
+#### EXAMPLE : Design a 16K memory space starting from 8000H, using 6116 memory chips.
+In designing a full decoding system using a 74138, we should note the number of address lines are used by the memory chip itself. This is because these lines cannot be used for decoding. Thus only the remaining lines on the host processor address bus is available. 
+
+To summarize, we may use the following steps: 
+1) Identify how many address pins the memory chip uses. 
+2) Calculate the number of chips that are required in the design. 
+3) Draw the memory map of the design. Do this by laying out the chips contiguously, that is, the starting address of a chip follows immediately after the last address of the previous chip. Write down the range of addresses of each chip in hexadecimal. 
+4) Draw a truth table. This is the binary representation of the range of addresses. 
+5) Looking at the bits, observe any pattern of numbers, for example, running binary numbers in the bits. 
+6) Fit this pattern to the truth table of the 74138. First, see which address pins are to be assigned to inputs A, B and C. Then see how to assign the remaining address pins to the Enable inputs of the 74138. 
+7) If there are unassigned processor address pins, assign them to the 74688. 
+8) Finally, produce the schematic. 
+
+Applying to the above example:
+1) The memory device to be used is a 6116, which is a 2048 by 8 bit device. This device uses address pins A0 to A10. (211 = 2048). Each chip will take up 204810 or 7FFH addresses. 
+2) Since we require 16K bytes in the design, we need 8 chips. (16K/2K). 
+3) This 16K will occupy the range from 8000H to BFFFH. So the first memory chip will start from 8000H and occupy the address range 80000 - 87FFH. We continue until we get the following memory map: 
+	RAM 1 - 8000H to 87FFH 
+	RAM 2 - 8800H to 8FFFH 
+	RAM 3 - 9000H to 97FFH 
+	RAM 4 - 9800H to 9FFFH 
+	RAM 5 - A000H to A7FFH 
+	RAM 6 - A800H to AFFFH 
+	RAM 7 - B000H to B7FFH 
+	RAM 8 - B800H to BFFFH 
+	
+To draw the truth table, let us look at the first chip. It occupies the address range 8000-87FFH. Using binary, and noting that the MSB is address line A15:
+![[Pasted image 20250529235730.png]]
+
+In order to simplify the design process, we will introduce a notation. Instead of writing two lines with all the 0's and 1's, we will represent the above range by: 
+
+A15 A10 A0 1 0 0 0 0 X--------X 8000 - 87FFH
+
+"X" means that the value for the address line can be 0 or 1. The dashed line "X---X" means that address lines from A0 to A10 can be 0 or 1. So they are not available for general use. This highlights the fact that only address lines A15 to A11 are available for decoding. Proceeding in similar fashion for the other chips, we have the following truth table.
+
+![[Pasted image 20250529235856.png]]
+
+1. Looking at the truth table, we can see the address lines A13 to A11 taking on values that
+increment, starting from 000 to 111. If we assign these lines to a 74138, we can enable
+up to 8 devices one at a time, depending on the values of A13 to A11.
+2. Comparing this with the truth table of the 74138, we see that A13 should be assigned to
+input C, A12 to B and A11 to A. Note that this incrementing bit pattern is only true for
+this situation. Other situations will have different patterns at different address lines. The
+important thing is to look out for a pattern to fit to the truth table of the 74138.
+3. It is convenient to let A15 to A14 be enabled by the 74LS85, so it activates when it has
+the value 2H.
+
+![[Pasted image 20250529235911.png]]
+
+## Input / Output Decoding
+- 8080 is able to access buffers and latches
+- memory devices only use some of the available address line
+- lower address lines will select single memory in memory device
+- higher address lines from system are used by decode to select one of several memory devices
+- also memory device will have Output Enable pin for a read and RAM device will also have a Write Enable pin
+
+### Single address decoding
+- buffers and latches have only a single address location
+- PC architecture used up quite a few IO addresses so that there are few left for user
+- other devices also may have used up other addresses
+- thus we need to decode each device exactly to not activate other IO by accident
+- since buffers have only 1 control pin and latches use clock pin, we need external gate to control access so processor reads are directed to buffers and writes are directed to latches
+
+#### Example : Design an input port of address 30H and an output port of address 31H.
+
+![[Pasted image 20250530003120.png]]
+
+- 74LS85 is used with 74138  to decode individual IO address
+- 74LS85 activate block of 8 devices through 74138
+- starting address of this block will have A0-A2 at logic 0
+- address is known as base address as all other IO addresses are simply added to base to get its address
+
