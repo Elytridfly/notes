@@ -678,3 +678,190 @@ the value 2H.
 - starting address of this block will have A0-A2 at logic 0
 - address is known as base address as all other IO addresses are simply added to base to get its address
 
+
+# Keyboard interfacing
+## Intro
+- common input method from human to microprocessor is keyboard
+- low cost, large amount o info may be input
+- key works like single pole, single throw switch
+- able to better detect presence of low voltage level, rather than high due to noise
+- smaller keyboard have up to 16 kets or of a size that fits in a palm known as keypads
+- consisting of pressure or touch activated switches arranged in a matric
+- combination of software and hardware used to detect pressed key
+- 2 basic types: 
+	- encoded
+		- include hardware necessary to detect which key is pressed and hold that data until new key stroke
+	- non-encoded
+		- no hardware and must be analyzed by software routine or by special hardware
+
+### Reading from keyboard
+- complexity of processor task when reading from a keyboard depends on number of keys detected
+- input ports available on processor and amount of processor time dedicated to the task
+
+#### Simple keyboard reading
+- for small number of keys 1 to 8, we may assign one key to each buffer or port line
+- to read, simply check for low level
+
+![[Pasted image 20250530003806.png]]
+
+#### Matrix organisation
+- larger no. keys keyboard may be arranged in row and column fashion with n by m key organisation, aka matrix organisation
+![[Pasted image 20250530003855.png]]
+- 16 key device can be decoded with 4 input 4 output 
+- optimal for 8 bit controller as it will use exactly 1 port
+- port must be capable of splitting lower 4 bits in and upper 4  bits out
+
+##### Scanning the keypad
+- output column lines with "walking zero" pattern and sense the row lines to see if a low voltage is detected
+- key identification technique is known as "row scanning"
+
+![[Pasted image 20250530004110.png]]
+
+- Let’s say the ‘3' key is pressed. If the processor did not output a “0" to pin 7, the
+keypress will not be registered - that is, port pins 0 to 3 will still read “1". 
+- Only when pin 7 outputs a “0" will pin 3 register a “0" as well.
+- Larger keyboards require more select and sense lines. 
+- First we can have latches to output the “walking zero” data to the column lines. Buffers are used to read the row lines. 
+- When selecting the key organization, we should let the smaller number be
+assigned to the row lines. 
+- This is because we detect a key press through these lines,the status of which is read into a register. 
+- Then software routines, most often rotates are used to detect which column has a “0". 
+- This is time consuming.
+-
+(Note: The assignment of which lines are “rows” and “columns” is entirely arbitrary.
+In this course we refer to the vertically oriented lines as columns purely for ease of
+reference)
+
+![[Pasted image 20250530004233.png]]
+
+- since column line activated one at a time
+- possible to substitute latches with decoders
+- in this case N lines from processor will support 2^N columns
+- shown below, 3-8 decoders can handle 24 column lines using 5 address lines but up to 32 rows can be decoded
+![[Pasted image 20250530004311.png]]
+
+
+### Interrupt Driven Keyboard
+- simple solution is to make all column lines go to 0V
+- if no keys pressed, it will present 1 level
+- we would only need to AND all the row lines together
+- a key pressed will then signal an interrupt and normal scanning can proceed to find out which was pressed
+
+## Common Problems
+- contact bounce
+- key combinations
+- type quickly
+
+### Bounce
+- when contact of a mechanical switch close, they bounce abit before staying together true when opening too
+![[Pasted image 20250530005112.png]]
+- solution is to wait for key to get stable ~ 20 ms
+- can be done by hardware filtering or software-delay routine
+- hardware is to use RC filter and requires same circuitry for each key
+- useful if only a few switches
+
+### Multiple key presses
+- when 1 key is held down, essential to detect to prevent wrong codes from being generated
+- 2 techniques are N-key rollover an N-key lockout
+
+#### N-key rollover
+- Software simply ignores reading until one key closure is detected
+- last key to remain pressed is correct one
+- used when software routines are used to provide keyboard scanning and decoding
+- if order pressed is not crucial, is possible to store all closures with an internal buffer
+- Hardware, second and later key closures are prevented from generating a strobe until earlier ones are released
+- this is achieved with an internal delay mechanism which is latched as long as other key pressed
+
+#### N-key lockout
+- N-key lockout takes into account only 1 key pressed
+- any additional keys pressed and released do not generate code
+- the system is simplest to implement and most often used ]
+- however might be objectionable to user as it slows down typing s each key must be fully released before next key is pressed down
+
+#### Phantom Key
+- most system need a diode in series with every key in order to eliminate problem creaeted when 3 adjacent keys at right angle are present
+- increases cost significantly and is seldom used on low cost systems
+- effect is that another key seems to be pressed in addition to the 3
+- this is the "phantom key"
+- consider 3,6,7 pressed at the same time and column 6 is scanned
+![[Pasted image 20250530005843.png]]
+- even though key "2" is not pressed, row 3 has "0" value appearing there due to flow of current in other 3 switches
+-  key "2" is the phantom key
+
+code to fix phantom key:
+
+```
+
+unsigned char ScanKey ();
+unsigned char ProcKey ();
+
+#define Col7Lo 0x7F               /* column 7 scan */
+#define Col6Lo 0xBF               /* column 6 scan */
+#define Col5Lo 0xDF               /* column 5 scan */
+#define Col4Lo 0xEF               /* column 4 scan */
+#define TRUE 1                    /* neater to use! */
+unsigned char ScanCode;           /* hold scan code returned */ 
+
+
+void main (void) {                /* main entry for program */
+unsigned char i;
+	 while (TRUE)
+	 {
+		i = ScanKey();
+		if (i != 0xFF)            /* if key is pressed **/
+			LEDPort = Bin2LED[i]; /* output to LED */
+
+	 }
+}                                 /* loop forever */
+
+/* Check for key press: if none, return 0xFF */ 
+unsigned char ScanKey()
+{
+	KbdPort = Col7Lo;            /* bit 7 low */
+	ScanCode = KbdPort;          /* Read */
+	ScanCode |= 0xF0;            /* high nybble to 1 */ ScanCode
+	&= Col7Lo;                   /* AND back scan value */
+	
+	if (ScanCode != Col7Lo)      /* in<>out: get key & disp */
+	return ProcKey();
+	
+	KbdPort = Col6Lo;            /* bit 6 low */
+	ScanCode = KbdPort;          /* Read */
+	ScanCode |= 0xF0;            /* high nybble to 1 */
+	ScanCode &= Col6Lo;          /* AND back scan value */
+	
+	if (ScanCode != Col6Lo)      /* in <> out, get key */
+	return ProcKey();
+	
+	KbdPort = Col5Lo;            /* bit 5 low */
+	ScanCode = KbdPort;          /* Read */
+	ScanCode |= 0xF0;            /* high nybble to 1 */
+	ScanCode &= Col5Lo;          /* AND back scan value */
+	
+	if (ScanCode != Col5Lo)      /* in <> out, get key */
+	return ProcKey();
+	
+	KbdPort = Col4Lo;            /* bit 4 low */
+	ScanCode = KbdPort;          /* Read */
+	ScanCode |= 0xF0;            /* high nybble to 1 */
+	ScanCode &= Col4Lo;          /* AND back scan value */
+	
+	if (ScanCode != Col4Lo)      /* in <> out, get key */
+	return ProcKey();
+	
+	return 0xFF;                 /* no key press rtn with FF */
+} /* main */
+
+/* Procedure here */ 
+unsigned char ProcKey()
+{
+unsigned char i;                  /* index of scan code returned */
+
+for (i = 0 ; i <= 12; i++)
+	if (ScanCode == ScanTable[i]) /* search in table */
+		return i;                 /* exit loop if found */
+
+ if (i == 12)
+	return 0xFF;                  /* if not found, return 0xFF */
+}
+```
