@@ -35,8 +35,7 @@
               "title": "ECS tutorials"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -184,25 +183,25 @@
       "command-palette:Open command palette": true
     }
   },
-  "active": "1b8d02ab32a78210",
+  "active": "dddd3c7177b4b281",
   "lastOpenFiles": [
+    "Pasted image 20250529180805.png",
+    "Pasted image 20250529180249.png",
+    "Pasted image 20250529175710.png",
+    "Pasted image 20250529175101.png",
+    "Pasted image 20250529171754.png",
+    "Pasted image 20250529171730.png",
+    "ECS tutorials.md",
     "Pasted image 20250522113058.png",
     "Pasted image 20250522112858.png",
     "Pasted image 20250522112742.png",
     "Pasted image 20250522112604.png",
     "Pasted image 20250522112436.png",
-    "Pasted image 20250522112338.png",
-    "Pasted image 20250522112320.png",
-    "Pasted image 20250522112305.png",
-    "Pasted image 20250522111836.png",
-    "Pasted image 20250522111600.png",
     "ECS.md",
-    "ECS tutorials.md",
     "Untitled",
     "5G AIoT.md",
     "OOP.md",
     "MLAI.md",
-    "Pasted image 20250520000521.png",
     "5G (Qualcomm).md"
   ]
 }
