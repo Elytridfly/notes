@@ -375,3 +375,175 @@
 ![[Pasted image 20250529203621.png]]
 
 
+##### Applications for ROM
+- ROMs used to store unchanging data like user prompts, error messages, character generators for video displays or bootup program for computers
+- but widely used for simpler forms such as 4 line to 16 line decoder or BCD 7 segment decoder
+
+#### EPROM - Erasable PROM/ One Time Programmable ROMS
+- EPROM or Erasable PROM is a device in which data can be erased after it has been stored so it can be reused many times
+- erasing is done by shining UV light on the chip through a quartz window for 20 to 30 mins
+- the chip has to be made of ceramic due to the quartz window
+- in order to make use of existing processes and lowering cost of the package, manufacturers offer EPROMs in plastic packaging that cannot be erased aka One Time Programmable ROMs (OTPROM)
+
+##### Applications for EPROM/OTPROM
+- for design testing and development
+- necessary to revise and test program many times before its error free
+- as PROM can only be programmed once, its too expensive for development
+- thus EPROM can be used despite higher initial cost of the IC package
+- and since they are now relatively cheaper, EPROMs are replacing PROMs in many applications
+
+#### PROM - Programmable ROM
+- overcome expense when only small quantities are needed, PROMs are produced
+- the data is not stored during manufacturing but instead by the ser with necessary programming equipment
+- once stored the data cannot be changed
+- process involves "blowing" of small nichrome fuses or links in the device
+- often also called fusible link PROMs
+- normally bipolar devices
+
+##### Application of PROMs
+- main use is for small-scale production where economies of scale are not available
+- as chip manufacturer can produce basic (unprogrammed) devices in large quantities, they are comparatively inexpensive
+- but the user of the PROM must then pay the additional costs of programming the device
+- a custom-made address decoder is a very useful application of a small Field-programmable ROM
+
+
+#### EEPROM - Electrically Erasable PROM
+- EEPROMM or E^2ROM is special type of erasable semiconductor memory where data can be erased and re-written electrically in a circuit
+- recently became very important as storage devices
+- unlike RAM, process of storing data take much longer than reading it
+- usually 30 ms writing time
+- a later type is FLASH memory
+- main difference is FLASH updates contents in terms of groups of bytes or sectors 
+- EEPROM does so byte at a time
+- FLASH can store large amounts of data relatively quickly
+- EEPROM is available with a serial interface, making it smaller both physically and storage capacity
+- Parallel devices are larger on both areas this addressing different applications
+- FLASH memory can be purchased as bare memory chips which generally use NOR gate technology used to store programs as memory can be access randomly
+- Interfacing to the chip involves hardware design and it may not be possible to remove the bare chip but it can take very little space
+- in terms of software, little effort is needed 
+- NAND gate technology, flash memory is commonly available as "memory cards" 
+- eg, Compact Flash (CF), Secure Digital (SD), MultiMedia Card (MMC) formats and others
+- this is because NAND flash memory favor sequential access of data within blocks of memory such as in these devices
+- hardware on the cards make interfacing easier
+- eg, CF cards appears like hard disks while SD/MMC cards use SPI, a commonly used protocol to interface it. this makes transfer of data easier as card readers are common, but interfacing is more complicated
+- Flash memory also appears in standalone portable storage devices
+- eg, portable music platers can appear as a hard disk when attached through USB interface
+
+##### Applications of EEPROM
+- FLASH memory kind is dependent on application
+- as part of a system, its natural to use flash memory for updates to programs as data stored within can be done easily and automatically
+- eg, the ability of modern equipment to update their firmware by "flashing" an update from the manufacturer
+- however, if we use flash memory for storing large amounts of data, it mores more sense to use a CF card and access it like a hard disk
+- Serial EEPROM is mainly used to store settings and config info
+- where its low cost, low power consumption and small size are advantages
+- RAM the process of storing and retrieving takes around the same time while EEPROMG can rad from in the same time as RAM, it takes way longer to store
+
+![[Pasted image 20250529215545.png]]
+
+#### RAM devices
+- RAM devices can be classified as Static and Dynamic RAM
+- RAMs are manufactured using both MOS and bipolar technologies
+- MOS uses NMOS and CMOS
+	- usually simpler devices and yield higher densities than bipolar process
+- Bipolar devices include Schottky TTL, ECL, and IIL types 
+	- usually faster than MOS and accordingly have higher power dissipation
+
+##### SRAMs - Static RAM
+- SRAM use flip-flops as the storage elements
+- one F/F per bit of data storage
+- 8K Ram has 8192 F/F plus necessary decoding and IO buffering circuits
+- Info is retained in the FF as long as power is applied
+
+
+##### DRAMs - Dynamic RAM
+- DRAM uses MOS capacitors to store charge as storage element
+- 1's and 0's are indicated by presence o absence of charge on the capacitor
+- if capacitor is charged above certain level, it represents 1, otherwise its 0
+- ideal capacitor once charged maintains constant voltage but practically, charge will leak away
+- - capacitor voltage (data) must be read regularly 
+- if logic is 1, it must be refreshed to full voltage before too much charge leaks (refreshing)
+- if DRAM is not refreshed often enough, voltage will fall below threshold and revert data to 0
+- eg, 8K DRAM contains 8192 MOS capacitors, plus associated decoders, buffers
+- all capacitors must be refreshed regularly, typically every 2 ms
+
+
+## IO Devices on ISA bus
+- more common use of plug-in cards is to provide many more ports to be used for interfacing with external devices
+- ports normally interface with devices that are much slower than the main processor so that the relatively slower data transfer speed is not an issue
+- intel architecture uses 16 bit addressing for IO
+- on PC only 10 address pins are actually used, to reduce hardware decoding requirements
+
+### Basic Input/Output Hardware
+- vairous hardware elements can perform some functions of the IO section
+- Flip flops (latches) and buffers  
+
+#### Buffers
+- most microprocessors are MOS products
+- capabilities are restricted to at most 1 TTL load or 5 MOS loads
+- this severely restricts operation of microprocessor in driving other devices like RAMs, ROMs and other support devices
+- in order to increase driving power, or driving current, buffers are used
+
+- buffers are TTL ICs which allow signal to pass through without altering the logic value of the signal
+- buffer increase the DC drive characteristics of the signal
+- microprocessors with the aid of a buffer is capable of driving many more circuits
+
+- another advantage of using buffers is that microprocessor is isolated from any outside signals
+- if theres change in voltage, the buffers are first affected,, thus preventing damage to the microprocessor
+- being mainly TTL ICS, they introduce a small delay in the transmission of  data
+
+- 2 variations of the buffer
+	- 1 in 1 out buffer which take input and increases the driving current of signal at output for all logic level
+	- Tri-state buffer with a additional control signal. when control is active, device performs exactly as a buffer. when deactivated, it prevents any output. the output turns into high-impedance state giving neither 1 or 0
+		![[Pasted image 20250529221228.png]]
+
+
+#### Latches
+- mainly made of D Flip flops
+- takes a signal via strobe (clock pulse)
+- holds signal until another pulse is applied or until power is removed
+- advantage over buffer in sense that signal held at particular logic until change is required
+- buffer only holds logic level as long as signal is also at that level
+- thus latches used in preference to buffers in situations where receiving end requires a little more time to process the signal
+ ![[Pasted image 20250529221429.png]]
+ - Latches can be level-triggered (change output as long as strobe is active) or edge-triggered (changes output only on rising or falling edge of strobe signal)
+ - in cases where ambiguity is avoided, edge-triggered latches are used
+
+#### Input/Output Ports
+
+##### Basic Input Ports
+- tri-state buffer connected to data bus line
+- control signal of buffer is usually combination of IORD and selected port address which is obtained using address decoding
+![[Pasted image 20250529221734.png]]
+
+
+##### Basic Output Ports
+- latch 
+- CPU places the necessary data to be output on data bus lines and then clocks the data into the latch with the control signal which is usually combination of IOW and selected port address obtained using decoding
+ ![[Pasted image 20250529221857.png]]
+
+
+## BIOS and boot up process
+- 8080 following given sequence when it is RESET
+- as ROM is non-volatile, the processor is guaranteed to have valid code when it starts and jump to the location
+- most other microprocessors, after start is dependent on what the programmer puts into the ROM code
+- early systems, vendors would put basic routines in a so called "Monitor Program" and include it in the ROM
+- These allowed users to do fundamental tasks like simple output to the screen, keyboard handling, output to printer, serial communications and so on
+- this allowed users to quickly bring up their systems to productive use and allowed a measure of standardization to programs as they use common routines to do IO
+- typical PCs, monitor program is known as basic Input Output System or BIOS'more routines can be added for secondary storage devices like hard dishs
+- BIOS may occupy as much as 64K or ROM which is not practical for small processors but monitor programs can be as small as 2K
+- if system is simple enough, programmer can make do without any built in monitor program
+
+#### boot up for 8080
+Consider the boot up process for the 8080 processor: 
+Microprocessor function 
+i) Performs a jump to location 0H. 
+ii) Executes the code found there, which is normally contained in ROM. 
+
+Monitor program (BIOS) function:
+i) It searches for a secondary storage device like a floppy or hard disk. 
+ii) It reads in the boot sector (normally 512 bytes in length) for the device. 
+iii) Puts the contents into RAM. 
+iv) Jumps to that code and executes it. 
+v) This code will have instructions to load other larger files which will continue to initialise the system. 
+
+This process is called “bootstrapping”. Other processors will jump to other locations upon start up but the startup process follows the same sequence.
