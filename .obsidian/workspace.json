@@ -20,20 +20,6 @@
               "icon": "lucide-file",
               "title": "ECS"
             }
-          },
-          {
-            "id": "1b8d02ab32a78210",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ECS tutorials.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "ECS tutorials"
-            }
           }
         ]
       }
@@ -185,18 +171,18 @@
   },
   "active": "dddd3c7177b4b281",
   "lastOpenFiles": [
+    "Pasted image 20250529203621.png",
+    "Pasted image 20250529203253.png",
+    "Pasted image 20250529202847.png",
+    "Pasted image 20250529202834.png",
+    "Pasted image 20250529202826.png",
+    "Pasted image 20250529201356.png",
     "Pasted image 20250529180805.png",
     "Pasted image 20250529180249.png",
     "Pasted image 20250529175710.png",
     "Pasted image 20250529175101.png",
     "Pasted image 20250529171754.png",
-    "Pasted image 20250529171730.png",
     "ECS tutorials.md",
-    "Pasted image 20250522113058.png",
-    "Pasted image 20250522112858.png",
-    "Pasted image 20250522112742.png",
-    "Pasted image 20250522112604.png",
-    "Pasted image 20250522112436.png",
     "ECS.md",
     "Untitled",
     "5G AIoT.md",

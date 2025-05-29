@@ -264,3 +264,114 @@
 - eg, CPU that executes 100000 instructions get a job done but needs to be performed every second
 - if CPU were running at a clock frequency that allow it to execute a million per second, it will be capable of doing 10X the amount of work required
 - so lowering the frequency to the needed performance will optimize power consumption
+
+
+# Bus Systems and Devices
+
+## Intro
+ - embedded processors have hundreds of kB size on-chip memory
+ - run at GHz speeds and high level of integration with other functional blocks with other chips aka SoC
+ - memories used for programs and data executing within the processor and are optimized for speed so that busses in the processor are not easily accessed
+ - the processors need to interface external devices which have grown in complexity
+ - common situation is to aquire and store data or interface with large displays
+ - external bus interface is needed for such situations 
+ - the external bus interface is used for :
+	 - specialized memory needs, static RAM, NAND, and NOR type flash memory
+	 - controlling large graphic LCDs
+	- many vendors provide external bus interface and most of the time a high speed bus is not needed
+	- using a few low cost TTL chips are enough for interfacing
+	- protcols used in simple bus interfaces still lives on in modern systems, which build upon the protocols with advanced techniques in Comp Arch
+
+## ARM based Hardware Architecture
+- ARM have versions that have a more open interface
+- such as RPi which is widely used in set top boxes in TVs
+- RPi is the size of a credit card and can run linux OS
+- hardware can interface with low-levell electronics so that high-level linux software can analyse and control external devices
+- thus it has been successfully used in IoT applications as well as robotics, cyber-physical systems, 3D printing
+- designers came up with Compute Module 3 (CM3) for industrial uses
+- which has less built in peripherals than the RPi but more processor pins available making it cheaper and more flexible for custom designs
+
+## Hardware of the SoC
+- Broadcom SoC used in CM3 has a CPU which uses an ARM Cortex A core following ARMv8-A architecture
+- hardware blocks that make up a typical SoC
+	- GPU
+	- Memory
+	- Timers
+	- DMA
+	- Interrupt Controller
+	- GPIO
+	- USB
+	- PCM (Pulse Code Modulation)
+	- I2S (Inter-IC Sound)
+	- PWM
+	- Serial Communication
+		- I2C (Inter-Inter Circuit)
+		- SPI (Serial Peripheral Interface)
+		- UART (Universal Asynchronous Receiver/Transmitter)
+
+
+- on broadcome SoC on-chip bus transfers data between various blocks using hardware based on bus architecture design by ARM called AMBA (Advanced Microcontroller Bus Architecture)
+- this in turn specifies other interfaces to external devices such as Advanced eXtensible interface (AXI) which allows interfacing to external memory devices 
+
+![[Pasted image 20250529201356.png]]
+
+- AXI specification allows connections to external memory using external bus interface 
+- for broadcom devices, this is known as Secondary Memory Interface (SMI)
+- NAND flash memory interface requires smaller number of address pins and six are specified in the SMI with the requisite control pints
+- 8080 or 6800 bus interface is used cos of their simplicity and modest hardware requirements
+- 8080 from intel and 6800 from Motorola are the first microprocessors on the market in 1970s
+- their interfacing protocol is still very much in use today
+- 8080 was electrically cumbersome due to its multiple voltage and support chips and an improved version 8085 was introduced
+- the bus timing signals of the 8085 is common refferred to as the "8080 bus" in current sure
+- currently, there are several variations on the specifications
+
+## 8080 mode bus
+- earliest microcomputer systems, vendors have always provided an interface bus
+- 8080 interface specifies a 16 bit address bus, an 8 bit data bus and use of separate read and write signals for control
+- current devices that interface using 8080 mode are LCDs and various types of flash memories 
+- in these devices, the address and data bus sizes can vary but the timing of control signals have a common sequence
+
+### Description of bus
+- 8080 and 8085 originally specified the following bus widths and control signals
+
+![[Pasted image 20250529202826.png]]
+![[Pasted image 20250529202834.png]]
+
+- for devices in current use, full widths of address and data busses may vary. eg, data bus may be 8,9,16 or 18 bits
+- timing of a typical instruction of the 8080 and 8085 is that it executes over 3 clock cycles 
+- the data bus is multiplexed allowing more pins to be available for control purposes thus full width of address bus only appears at cycle T2
+
+![[Pasted image 20250529202847.png]]
+
+### Memory and I/O mapped addressing
+- 8080 bus makes a distinction between addressing memory and I/O devices by having an IO/M signal 
+- as 8080 and 8085 have different instructions, this allows greater flexibility in accessing IO
+- firstly memory mapped IO allows the use of interfacing devices as if it were a memory device sing standard load/store/move instructions in the assembler or high level language assignment statements
+- displays are a typical example of this sort of device
+- second IO mapped instructions take the form of "input" or "output" instructions
+![[Pasted image 20250529203253.png]]
+
+
+## Memory devices on 8080 mode bus
+
+### intro to types of memory devices
+- there are many different types of semiconductor memories
+- we focus on RAM and ROM
+
+#### RAM 
+- memory device where data can be stored as well as retrieved
+- process of storing data at a particular location takes the same time as process of retrieving from that location
+- most RAMs are volatile however, there are non-volatile RAMs 
+
+####  ROM
+- logic function is stored in circuit permanently without need of electrical power to sustain the memory
+- input combination has no effect on how long it takes to read the output combination
+- ROM can be defined as fixed memory whose contents cannot be altered during normal operation
+- number of types of ROM, based on methods of storing data in the ROM and whether it can be erased
+- in ROM, the data stored as part of manufacturing process can never be changed after that
+- thus it requires costly manufacturing process and is not economical unless high demand
+
+#### RAM vs ROM
+![[Pasted image 20250529203621.png]]
+
+
