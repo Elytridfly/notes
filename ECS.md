@@ -865,3 +865,81 @@ for (i = 0 ; i <= 12; i++)
 	return 0xFF;                  /* if not found, return 0xFF */
 }
 ```
+
+
+# Top Down Design with UML
+## Introduction
+- microprocessors are fabricated using Large Scale Integration (LSI) technology 
+- unit cost of each processor is very low
+- however, development of systems using microprocessor tens to be hgih
+- proper design techniques would help reduce development cost
+
+
+### Why microprocessor-based
+- microprocessor offer opportunities for products and features which are not achievable by other means
+- its difficult to achieve range of features found in today's electronics
+- eg, it would be almost impossible and not economical to design a compact disk player using logic gates alone
+
+### Implications of incorporating a microprocessor
+- testing the microprocessor based system is huge hurdle
+- firstly, software needs to be extensively and thoroughly tested
+	- underlying faults arise from OS, changing it is often impossible
+- secondly, hardware of the system is almost as difficult to test as software
+	- as hardware interacts with software and might be difficult to isolate whether error arises from hard or software
+- microprocessor only deal with digital data
+- interface must exist between it and its peripheral devices to convert data
+
+
+## Product Development
+**Trends in electronics industry**
+- even though products have shorter product life
+- every version needs to have high performance to price ratio due to competition in market
+- resulting in the following:
+
+1. Manufacturers shorten product design cycle using improved design methodologies
+2. Manufacturers invest in tools and resources to improve and increase product features
+
+## Product Design and Development Activities
+- Product design is a human process
+- design is a process that involves communication, creativity, negotiation and agreement
+- System designers do not work alone
+- theres a strong temptation to sit down and product the system asap
+- hard and software designers need to understand each other so that final product meets requirements of the client
+- often in design and production process, communication, negotiation and agreement aspects are left out
+- a notation which is clear, consistent and able to communicate within a system development team, and with clients and other 3rd parties is needed
+
+![[Pasted image 20250601003249.png]]
+
+- systems were constructed using a "waterfall" approach traditionally
+- as water flows down from the top, the approach starts off by having clients formally agree on a requirements document
+- designers would then come up with a design which will be further agreed by the clients
+- the system would finally then be implemented and followed by an endless process of maintenance
+
+- modern ideas move away from waterfall
+- many system developers use iterative method
+- development cycles with each cycle making up of analysis, design and implementation
+- each subsequent cycle builds on earlier cycles
+- one method for visualizing this is Unified Modeling Language (UML)
+- UML is used for specifying, visualizing, constructing, and documenting features of a system
+- UML represents a collection of proven best engineering practices in modeling of large and complex systems
+
+- UML represents an important part of system development process
+- UML uses mostly graphical notation to express design of system projects
+- UML helps project team communicate, explore potential designs, and validate architectural design of systems
+
+## Product Requirement
+- first stage in both methods is requirements gathering
+- difference in 2 methods is that iterative is only interested in capturing most important features in the beginning and allowing subsequent cycles to handle less important ones
+- waterfall starts off with intention of obtaining all features in the system
+- initial description of product's intended functions are obtained from the customer
+
+### Need for product requirement
+2 reasons :
+**Avoid "Creeping featurism"**
+- there is always the desire to interfere continually with product specs during development as there are many choices available
+- this will significantly alter cost and time needed
+
+**Avoid "Missing features"**
+- worst thing is to forget required features and by the time its noticed, its too late
+
+### Goals and Constraints
