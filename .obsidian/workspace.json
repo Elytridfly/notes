@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ECS.md",
-                "mode": "source",
+                "file": "5G AIoT.md",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "ECS"
+              "title": "5G AIoT"
             }
           }
         ]
@@ -171,22 +171,22 @@
   },
   "active": "dddd3c7177b4b281",
   "lastOpenFiles": [
+    "Pasted image 20250531125423.png",
+    "Pasted image 20250531123831.png",
+    "Pasted image 20250531112343.png",
+    "Pasted image 20250531103819.png",
+    "Pasted image 20250531102322.png",
+    "Pasted image 20250531101732.png",
+    "OOP.md",
+    "ECS.md",
     "Pasted image 20250530005843.png",
     "Pasted image 20250530005112.png",
     "Pasted image 20250530004311.png",
     "Pasted image 20250530004233.png",
     "Pasted image 20250530004110.png",
-    "Pasted image 20250530003855.png",
-    "Pasted image 20250530003806.png",
-    "Pasted image 20250530003120.png",
-    "Pasted image 20250529235911.png",
-    "Pasted image 20250529235856.png",
-    "Pasted image 20250529235730.png",
     "ECS tutorials.md",
-    "ECS.md",
     "Untitled",
     "5G AIoT.md",
-    "OOP.md",
     "MLAI.md",
     "5G (Qualcomm).md"
   ]

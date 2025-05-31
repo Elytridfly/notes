@@ -1,4 +1,15 @@
 ## Intro to 5G AIoT
+
+### What is 5G
+- end-to-end ecosystem to enable a fully mobile and connected society
+- empowers value creation towards customers and partners
+- through existing and emerging use cases, delivered with consistent experience, and enabled by sustainable business models
+
+- 5G enables technologies such as AI, Digital Twin, augmented and extended reality to seamlessly work together
+- key for businesses at forefront of digital transformation
+- providing consumers with better-quality experience
+
+
 ### Roadmap to 5G
 ![[Pasted image 20250430093609.png]]
 - 1G: Analog Voice
@@ -7,20 +18,51 @@
 - 4G: Mobile Broadband, LTE(faster data transmission)
 - 5G: Allow for faster technology (self-driving car, AI IoT)
 
+- 1980s - commercialisation of mobile phones, analogue voice calls became possible (1G)
+- 1990s - digital voice and SMS, Nokia was first handphone maker to enable SMS texting (2G)
+- 2000s - multimedia messaging, video calling, mobile internet browsing, faster 2G (3G)
+	- due to high cost and low coverage, 3G did not catch on quick
+	- global carriers slowly made 3G better by investing in their better coverage
+	- late 2000s, more mobile apps started becoming available
+	- introduction of improved mobile computing capabilities like the iPhone
+- 2010s - cloud computing, online gaming, HD video streaming (4G)
+	- first 4G enabled devices, iPad and Samsung Galaxy S
+	- increase in 4G demand prompted carriers to increase investment into 4G networks
+	- 4G became the norm for fast mobile data transport by mid 2010s
+- 2020s - Self-driving cars, online medical procedures, VR, AI , IoT (5G)
+	- started development in 2015, US, China, Korea hosted first commercial launches
+
+
 ### 5G Global trends
+![[Pasted image 20250531101732.png]]
 - 5G introduces improved mobile broadband
 - users' devices can establish 5G network connection
 - applications like AI, AR/VR, IoT will be easily available
 
 ### 5G key areas
-- Fifth Generation of mobile networking determined by part of $3^{rd}$ Generation Partnership Project (3GPP) 
-- meet requirements of International Mobile Telecommunication-2020 (IMT-2020) under International Union Radio communication Sector (ITU-R)
+- Fifth Generation of mobile networking determined by part of **3rd Generation Partnership Project** (3GPP) 
+- meet requirements of **International Mobile Telecommunication-2020** (IMT-2020) under **International Telecommunication Union Radio communication Sector** (ITU-R)
+
 - Addresses 3 key areas and put 4 different use scenarios:
   ![[Pasted image 20250430094446.png]]
 
-- eMBB - Enhanced Mobile Broadband- high data rate and high capacity (mobile connectivity)
-- mMTC - Massive Machine Type Communication- high volumes of data (many sensors, smart city)
-- URLLC - Ultra Reliable and Low Latency Communication - low latency and high reliability (self driving cars, speed)
+#### eMBB 
+- Enhanced Mobile Broadband
+- high data rate and high capacity (mobile connectivity)
+- field workers use AR apps and glasses
+- mobile professionals using 5G devices
+- eMBB provides faster and better mobile communication
+- initial/ first phase of 5G and is now included in 5G NSA and 5G SA elements
+
+#### mMTC 
+- Massive Machine Type Communication
+- high volumes of data (many sensors, smart city)
+- IoT device heavy environments with moderate bandwidth and high density
+
+#### URLLC 
+- Ultra Reliable and Low Latency Communication 
+- low latency and high reliability (self driving cars, speed)
+- self-driving cars with high reliability and low latency
 
 
 ### Use scenarios of IMT-2020 and beyond
@@ -28,11 +70,12 @@
 
 
 ### 5G Technology Summary
+![[Pasted image 20250531102322.png]]
 - 5th generation of cellular network technology
 - Bands:
 	- Lower bands -<2.6GHz (LTE) : wider coverage
 	- Mid bands - 3.5GHz : balance of coverage and capacity
-	- Higher bands - 26/28GHz : provides ultra-high bandwidth
+	- Higher bands - 26/28GHz (mmWave) : provides ultra-high bandwidth 
 - Higher Speed
 - Lower Latency
 - Higher capacity and increased in data bandwidth
@@ -41,8 +84,27 @@
 - easing need of having high performance device at end user for computational intensive use cases such as AR/VR
 - Network Slicing enables various differentiated services across different industries with assured Quality of Service
 
+- 5G runs in many different frequencies
+	- high frequency mmWave : 24 to 100GHz
+		- shorter range 
+		- demanding infrastructure
+		- extremely fast speeds
+	- low and md bands (<6GHz)
 
-### benefit of 5G
+- 20Gbps is theoretical max speed of 5G
+	- 20x faster than 1Gbps of 4G
+	- allow for fast downloads, smooth streaming, UHD video
+
+- 5G promises low latency
+	- minimizing time between data input and arrival
+	- good for real time gaming, healthcare and self-driving vehicles
+
+- 5G provides 1000 times higher mobile data traffic per area compared to 4G
+
+- 5G enables Edge computing and Network slicing
+
+
+### Benefits of 5G
 - speed
 	- 100 times faster than standard 4G
 	- 30 times faster than advanced 4G like LTE-A
@@ -56,6 +118,14 @@
 
 - low latency
 - 50 times faster than standard 4G and 5 times faster than 4G standards like LTE-Adv, LTE-Adv-Pro
+![[Pasted image 20250531103819.png]]
+
+| Network Type | Latency |Distance travelled even after breaks turn on|
+|---|---|---|
+|4G|50ms|1.6m|
+|4G+|5 - 10 ms|16 cm|
+|5G|1ms|3.3cm|
+
 
 ### Edge Computing
 - "Edge" refers to the  part of infrastructure that is near to the sources of data
@@ -73,6 +143,8 @@
 ![[Pasted image 20250430102339.png]]
 
 - 5G network slicing is the use of network virtualisation to divide single network connections into multiple distinct virtual connections that provide different amounts of resources to different types of traffic
+- Using Software-defined networking (SDN) and network functions virtualisation (NFV) network slicing enable operators to divide/partition a single physical network infrastructure into several virtual networks each with distinct features and performance requirements
+- it makes it easier to allocate resources effectively, guaranteeing best possible support for all applications such as mMTC, eMBB, URLLC
 - Providers have to move into a system that's more flexible and adaptable -- make the network more software centric
 - to create a single highly flexible, virtualized, software-defined network instead of building multi purpose-built networks
 
@@ -82,7 +154,7 @@
 	- slower data rates experiences when many users present
 - Limited Connection density
 	- total number of devices fulfilling specific quantity of service per unit area is limited
-	- connection to a network can be lost or verry slow in crowded areas
+	- connection to a network can be lost or very slow in crowded areas
 - Latency
 	- not reliable when rapid responses are needed
 
@@ -111,6 +183,8 @@ System:
 ### What is IoT
 - network of physical devices, vehicles, buildings and other items - embedded with electronics, software, sensors, actuators, and network connectivity that allow these objects to collect and exchange data
 
+![[Pasted image 20250531112343.png]]
+
 6C's
 - Collect - collection of data through sensors
 - Communicate - wired or wireless communication technologies 
@@ -118,6 +192,7 @@ System:
 - Cloud - computing resources
 - Comprehend - data analytics to make sense of the data
 - Create - value creation through mobile apps
+
 
 ### Enabling Massive IoT
 - cellular standards like 5G provide a network backbone for IoT services, supporting both high data rates and long-range communications
@@ -130,6 +205,7 @@ System:
 	- Mesh protocol
 	- WiFi/ WiFi HaLow
 	- RFID
+
 
 ### What are AI and Machine Learning
 - AI
@@ -147,16 +223,16 @@ System:
 - eg, self driving cars and AI will help to augment our transportation
 - 
 
-## Fundamentals of 5G
+# Fundamentals of 5G
 
-### 5G Network Architecture and its components
+## 5G Network Architecture and its components
 ![[Pasted image 20250430122629.png]]
 
 
 ![[Pasted image 20250430122643.png]]
 
 
-#### gNodeB (gNB)
+### gNodeB (gNB)
 - biggest change in 5G Radio Access Network (RAN), aka Next Generation RAN or NG-RAN, architecture is the distributed concept
 - gNodeB (5G base station) is split into gNodeB- Central Unit (CU) and gNodeB-Distributed Unit(DU)
 - CU can be placed in cloud infrastructure
@@ -167,7 +243,7 @@ System:
 - gNodeB communicate with each other to improve network performance through coordination and optimisation
 
 
-#### Access and Mobility Management Function (AMF)
+### Access and Mobility Management Function (AMF)
 - responsible for managing access and mobility aspects of UE 
 - terminates control plane interface from gNB 
 - manages reachability, registration, and connection signalling
@@ -175,7 +251,7 @@ System:
 - AMF communicates with PCF to impose policy decisions and work with SMF to establish and manage sessions
 
 
-#### User Plane Function (UPF)
+### User Plane Function (UPF)
 - User Plane Function supports features and capabilities to facilitate user plane operations
 - examples:
 	- packet forwarding and routing
@@ -189,7 +265,7 @@ System:
 - UPF is a cornerstone of 5G architecture, guaranteeing improved connectivity and service delivery while permitting reliable and effective data transmission
 
 
-#### Session Management Function (SMF)
+### Session Management Function (SMF)
 - user session management (establishment, modification, and release of sessions) and IP address allocation (for IP PDU sessions) are centrally orchestrated by SMF of 5G core network
 - works in tandem with Access and Mobility Management Function (AMF) to create and preserve user equipment's network connectivity
 - SMF collaborates with unified Data Management (UDM) to handle authentication and subscription data
@@ -197,7 +273,7 @@ System:
 - SMF interfaces with UPF to control packet forwarding and routing, ensuring efficient data flow through the network
 
 
-#### Authentication Server Function (AUSF)
+### Authentication Server Function (AUSF)
 - user security and authentication are handled by Authentication Server Function (AUSF)
 - it interfaces with AMF to provide secure communication between the user and network
 - it  interfaces with Unified Data Management (UDM) to validate and store user credentials
@@ -207,7 +283,7 @@ System:
 - user can access it and that their data is safe while they are using the network
 
 
-#### User Data Management (UDM)
+### Unified Data Management (UDM)
 - provide critical information (data for access authorization, user registration, and data network profiles)
 - carries out vital tasks such as managing data network profiles, registering users, granting access
 - to ensure secure access and authenticate users, UDM communicates with AUSF 
@@ -216,7 +292,7 @@ System:
 - operation and delivery of services in 5G network depend on coordinated interaction between UDM, AUSF, AMF, and SMF
 
 
-#### Policy Control Function (PCF)
+### Policy Control Function (PCF)
 - governs network behaviour
 - enables smooth mobility management and guarantee effective handover procedures
 - communicates with AMF to provide dynamic session management based on real-time policy rules
@@ -226,7 +302,7 @@ System:
 
 
 
-#### Application Function (AF)
+### Application Function (AF)
 - AF interfaces with PCF 
 - in charge of tasks like contacting PCF for policy control and gaining access to Network Exposure Function for resource retrieval
 - serves as effective gateway between application layer and 5G network resources by facilitating routing of application traffic and exposing services to end users
@@ -235,8 +311,8 @@ System:
 
 
 
-### 5G Spectrum and its Frequency Bands
-#### What is 5G New Radio (NR)
+## 5G Spectrum and its Frequency Bands
+### What is 5G New Radio (NR)
 ![[Pasted image 20250510202346.png]]
 - phones use RF waves to facilitate communications
 - 5G NR stand for 5th Generation New Radio interface
@@ -245,12 +321,12 @@ System:
 	- FR2 : mmWave - 20 to 60 GHz
 
 
-### 5G Spectrum and its energy bands
+## 5G Spectrum and its energy bands
 ![[Pasted image 20250510202604.png]]
 - Singapore use n78 : 3.3 - 3.8 GHz and n257 26.5 - 29.5 GHz
 
 
-### 5G Radio Access Technology (RAT) and its Evolution
+## 5G Radio Access Technology (RAT) and its Evolution
 ![[Pasted image 20250507124751.png]]
 1. **Orthogonal Frequency Division Multiplexing (OFDM)**
 	- Encoding more digital data onto multiple carrier frequencies
@@ -286,7 +362,7 @@ System:
 	- allow for multi-gigabit data rates and supports new application like fast wireless broadband and fixed wireless access
 
 
-### 5G Core Network and its Services
+## 5G Core Network and its Services
 ![[Pasted image 20250507130706.png]]
 
 - brain and heart of 5G mobile network is called 5g Core (5GC)
@@ -303,48 +379,139 @@ System:
 - to move everything into a all-cloud architecture the following are needed
 
 
-#### Software-Defined Networking (SDN)
+### Software-Defined Networking (SDN)
 - increases programmability
 - automation
 - agility in network administration
 - by enabling operators to optimise and dynamically allocate resources in response to real-time demand, SDN enhances responsiveness and efficiency
 
+### Network Functions Virtualization (NFV)
+- NFV complements SDN
+- minimizes hardware dependency
+- enhance resource utilisation
+- speeds up service deployment by executing network functions as software instances on commodity hardware
+- with NFV operators can lower operating costs, scale resources effectively and launch new services swiftly
 
-## Fundamentals of AIoT
+### Operations and Maintenance (O&M) Efficiency
+- All-cloud network architectures centralise admin/ management and automate functions
+- streamlining operations and maintenance tasks
+- operators can streamline operations of network provisioning, config, monitoring and troubleshooting by utilising cloud-based orchestration and management platforms
+- P&M automation increases network resilience and reliability while decreasing manual intervention and increase efficiency
 
-### basics of AI and ML
+### Edge Cloud
+- integration of cloud capabilities at the network edge 
+- necessary due to spread of edge computing
+- by deploying computing, storage, and networking resources close to end users
+- edge cloud systems lower latency and boost application performance
+- by offloading processing tasks and enabling new low-latency services/application and use cases like IoT, AR, and autonomous vehicles
+- edge cloud architecture complements core cloud infrastructure
+
+### Regional Cloud and Core Cloud
+- common hierarchical cloud deployment approaches used by all-cloud network architectures
+- regional cloud data centers aggregate traffic from edge sites and serve particular geographical regions
+- centralised control and management are provided by core cloud data centers which host critical network functions and services
+- resource allocation is optimised, latency is reduced, and service availability and reliability are improved by this hierarchical architecture
+
+- transition from core network architectures of earlier generations to all-cloud network architecture signifies major change towards increased efficiency, scalability, agility, and support for cutting-edge services and applications
+- SDN, NFV, and cloud computing are examples of technologies that operators can embrace to create more robust, dynamic and responsive networks that adapt to changing needs of the digital age
+
+
+## Service-Oriented Core (SOC) network architecture
+![[Pasted image 20250531123831.png]]
+- major change in architecture, deployment, management of network services may be seen in transition from all-cloud to service-oriented core network architecture
+- Scalability and flexibility are achieved through virtualisation and internet-based delivery of resources as services in all-cloud network architecture
+- foundation for service-oriented core network architecture was established by this method
+- 3GPP defined 5G core network as cloud-aligned, service-based architecture tat encompasses all functions and interactions including Session management, authentication, security, and traffic aggregation from end devices
+
+- 5G Service-Oriented Core (SOC) network architecture offers veratile programmable and efficient system that support a variety of services and access modes
+- it marks a revolutionary leap in development of telecommunications
+
+### Characteristics of SOC:
+####  Flexible Architecture
+- due to high degree of adaptability, SOC enables dynamic allocation of network resources in response to demand
+- the network is also guaranteed to be able to effectively manage changing traffic patterns and service requirements
+
+#### Programmability
+- SOC primary function is its capacity to program network behavior
+- separation of control plane from data plane made possible by SDN concepts allow more precise network management and orchestration
+
+#### Smart Pipes
+- smart pipes in SOC have built in capabilities for security, quality of service management, deep-packet inspection 
+- data transmission across network can be optimised and secured using smart pipes
+
+
+### Features that provide the traits of SOC
+#### Control and User Plane Separation (CUPS)
+- CUPS enables separation of user plane (handle data transfer) and control plane (handle network control and signalling)
+- separation improves flexibility, scalability of network allowing independent scalability and evolution of both planes
+
+#### Service-Based Architecture (SBA)
+- network functions can be modularised and exposed as services according to SBA design principle
+- Reusability and agility in deployment and management of network functions are made possible by the fact that the services can be used by other applications or network functions
+
+#### Network Slicing
+- allows for several virtual networks to be created on 1 physical infrastructure
+- slices can be customized to fulfil need of various services
+	- such as URLLC
+	- mMTC
+	- eMBB
+- ensuring optimal results in resource utilisation and performance
+
+#### Native Cloud
+- as SOC is cloud native, it can operate in virtualized environments and use cloud computing concepts like microservices and containerisation
+- network is ensured to be robust, scalable, and quickly updated or expanded
+
+
+- SOC is capable of supporting legacy technology such as LTE, Wi-Fi in addition to 5G NR
+- it is access-agonistic
+- seamless service experience across various access technologies is ensured by universal support
+- SOC can accommodate all services and access modes
+
+- 5G SOC is fundamental component of modern telecommunications
+- supporting diverse range of services with different needs
+- its design principles ensure that it can adapt to new requirements and technological advancements
+- reaffirming its function as foundation of a global network
+
+
+
+
+# Fundamentals of AIoT
+
+## basics of AI and ML
 - AI gained widespread attention in 1997 when IBM Deep Blue defeated world best chess play Garry Kasparov
 - 2011, chatbot tricked people into thinking its real person, and also completed the Turing Test
 - Weak AI aka Narrow AI carry out single task for what its created for
 - Strong AI can think learn and adapt like people
 
+![[Pasted image 20250531125423.png]]
 
-#### Reactive Machines AI
+### Reactive Machines AI
 - earliest kind of AI
 - incapable of learning or having grasp of past experiences
 - limited to the core activities which it was designed for
 - cannot grow
 
-#### Limited Memory AI
+### Limited Memory AI
 - can learn from past data
 - brief window of time they can look back on past and draw lessons from it
 - large amounts of relevant training data are used to train
 - data from memory is utilized to build a reference model that is used to solve issues in the future
 - drives contemporary AI applications
 
-#### Theory of Mind AI
+### Theory of Mind AI
 - sophisticated system that can comprehend the entities it interacts with more fully
 - recognise the entities needs, emotions, beliefs, and thought process
 - development is currently ongoing
 - able to quickly identify facial and eye movements and adjust actions to suit the situation
 
-#### Self-aware AI
+
+### Self-aware AI
 - theoretical system that is the most sophisticated AI 
 - when it is self-aware, robots or machines understands their own intrinsic characteristics and are completely aware of who they are
 - capable of perceiving human emotions and comprehending a variety of situations and state
 
 
-### Types of AI and relation between AI, ML, DL
+## Types of AI and relation between AI, ML, DL
 
 ![[Pasted image 20250517010932.png]]
 
@@ -363,7 +530,7 @@ System:
 - Massive amounts of data are usually ingested by DL algorithms which then use supervised or unsupervised learning to generalize the characteristics/ features and categories associated with that data
 - neural networks are foundation of deep learning systems
 
-###  Key AI Terms and Definitions
+##  Key AI Terms and Definitions
 
 ![[Pasted image 20250517104951.png]]
 
@@ -401,7 +568,7 @@ System:
 - Unsupervised looks for patterns and structures in data automatically
 - Reinforcement combines rewards or penalties with trail-and-error method
 
-### Supervised Learning
+## Supervised Learning
 ![[Pasted image 20250517110719.png]]
 
 - A data set with certain observations and labels of them is needed for supervised learning
@@ -419,7 +586,7 @@ System:
 	- Support vector machines - mainly for classification problems
 
 
-### Unsupervised Learning
+## Unsupervised Learning
 ![[Pasted image 20250517111841.png]]
 
 - learns patterns from unlabeled data
@@ -431,7 +598,7 @@ System:
 	- Association mining : used to identify sets of items that frequently occur together
 	- Latent variable model: used for data pre-processing (reducing no. features in data set - dimensionality reduction)
 
-### Reinforcement Learning
+## Reinforcement Learning
 ![[Pasted image 20250517114236.png]]
 
 - Reinforcement Learning (RL) 3 common technique
@@ -444,11 +611,11 @@ System:
 - advantage is that training model in simulated environment is typically less expensive than utilising immature models
 
 
-### Machine Learning Cycle
+## Machine Learning Cycle
 ![[Pasted image 20250517114545.png]]
 
 
-### Artificial Neural Networks and Deep Learning
+## Artificial Neural Networks and Deep Learning
 ![[Pasted image 20250517114623.png]]
 
 - ANN are specialised field within ML
@@ -476,13 +643,17 @@ System:
 - in convolutional layer, input operation is applied before passing to next layer
 - convolutional procedure allows network to use less parameters but still be substantially deeper
 - CNN perform incredibly well in systems for natural language processing and image and video recognition because of this ability
+
 - **Convolution** : Extracting features from input image, preserving spatial relationship between pixel by using small squares of input data (linear operation : performs well elementwise in matrix multiplication and addition)
+
 - **Non Linearity** : ReLU (Rectified Linear Unit) is an operation applied after convolution operations. ReLU introduces Non-linearity in the CNN which is important as most real-world data is non-linear
+
 - **Spatial Pooling/ down-sampling** : reduces dimensionality of each feature map, while retaining most important info
+
 - **Classification (Fully Connected Layer)** : outputs from first 3 layers are high-level features of input image. fully connected layers uses the features to classify the input image into various classes based on training dataset
 
 
-### Generative AI
+## Generative AI
 - subset of DL 
 - type of AI that creates new content based on what it has learned from existing content
 - learning process is abstracting data probability distribution by training large-scale datasets and producing a statistical model
@@ -536,7 +707,7 @@ System:
 - Gen AI uses algorithms and ML approaches to drive innovation, efficiency, and agility
 
 
-### AIoT Architectures and Integration of AI and IoT
+## AIoT Architectures and Integration of AI and IoT
 ![[Pasted image 20250517142613.png]]
 - advanced framework that combines AI and IoT is knowns as AIoT architecture
 - produces potent ecosystem which gadgets are intelligent, able to make decisions and learn from their experiences in addition to being connected
@@ -583,7 +754,7 @@ System:
 - AIoT aims to create systems that capable of thought, learning adaptation by integrating intelligence into the very fabric of these connections, rather than merely linking objects
 
 
-#### Cloud Based implementation of AIoT Architecture
+### Cloud Based implementation of AIoT Architecture
 ![[Pasted image 20250517152419.png]]
 
 - Cloud based IoT, aka IoT cloud, is the use of cloud computing platforms to manage and process data from IoT devices
@@ -595,7 +766,7 @@ System:
 	4. **User Communication Layer** : mobile applications and web portals make up this layer
 
 
-#### Edge-based implementation of AIoT architecture
+### Edge-based implementation of AIoT architecture
 - Edge-based AIoT  refers to processing IoT device data near the devices as feasible to reduce bandwidth requirements and prevent potential delays in data analysis
 
 - consists of 3 layers:
@@ -607,7 +778,7 @@ System:
 
 - near future will see a lot of AI applications on end devices
 
-### Real world examples of AIoT Applications
+## Real world examples of AIoT Applications
 1. Sports Performance monitoring
 - optimise training regiments and track players' performance
 - biometric data can be collected using wearable sensors
@@ -636,7 +807,7 @@ System:
 - with assistances of AI algorithms, data is analysed to create customised meal plans, recommend dietary changes, and monitor users' progress towards health goals
 
 
-### (Edge Device) Example of AIoT Applications
+## (Edge Device) Example of AIoT Applications
 1. Surveillance and Monitoring
 - to monitor the environment in real time
 - edge processing-capable camera can examine video streams locally to find abnormalities like unauthorised intrusions, suspicious behaviour or object recognition
