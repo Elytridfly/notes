@@ -1160,4 +1160,182 @@ Primary Goals in design of UML:
 
 <br/>
 - Interaction Diagram consist of:
-	- Sequence Diagram : display time sequence of objects participating in the interaction, consisting of verticle dimension (time) and hori
+	- Sequence Diagram : display time sequence of objects participating in the interaction, consisting of vertical dimension (time) and horizontal dimension (different objects)
+	- Collaboration Diagram : display interaction organized around objects and their links to each other
+
+#### Hardware Testing
+- tested on a sub-system basis using simple programs designed to fully test out hardware
+- test programs should be kept as simple as possible to eliminate possibility of software errors
+- this assumes basic hardware is working correctly
+ <br/>
+ - Modern instruments have  been devised to cope with short-comings of simple test techniques
+ - such as Logic Analyzers and In-Circuit emulators
+
+
+#### Software Testing
+- after all code has been written and converted into machine code, it must be tested to verify all functions correctly
+- this requires a "protected" environment to test the software
+- this allows us to control and monitor inputs and outputs of overall system precisely
+<br/>
+- eg, environment provided by monitor or debugger utility program in microprocessor development system where performance of system being tested can be examined in isolation
+<br/>
+- All possible conditions going thru the control surface is tested
+- eg, "IF" type instructions should be tested for both condition 
+- this is so that all instructions will be checked and do not cause errors later in the project
+- the aim is to minimize number of untested software codes which have to be checked during system integration
+- software that depends heavily on special features provided by actual hardware should be tested right away from the start
+
+## System Integration
+- process of bringing together individually designed and tested subsystems to form the full system
+	- Normally begins by building whole system from the bottom upwards and implementing tasks as illustrated in the interaction diagrams
+	- Extensively tested the tasks that needs to be performed by the system to verify that no problems have been introduced when linking subsystems together
+- Ideally, top-down design has been rigorously applied then system integration should be straight forward
+- however, despite being careful, there may still be inconsistencies that will appear only when integrating
+- often caused by focusing only on one aspect of the design and neglecting interfacing issues
+- if integration is done properly, complete system can be simply implemented as 1 series of subroutine calls within main loop
+
+### Problem Resolution
+- when testing the system, we need to check if system carries out every task as needed to find inconsistencies
+- these bugs must be resolved if the system is going to work
+- its essential to have access to the initial documentation and update it with list of bugs found
+- if we patch bugs with an ad hoc method, we are likely to get more and more trouble especially if undocumented
+- although its slower, its more cost effective in the long run to go back to a task to find out what and where went wrong and then make modifications which are consistent throughout the system
+- when the list is more or less resolved, we have created a prototype of the needed system
+
+**Prototype**
+Initial version of the system
+2 types:
+	- Demonstrate validity of the system design
+	- Show what the system will ultimately look like
+		- should be very careful about satisfying other needs such as outward appearance or physical construction. these should only be done if it helps to confirm the original design concept works
+
+<br/>
+**System Prototype withou Hardware**
+- The development system used as hardware, where input is a keyboard and output on a display
+- when design has been proved, hardware can then be bought or constructed to make  2 with different goals
+<br/>
+
+**Hardware Prototype**
+- Prototype system is separated from development system
+- Software is transferred to prototype hardware by:
+	- EPROM
+	- In-Circuit Emulator (ICE)
+- this marks transition from prototype to manufactured product
+- it may involve changes in original design for the following reasons:
+	- when product manufacture in quantity, assembly cost becomes a major factor in price
+	- Need to ensure system can be assembled and tested by relatively unskilled staff
+	- require documentation such as test specification, service manuals, and user's manual
+
+### Testing of Products
+- different from testing during development stage
+	- need to perform fault-finding relatively quickly by use of special test jigs and/or sophisticated test instruments
+	- Test procedures must be devised
+
+<br/>
+
+## SAMPLE DESIGN
+<br/>
+You are required to design a microprocessor based egg timer.
+This device will show the egg type and boil it for a specified period of time depending on the egg type.
+It will sound an alarm to signal when it finishes and show a message as well. 
+It must be waterproof.
+
+Perform System Analysis and System Design using UML. 
+Draw a case and interaction diagram of the proposed system. 
+Develop two of the sequential diagrams that you will use
+
+<br/>
+Firstly identify subsystems in proposed system
+Note that we do not need a temperature sensor as boiling temperature of water is constant
+breakdown of system into subsystems :
+- Microprocessor
+- Alarm
+- Timer
+- LCD
+- Heating Coil
+- Keypad
+
+Draw UML use case diagram to express user requirements
+diagram helps uncover user requirement that may not be stated earlier on
+
+### Use Case Diagram
+- Looking at example from user's perspective
+- user uses egg timer for cooking egg
+- so it should look like this:
+![[Pasted image 20250601145614.png]]
+
+- action marked "cook egg" is a function offered by the system
+- the process of drawing such a simple diagram will help the designer identify functions that the system must purpose
+
+<br/>
+
+- Case diagrams are helpful in revealing requirements and planning the project
+- in the beginning, most use cases should be defined but as the project continues, more functions might become visible as you explore how the system interacts with the user
+- you might be able to uncover functions that the system should have but not explicitly written
+- to cook an egg should have steps to "choose egg type" before we start to "cook egg"
+
+
+![[Pasted image 20250601145914.png]]
+
+- from this simple diagram, requirements  of egg cooker system can be easily derived
+- the system will need to perform actions for all the use cases listed
+- as project progresses, other use cases might appear and diagram can be easily expanded until a complete description of egg cooking system is derived, capturing all requirements that the system will need to perform
+
+<br/>
+
+### Interaction Diagram
+- model the behavior of use cases by describing the way groups of objects interact to complete the task
+- 2 kinds are sequence and collaboration diagrams
+
+<br/>
+
+- Interaction diagrams are used when you want to model behavior of several sub-systems in a use case
+- they demonstrate how sub-systems collaborate with others
+- hoever, interaction diagrams do not give an indepth representation of the behavior
+- if you want to see specific object is doing for several use cases, we should use a state diagram - another component of UML
+- to see particular behavior over many use cases or threads, use activity diagram - another component of UML
+
+- To start drawing interaction diagram, first imagine how you would interact with the system
+- the user, would select the egg type using key type and you would represent the interaction as in the left figure and note how the subsystem keypad is represented as:
+
+![[Pasted image 20250601150444.png]]
+
+<br/>
+
+- In like fashion, other sub-systems will have similar diagrams
+- the diagram shown below is often used to represent first interaction with the system in question
+- in this case, first contact between system and you is the user selection of egg type for cooking either C(chicken) or D (Duck)
+- ![[Pasted image 20250601150904.png]]
+
+<br/>
+
+- Develop interaction diagram further, after keypad is contacted, microprocessor would read key entered and display egg type selected
+ ![[Pasted image 20250601151012.png]]
+ 
+<br/>
+
+**<u/>Developing User Case - "Cook Egg"**
+- once microprocessor reads key entered and process it, it activates LCD display to show egg selected
+- timer will start running for certain period of time depending on egg type selected and activate the heater coil
+
+<br/>
+
+- After time is reached, timer will then send a signal to microprocessor telling it time is up
+- microprocessor will then send a signal to deactivate heater coil and update LCD display
+
+![[Pasted image 20250601151504.png]]
+
+- After egg is considered cooked, we need to activate the alarm 
+- microprocessor will then reactivate timer for a shorter period of time
+- then activates the alarm
+- when timer runs out, microprocessor will deactivate the alarm
+- finally microprocessor  would activate LCD to redisplay initial menu
+![[Pasted image 20250601151711.png]]
+complete interaction diagram :
+![[Pasted image 20250601151731.png]]
+
+- such a diagram would have helped implementation and would prove very useful in explaining implementation of your system to clients
+- Should there be another way in which the user can interact with the system, you would need to repeat the method and produce a similar diagram depicting how the system would carry out the task
+
+
+
