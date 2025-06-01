@@ -943,3 +943,140 @@ for (i = 0 ; i <= 12; i++)
 - worst thing is to forget required features and by the time its noticed, its too late
 
 ### Goals and Constraints
+
+**Goals**
+- aspects of customer requirements which guide the system designer where freedom of choice exists
+- eg, hardware cost of motor interface be minimized
+
+**Constraints**
+- aspects of customer requirements which limit the freedom of choice of system designer
+- eg, should include particular type of component
+
+- Constraints narrow the scope of the project
+- Goals are customer preferences to be considered
+- Goals and Constraints may affect the same design feature
+- should not be any constraints that restrict freedom of designer unnecessarily
+- avoid contradictions in list of goals
+
+Types of Constraints:
+<br/>
+
+| Area of Constraints | Examples |
+|---|---|
+|Microprocessor |Particular type specified by customer|
+|Other Hardware |Some or all of additional hardware specified|
+|Field repairability |PCBs must be plug-in|
+|Power Supply |Must run on batteries|
+|Environment |Must be insensitive to radio interference|
+|Size | Must fit within particular dimensions|
+|Unit Component Cost | microprocessor and interfaces <br/> must cost less than particular limit|
+|Development Cost |Amount of available for supporting<br/> equipment, consultation, etc|
+|Development Time | Prototype available for demo at an exhibition|
+
+
+## System Analysis
+- consists of activities that include examination by system designer of initial customer requirements
+- some considerations are:
+<br/>
+**Sub-system Identification**
+- identify hardware components or sub-systems in the product
+<br/>
+**Dynamic Modeling**
+- capture how the parts of the system behave and how they interact with each other
+<br/>
+**Feasibility Studies and/or simulation**
+- if designer does not know whether the product can be designed to specs
+- they can perform feasibility studies and/or simulation to remove uncertainty without expense of designing to prototype stage
+<br/>
+
+### Sub-system Identification
+- identify componenets that would make up whole system
+- components that perform a function and does not have to be extensively programmed by the designer
+- advantage of subsystems are that they are complete products whose behavior and cost are known
+- examples such as microcontroller, keypad, stepper motor
+
+### Dynamic Modeling
+- similar to a form of story telling
+- a task is part of overall product function which is to be provided by suitably programmed microprocessor system
+- obtained from customer requirement a statement of what the system needs to do
+- use dynamic models to analyse the behavior of the system
+- look at functions of  the system we are analyzing, thinking through them in terms of scenarios and see how each scenario affect each individual sub system
+- output of this phase is the production of interaction and use case diagrams
+
+### Feasibility Studies/Simulation
+- important to have an idea whether particular algorithm has chance of working
+- done without too much expense or hardware construction
+
+#### Feasibility Studies
+- special purpose activities aimed to answer a particular question or group of questions about an aspect of the customer requirement
+<br/>
+- some questions to ask are:
+	- can it meet project constraints
+	- is the performance of hardware systems sufficient
+	- does algorithm work correctly
+
+<br/>
+- there may be abit of hard or software design but should be easily done
+- compared to building a full prototype 
+- prototype is designed to answer most of remaining questions about the product
+<br/>
+#### Simulation
+- means of rapidly and easily exploring various alternative answers to more general questioons
+- usually done in software
+
+<br/>
+- Simulation is used to build systems which in some ways behaves like actual product
+- Various versions of proposed system can be tried without extensive redisgn
+- Principal us of simulation in microprocessor-based product development is for evaluating competing algorithms
+- if they are complex, we may not be able to evaluate them based on logic or manual calculations
+
+## System Specifications
+- produced  as a result of system analysis
+- overall controlling document in a project
+- UML diagrams that are produced will form part of this documentation
+- find the following:
+	- Specs of product function
+	- Complete description of what the system should do
+	- performance requirements it must meet
+	- specific details of operator/system interaction
+	- specs of system's interface with external environment
+	- procedures for error handling and diagnostics
+	- constraints on design and on development of project
+	- Goals to aim for in design
+- Specs of required behavior should include:
+	- Identification of microprocessor tasks
+	- description of how product as a whole is to interact with its environment
+	- particularly for products with substantial human interaction
+- useful way of providing specs is to product a USER'S MANUAL
+- start of system design phase of a project marks an important transition for design engineers as they must make decisions without outside help
+
+### Decision making in system design
+- involves making important decisions on:
+	- Build or buy parts
+	- Choice of microprocessor
+	- Hardware or Software
+
+### Build or Buy
+- Building from scratch may:
+	- not work first try
+	- need modification
+- Commercially available parts will not suffer from problem above
+- another advantage is cost and performance is known with a high degree of confidence at start of project
+- compared to overestimating own abilities to design and build part
+- good practice for beginner to use commercially available parts as must as possible in early design
+
+### Choice of Microprocessor
+- getting right processor can give strong market advantage
+- but using wrong chip can weaken an architecture
+- prolong design cycle or cripple a product
+- Cost is the overriding factor
+- Other factors to consider:
+	- Software Availability - code used for the product
+		- is there large source for code or old code to be reused?
+		- software comprises 70% of one time engineering costs
+	- Readily available in quantity  - reliable second sources
+		- important for long term production
+	- Experience of other 
+		- training for new processor is long and costly
+
+#### Development Tools
