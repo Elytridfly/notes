@@ -1080,3 +1080,84 @@ Types of Constraints:
 		- training for new processor is long and costly
 
 #### Development Tools
+- developing/ programming is expensive 
+- reduce time, microprocessor vendors provided info very quickly
+	- such as data sheets and programmer's guide
+
+- we also need to ask the following:
+	- Does it have the features to do the task needed?
+	- do we have adequate development time to overcome the deficiencies in that part?
+
+<br/>
+- Sometimes vendors also provide development support in terms of ready-made boards ( they include processor, memory and IO ports)
+- similar, evaluation kits which have more hardware and facilities for software development may include monitor program to download and execute user programs through a serial port and even modify portions of memory
+- these kits allow additional hardware to be added easily by providing additional connectors and sometimes a prototyping area
+
+<br/>
+- Software development tools should also be adequate
+- assemblers, compilers with simulators and other debugging tools should make programming easier
+- especially important if microprocessor architecture is inadequate in many areas
+
+- Emulator support is of highest priority
+- emulator makes hardware debugging more like software debugging
+<br/>
+#### Processor Capability
+- processor should be fast enough to support application at hand
+- especially for real time applications
+- addressing space should be enough for program and data
+
+### Software vs Hardware
+- Processors can be programmed to perform many different tasks
+- Engineer's tasks is to utilize available processor hardware by writing necessary software
+- however there is still a need for some electronic hardware design in the interface
+
+#### Software/ Hardware Trade-Off
+- There are a number of task which can be achieve by both means
+- especially those that interact with external environment and devices
+- eg, serial port may be written by manipulating port pins or it may be purchased as a hardware component
+- some deciding factors:
+	- ``` Unit Cost  =  Component Cost + Production Cost + Development Cost / Total No. Units```
+	- **Hardware Implementation**
+		- has higher associated cost but has
+			- less development effort
+			- higher processing speed as processor does not have to work on this
+	- **Software Implementation**
+		- No component cost
+			- but may involve large amount of development effort
+			- in most cases, operation is much slower
+
+
+<br/>
+## System Design
+- UML is a modern technique of system design 
+- specified as documentation to be used for all systems proposed in project tenders submitted to British Government
+
+### Unified Modeling Language (UML)
+- language for specifying, visualizing, constructing, and documenting features of a system
+- UML represents collection of best engineering practices that proven good for modeling of large and complex systems
+- UML represents an important part of system development process
+- UML uses mostly graphical notations t express design of system projects
+- UML helps project teams communicate, explore potential designs, and validate architecture designs
+<br/>
+Primary Goals in design of UML:
+1. Provide users with ready-to-use expressive visual modeling language to develop and exchange meaningful models
+2. Provide extensibility and specialization mechanisms to extend core concepts
+3. Be independent of particular programming languages and development processes
+4. Provide formal basis for understanding the modeling language
+5. Support higher-level development concepts such as collaborations, frameworks, patterns and components
+6. Integrate best practices
+
+<br/>
+#### Types of UML Diagrams
+- UML diagrams are designed to let developers and customers view a system from a different perspective and in varying degrees of abstraction
+- altogether 6 diagrams to be drawn for UML conformant documentation
+- we only draw 2 interaction and use case diagram
+
+<br/>
+- UML use case diagrams display relationship between actors and use cases
+- similar to C switch case.
+- To draw, must first imagine you as a user and would then come up with ways offered to you by system to interact with it
+
+<br/>
+- Interaction Diagram consist of:
+	- Sequence Diagram : display time sequence of objects participating in the interaction, consisting of verticle dimension (time) and hori
