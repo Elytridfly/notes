@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ECS.md",
+                "file": "MLAI.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "ECS"
+              "title": "MLAI"
             }
           }
         ]
@@ -171,6 +171,10 @@
   },
   "active": "4b038e72807ff1e7",
   "lastOpenFiles": [
+    "Pasted image 20250630173728.png",
+    "Pasted image 20250630173654.png",
+    "Pasted image 20250630164455.png",
+    "ECS.md",
     "Pasted image 20250601151731.png",
     "Pasted image 20250601151711.png",
     "Pasted image 20250601151504.png",
@@ -179,11 +183,7 @@
     "Pasted image 20250601150904.png",
     "Pasted image 20250601150444.png",
     "Pasted image 20250601150039.png",
-    "Pasted image 20250601145914.png",
-    "Pasted image 20250601145705.png",
-    "Pasted image 20250601145614.png",
     "OOP.md",
-    "ECS.md",
     "ECS tutorials.md",
     "Untitled",
     "5G AIoT.md",
