@@ -681,8 +681,9 @@ void marinate();
 ```
 
 #### proper UML
+</br>
 ![[Pasted image 20250519110233.png]]
-
+</br>
 
 ### Abstract Class
 - similar to normal class but it contains at least 1 abstract method
@@ -735,4 +736,651 @@ public class currentAccount extends BankAccount {
 
 
 #### UML
+</br>
 ![[Pasted image 20250519110700.png]]
+</br>
+
+## Java Collections Framework
+- Supports 2 kinds of containers :
+	- Collection - stores elements
+	- Map - stores key-value pairs
+
+### Collection Interface
+- root interface in Java Collections Framework
+- not directly implemented by any classes
+- indirectly implemented via its sub-interfaces
+	- List - store an ordered collection of elements
+	- Queue - store elements in first-in-first-out manner
+	- Set - store group of non-duplicate elements
+
+### Simplified Collection Interface
+</br>
+![[Pasted image 20250702090016.png]]
+</br>
+### Concrete Classes in Collection
+following are concrete classes of data structures in Java and they are direct subclasses of some other intermedia abstract classes:
+- ArrayList, vector, LinkedList and Stack
+- ArrayQueue and PriorityQueue
+- HashSet, LinkedHashSet and TreeSet
+
+</br>
+![[Pasted image 20250702090214.png]]
+</br>
+![[Pasted image 20250702090223.png]]
+</br>
+![[Pasted image 20250702090320.png]]
+</br>
+
+### Classes implement List interface
+- ArrayList - dynamic array (non-synchronised)
+- Vector - legacy container, dynamic array (synchronised)
+- Stack (sub class of Vector) - supports pop/peek/push operations
+- LinkedList - dynamic and stores elements in non-consecutive manner in memory
+
+#### ArrayList - concept
+- resizable array
+- elements stored according to natural order (order which they are added)
+- elements stored in consecutive memory locations
+
+#### Linked List - concept
+- linked list has its elements spread out in memory in non-consecutive locations
+- with a head pointing to 1st node and 1st node point to 2nd node and so one
+- index is irrelevant
+
+#### Main differences from array
+![[Pasted image 20250702090818.png]]
+
+### Chain of Nodes
+- every node in a linked list contains:
+	- Data
+	- Reference to next node
+</br>
+![[Pasted image 20250702090904.png]]
+</br>
+
+- Last node in linked list contains
+	- next = null
+
+### Doubly Linked List - concept
+- Every node in doubly linked list contains:
+	- Data
+	- Reference to next node and previous node
+</br>
+![[Pasted image 20250702091051.png]]
+</br>
+
+- Last node contains:
+	- next = null
+- First node contains:
+	- previous = null
+
+### LinkedList class in Java
+- part of collection framework presents in java.util package
+- linear data structure
+- implemented using doubly linked list data structure
+- can contain same or different object types
+- efficient in removing/adding elements at both ends
+- not efficient in removing/adding elements in between due to tracing (point-chasing) overhead
+- does not need to move existing elements when removing/adding elements (advantage over ArrayList)
+- out performs ArrayList in general
+
+### Stack -concept
+- linear data structure used to store collection of objects in Last-In-First-Out (LIFO) manner
+- data can only be added/removed form the "top" of the stack
+</br>
+![[Pasted image 20250702091518.png]]
+</br>
+![[Pasted image 20250702091611.png]]
+</br>
+![[Pasted image 20250702091628.png]]
+</br>
+
+
+#### Stack from LinkedList
+- simple stack can be implemented using concept of linked list
+
+</br>
+![[Pasted image 20250702091716.png]]
+</br>
+
+
+### Stack class in Java
+- extends from Vector class
+- internally is implemented using dynamic array (in contiguous memory locations) and not linked list
+- many methods implemented in Java Stack class are very similar to that of ArrayList and LinkedList
+- in generally reason for stack is for FILO nature
+
+
+### Methods in List Classes
+</br>
+![[Pasted image 20250702091914.png]]
+</br>
+
+### Creating List Objects
+```
+ArrayList<Integer> a = new ArrayList<>();
+Vector<Double> b = new Vector<>();
+LinkedList<String> c = new LinkedList<>();
+Stack<Circle> d = new Stack<>();
+
+Collection<String> e = new ArrayList<>();
+Collection<Integer> f = new LinkedList<>();
+Collection<Member> g = new Vector<>()
+Collection<Circle> h = new Stack<>();
+
+List<String> i = new ArrayList<>();
+List<Integer> j = new LinkedList<>();
+List<Member> k = new Vector<>();
+List<Circle> m = new Stack<>();
+
+```
+
+### Iterable Interface
+- Collection is sub interface of iterable interface
+</br>
+![[Pasted image 20250702092402.png]]
+</br>
+
+### Iterator
+- classic design pattern for navigating through a data structure
+- useful methods: hasNext() and next()
+
+```
+ArrayList<String> a = new ArrayList<>();
+a.add("Ang Mo Kio");
+a.add("Dover");
+a.add("Changi");
+
+Iterator<String> it = a.iterator();
+while(it.hasNext()){
+	System.out.println(it.next().toUpperCase());
+}
+
+
+Output :
+ANG MO KIO
+DOVER
+CHANGI
+```
+
+
+### Iterator and ListIterator Interface
+- ListIterator extends from Iterator interface
+- allows bidirectional traversal of the list
+- List interface has methods that return Iterator and also ListIterator objects
+
+</br>
+![[Pasted image 20250702092730.png]]
+</br>
+
+### ListIterator
+- extends from Iterator
+- provides bidirectional traversal of list
+- useful methods : hasNext(), next(), hasPrevious(), previous()
+
+```
+ArrayList<String> a = new ArrayList<>();
+a.add("Ang Mo Kio");
+a.add("Dover");
+a.add("Changi");
+
+ListIterator<String> it = a.listIterator();
+
+while (it.hasNext()) {
+	System.out.println(it.next().toUpperCase());
+}
+
+System.out.println("--");
+
+while (it.hasPrevious()) {
+	System.out.println(it.previous().toLowerCase());
+}
+
+
+Output:
+ANG MO KIO
+DOVER
+CHANGI
+-----
+changi
+dover
+ang mo kio
+
+```
+
+
+
+### forEach
+- inherited from interface Iterable
+
+```
+ArrayList<String> a = new ArrayList<>();
+a.add("Ang Mo Kio");
+a.add("Dover");
+a.add("Changi");
+
+a.forEach(e->System.out.println(e.toUpperCase()));   -> lambda expression
+
+
+Output:
+ANG MO KIO
+DOVER
+CHANGI
+```
+
+### Using Stack Class
+- eg: create stack to store student objects from top
+- use push() or add()
+```
+import java.util.*;
+
+public static void main(String[] args){
+	Stack<Student> a = new Stack<Student>();
+	
+	a.push(new Student("KK"));
+	a.push(new Student("bobo"));
+	a.add(new Student("tutu"));
+	
+	System.out.println(a);
+}
+
+class Student{
+String name;
+Student (String s) { name = s; }
+@Override
+public String toString() {return (name); }
+}
+
+
+Output:
+[KK,bobo,tutu]
+```
+
+- Check top element (without removing)
+```
+public static void main(String[] args){
+	Stack<Student> a = new Stack<Student>();
+	
+	a.push(new Student("KK"));
+	a.push(new Student("bobo"));
+	a.add(0,new Student("tutu"));
+	
+	System.out.println(a);
+}
+
+Output:
+bobo
+```
+
+- Remove top element
+```
+public static void main(String[] args) {
+	Stack<Student> a = new Stack<Student>();
+	
+	a.push(new Student("KK"));
+	a.push(new Student("bobo"));
+	a.add(0,new Student("tutu"));
+	
+	System.out.println(a.pop());
+	System.out.println(a);
+}
+
+
+Output:
+bobo
+[tutu,kk]
+```
+
+- insert an item
+```
+public static void main(String[] args) {
+	Stack<Student> a = new Stack<Student>();
+	
+	a.push(new Student("KK"));
+	a.push(new Student("bobo"));
+	a.add(0,new Student("tutu"));
+	
+	System.out.println(a);
+}
+
+
+Output:
+[tutu,KK,bobo]
+```
+
+### Using ListIterator for Stack
+```
+public static void main(String[] args) {
+	Stack<Student> a = new Stack<Student>();
+	
+	a.push(new Student("KK"));
+	a.push(new Student("bobo"));
+	a.add(0,new Student("tutu"));
+	ListIterator it = a.listIterator();
+	
+	while(it.hasNext()){ System.out.println(it.next()); }
+}
+
+```
+
+### Queue - concept
+- First-In-First-Out Protocol
+- Elements are inserted at end of the queue
+- Elements are removed form front of queue
+</br>
+![[Pasted image 20250702094751.png]]
+</br>
+
+### DeQueue - "Double-ended" Queue
+- Data can be inserted and removed from either end
+
+</br>
+![[Pasted image 20250702094835.png]]
+</br>
+
+### Queue in Java
+- Queue in Java is an interface
+- deque is child interface of queue
+</br>
+![[Pasted image 20250702094915.png]]
+</br>
+
+### ArrayDeque class
+- implements Deque interface
+- resizable-array that allows elements to be added/removed from both ends
+- aka Array Deck
+- has iterator
+- no lListIterator
+- has supporting methods to be used as a stack
+- Methods:
+</br>
+![[Pasted image 20250702095045.png]]
+</br>
+
+### Using ArrayDeque Class
+- Create Deque and add an item, use iterator to retrieve item
+```
+public static void main(String[] args){
+	ArrayDeque<Student> a = new ArrayDeque<Student>();
+	
+	a.add(new Student("KK"));
+	a.addFirst(new Student("bobo"));
+	a.addLast(new Student("tutu"));
+	
+	System.out.println(a.size());
+	
+	Iterator<Student> it = a.iterator();
+	while (it.hasNext()){ System.out.println(it.next().name); }
+	
+}
+
+
+Output:
+3
+bobo
+KK
+tutu
+```
+
+### PriorityQueue Class
+- implements Queue interface
+- elements in priority queue are ordered according to natural ordering or by comparator provided at queue construction time
+- Object elements stored must be comparable
+- used when elements of queue are needed to be processed according to the priority
+- using iterator or forEach will retrieve elements will not guarantee correct order
+- use poll() instead to retrieve elements (will remove element)
+- make copy by addAll()
+
+### Using PriorityQueue Class
+- create and add an item
+- iterator and forEach will not guarantee correct order
+
+```
+public static void main(String[] args){
+	PriorityQueue a = new PriorityQueue();
+	
+	a.add(82);
+	a.add(11);
+	a.add(35);
+	
+	Iterator it = a.iterator();
+	while (it.hasNext()){ System.out.println(it.next()); }
+}
+
+
+Output:
+11
+82
+35
+
+
+
+public static void main(String[] args){
+	PriorityQueue a = new PriorityQueue();
+	
+	a.add(82);
+	a.add(11);
+	a.add(35);
+	
+	a.forEach(e -> System.out.println(e));
+}
+
+
+Output:
+11
+82
+35
+
+```
+- Use poll (read and remove) for correct order
+
+```
+public static void main(String[] args){
+	PriorityQueue a = new PriorityQueue();
+	
+	a.add(82);
+	a.add(11);
+	a.add(35);
+	
+	while(!a.isEmpty()){
+	System.out.println(a.poll())
+	}
+}
+
+
+Output:
+11
+35
+82
+
+
+```
+
+- Create PriorityQueue with comparator
+```
+public static void main(String[] args){
+	PriorityQueue<Student> a = new PriorityQueue<Student>(new SortByGPA());
+	
+	a.add(newStudent("KK",3.8));
+	a.add(newStudent("bobo",3.5));
+	a.add(newStudent("tutu",2.9));
+	
+	PriorityQueue<Student> b = new PriorityQueue<Student>(new SortByGPA());
+	b.addALL(a);
+	while(!b.isEmpty()){
+	System.out.println(a.poll().name)
+	}
+}
+
+class SortByGPA implements Comparator<Student> {
+	@Override
+	public int compare(Student s1, Student s2) {
+		return (Double.compare(s2.GPA, s1.GPA));
+	}
+}
+
+
+Output:
+KK
+bobo
+tutu
+```
+
+### Simplified - Set in Java
+</br>
+![[Pasted image 20250702101522.png]]
+</br>
+
+### HashSet in Java
+- most common use
+- implements set interface
+- underlying data structure is key-value hash table
+- does not allow duplicates
+- does not guarantee order of elements
+- (List always maintains the order)
+- meaningless to access/remove elements by index
+
+```
+Set<String> schools = new HashSet<String>();
+schools.add(“EEE”);
+schools.add(“MAE”);
+schools.add(“SMA”);
+schools.add(“CLS”);
+schools.add(“EEE”);
+
+System.out.println (schools.size());
+System.out.println (schools);
+System.out.println (schools.isEmpty());
+System.out.println (schools.contains(“MAD”));
+```
+#### HashSet - navigation methods
+```
+Set<String> schools = new HashSet<String>();
+schools.add(“EEE”);
+schools.add(“MAE”);
+schools.add(“SMA”);
+schools.add(“CLS”);
+
+// Using for-loop
+for (String school : schools) { System.out.println(school); }
+
+//Using iterator
+Iterator<String> schoolIterator = schools.iterator();
+while (schoolIterator.hasNext()) {
+	System.out.println(schoolIterator.next());
+} 
+
+```
+
+### LinkedHashSet in Java
+- maintains order in which elements are being added
+- uses hash table and doubly-linked list to store and maintain elements
+```
+LinkedHashSet<Integer> a = new LinkedHashSet<>();
+
+a.add(123);
+a.add(45);
+a.add(9);
+a.add(3210);
+a.add(9);
+Iterator it = a.iterator();
+
+while (it.hasNext()){
+	System.out.println(it.next());
+}
+```
+
+### TreeSet in Java
+- similar to HashSet class and LinkedHashSet except that it auto sorts the elements
+- implements self-balancing binary search tree
+- elements must implement the comparable interface in order to be sorted
+- to implement the itnerface, the object class must implement the compareTo() method, which returns 0, negative or positive integer values (for equal, smaller, greater than object)
+- wrapper class Integer, Double, Byte, Short, Long, Float, Character, and String class all implement the Comparable interface
+```
+TreeSet<Integer> a = new TreeSet<>();
+
+a.add(123);
+a.add(45);
+a.add(9);
+a.add(3210);
+a.add(9);
+
+TreeSet<Integer> b = new TreeSet<>(a);
+
+	b.forEach((x)->System.out.println(x));
+}
+
+
+Output:
+9
+45
+123
+3210
+
+```
+
+### Map Interface
+</br>
+![[Pasted image 20250702102554.png]]
+</br>
+
+### Concrete Classes in Map
+- Map is a container that stores collection of key-value pairs
+- similar to set, concrete classes of map are:
+	- HashMap
+		- store values by keys
+		- no duplicates
+		- allows 1 or more null
+		- does not keep order which values are added
+	- LinkedHashMap
+		- Linked list implementation of HashMap
+		- keeps order in which values are added
+	- TreeMap
+		- unique values
+		- sorted according to key (in which the class must implement comparable interface)
+- Unlike  Collection, the interfaces in Map Family do not provide iterator for traversal through the container
+
+### HashMap
+```
+HashMap<String,String> a = new HashMap<>();
+
+
+a.put("EEE","Electrical Electronics Engineering");
+a.put("DE", "Digital Electronics");
+a.put("new module", null);
+
+a.forEach((abbr,fullname)->System.out.println(abbr +"==>" +fullname));
+
+System.out.println(a.get("DE"));
+
+
+
+Output:
+DE==>Digital Electronics
+new module==>null
+EEE==>Electrical Electronics Engineering
+Digital Electronics
+
+
+```
+- forEach - default method inherited from map interface
+
+### TreeMap
+```
+TreeMap<Integer,String> a = new TreeMap<>();
+
+a.put(7,"Electrical Electronics Engineering");
+a.put(2, "Engineering Maths");
+a.put(1, "Sports for Life");
+a.put(1, "Engineering Maths");
+
+a.forEach((id,fullname)->System.out.println(id +"==>" +fullname));
+
+
+Output:
+1==>Engineering Maths
+2==>Engineering Math
+7==>Electrical Electronics Engineering
+
+
+```
