@@ -985,3 +985,11 @@ Summary of main elements and advantages of smart cities:
 - this improves network security and transparency by permanently preserving transactions and data on a distributed ledger
 
 - Overall picture shows ecosystem of smart cities where different infrastructure and devices utilise fast and secure 5G network, with blockchain serving as secure backbone for data exchange and transaction handling
+
+
+### Smart Nation Singapore
+![[Pasted image 20250703142036.png]]
+
+
+### Singapore 5G Innovation Plan
+pg12
