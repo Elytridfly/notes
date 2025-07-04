@@ -992,4 +992,192 @@ Summary of main elements and advantages of smart cities:
 
 
 ### Singapore 5G Innovation Plan
-pg12
+- 5G tech is widely hailed as next big thing in mobile and wireless comms
+- with potential to create new business models and sophisticated applications that will promote economic growth and innovation in the business sector
+- communities, businesses and industries are projected to gain from disruptive impact that 5G offers with rising pool of talent in SG
+
+- to aid in development of 5G and improvement of Singapore's 5G network infrastructure, IMDA has taken a multifaceted approach:
+
+#### Policy and Regulatory
+- through legislative framework and 5G spectrum allocation, IMDA is enabling the commercial network's implementation
+- a public consultation on 5G was initiated on 7 MAY 2019
+
+#### 5G Innovation Programme in SG
+- under 5G innovation programme, IMDA is concentrating efforts on advancing industry technical trials that will showcase the revolutionary effects of 5G for businesses and support the ecosystem of innovation and research surrounding 5G technologies and applications
+
+- initial effort to spur 5G development and uptake in SG, IMDA is investigating six strategic clusters to concentrate on areas where 5G has the greatest potential:
+	- Maritime Operations
+	- Urban Mobility
+	- Smart Estates
+	- Industry 4.0
+	- Consumer Applications
+	- Government Applications
+
+##### Maritime:
+- in order to identify issue statements and investigate the application of 5G in the maritime industry, IMDA teamed with sector leads from Maritime & Port Authority of SG (MPA) and Port of Singapore Authority (PSA)
+- this will assist use cases including use of drones, autonomous vessels. automated guided vehicles, communications, etc.
+- to explore potential of 5G to improve port operations, IMDA and PSA had jointly announced before a 5G Trial Technology Call for interested industry players to submit proposals to deploy 5G trials
+- goal of expanding the 5G ecosystem in Singapore, IMDA and MPA intended to carry on evaluating and validating the capabilities and performance of 5G technology in other areas of maritime live environment such as costal areas and Maritime Drone Estate (MDE)
+- In addition to deploying 5G trial network and offering 5G equipment and trial services, proposed Maritime 5G Trial also specified the trail location, provided the necessary support, and suggested one or more use cases that made use of 5G technology to address issues facing the transform the maritime business
+
+##### Industry 4.0
+- ASTAR, Singtel, and JTC will implement 5G as part of Industry 4.0
+- initiatives at ASTAR's Advanced Remanufacturing and Technology Centre (ARTC) in order to accelerate Singapore's Industry 4.0 transition
+
+- In close collaboration with industry leaders, telecommunication providers, and technology firms, IMDA will provide financial backing, trial licenses for 5G technology, and technical assistance to encourage the creation of cutting-edge 5G services and application in the aforementioned 6 clusters
+
+#### SG's 5G Talent Development
+- through Tech Skills Accelerator (TeSA) programme, IMDA will collaborate with industry to offer training in frontier 5G technology skills, including developing 5G talent in SG
+- Businesses may collaborate with IMDA on TeSA programmes like Company-Led Training (CLT) programme, which is structured development programme to help new and mid level professionals acquire technological skills and competencies for jobs in demand, if they intend to enhance the 5G and related skills of their workforce
+
+#### 5G Testbeds and R&D
+**5G Testbeds**
+- a number of public testbeds will be created by IMDA in collaboration with technology firms, institute of higher learning, and other government organisations for use by public and private sectors
+- the ecosystem will expand more quickly due to these 5G testbeds, which will encourage cooperation and capability development for 5G services and applications
+
+- The key objectives of 5G Testbeds are:
+	1. To support translation and test and validate established R&D  initiatives
+	2. Technology businesses should use the testbed to integrate new 5G features and capabilities into their products and solutions
+	3. Give the business sector a free and open platform on which to explore and innovate
+
+- PIXEL in One-North will serve as first testbed
+- The One-North technology and media start-up community will have access to the first public testbed for a shared 5G Living Lab at IMDA's PIXEL innovation area
+- PIXEL open testbed, which is scheduled for completion in the first half of 2020, will allow them to test 5G applications and use cases including various technologies and content
+
+**Research & Development**
+- R&D in 5G cybersecurity will be supported by IMDA, the National Research Foundation (NRF) and Cyber Security Agency of Singapore (CSA)
+- there is an intent to further announce more research funds to help other 5G research fields, such as communications networks
+
+
+## Industry IoT (IIoT) and Industry 4.0
+
+### Industry 1.0 - 3.0
+- Waterpower, steam, and mechanisation ushered in Industry 1.0
+- Electricity, assembly lines and mass manufacturing, third-generation industrial computers, automation, and electronics introduced by Industry 2.0
+- Working and living condition of society were changed by first 3 revolutions
+- these days, businesses are more productive and efficient because of new power sources, equipment, and work organisation techniques
+
+### Industry 4.0
+- cyber revolution, aka Industry 4.0, aka cyber-physical human intelligence is currently underway
+- forth industrial revolution, manufacturing will be replaced by machines and transformed into smart, IoT-connected facilities
+- accordingly, industry 4.0 places a string emphasis on AI, networking, cloud servers, ML, 3D printing, autonomy, VR, and benefits of computers
+
+### Industry 5.0
+- integrate humans and robots for collaborative work
+- robot manufacturing co-worker is meant to function as reliable human companion
+- enhancing workflows and cutting expenses and waste
+- many businesses will see a significant increase in automation and optimisation as a result of human-computer interaction
+- by working together, the 2 industrial processes entities will be able to share innovative methods and strategies for supervising a workforce that consists of both software robots and humans
+
+## Smart Manufacturing
+- Industry 4.0 aka smart manufacturing, is culmination of industry's digital transformation
+- it offers real-time decision-making
+- increased productivity, flexibility, and agility, it will completely disrupt the way businesses produce, develop, and market their goods
+
+### Manufacturing Automation
+- 5G networks are being used by industrial end-devices such as autonomous guided vehicles (AGVs)
+- 5G networks' mobility management, coverage, and quality of service assurance offers the dependable connectivity needed for variety of AGV applications
+- Automated forklifts, pallet movers, and tractors are some examples
+- eg, auto forklift movement on factory floor can be made more efficient using 5G
+
+### Remote Robotic Control
+- Production line robotics are greatly enhanced by 5G's ability to provide:
+	- connectivity for robotics, eliminating requirement for fibre and cable tethering
+	- Real-time remote observation of robotics video streams
+	- Applications for remote control with low latency
+
+## Smart Factory
+- The figure shows schematic of smart factory that uses many sensors and a 5G network to enhance numerous production elements
+
+### Ubiquitous Wireless Connections
+- draws attention to how widely wireless technology is used in the factory
+- this describes a network of sensors and devices that use 5G technology to communicate with a central system, doing away with need for cables 
+
+### Sensor Data Acquisition
+- term used to describe wireless gathering of data from different sensors placed all throughout the factory
+
+### Benefits of the Network
+
+#### Predictive Machine Analytics
+- By analysing real-time sensor data, its possible to anticipate equipment problems and minimize downtime by doing proactive maintenance before they happen
+
+#### Real-time Remote Production Monitoring
+- Factory Managers are able to make modifications and make better decisions since they can remotely monitor production output in real-time
+
+#### Unified Device Interface
+- Integration of data sharing between diverse production equipment and sensors are made easier by standardised communication protocol
+
+#### Increased Manufacturing Flexibility
+- Enhanced flexibility in production processes is made possible by capability to wirelessly gather data from multiple locations on manufacturing floor
+
+#### Energy Consumption Control
+Factories can find areas for optimisation and cut energy use by using sensors to monitor energy usage
+
+#### Equipment Predictive Maintenance
+- by predicting equipment failure, sensor data analysis enables preventive maintenance and minimises downtime
+
+#### Remote Exception Handling
+- with real0time monitoring and sensor data, technical faults can be remotely resolved
+
+#### Improved Maintenance Efficiency
+- usage of 5G- connected surveillance drones for remote inspections could simplify maintenance and could simplify maintenance procedures
+
+#### Cut Costs
+- overall advantages like down time and predictive maintenance can result in production cost reductions
+
+### Smart Factory Components:
+
+#### Sensory-Based Scanner
+- these "scanners" are employed in material or inventory tracking
+- this demonstrates how sensors are integrated into different manufacturing processes
+
+
+#### Sensor for Supply Chain Management
+- these sensors are employed for supply monitoring, potentially for just-in-time inventory management of stocks/supplies
+
+#### Sensor Based Smart Truck
+- for optimised logistics, smart trucks can now be tracked and monitored within the factory
+
+
+## Digital Twins
+</br>
+![[Pasted image 20250704182747.png]]
+</br>
+
+- the figure shows a digital twin based smart manufacturing solution
+- a virtual replica of a real system or object may be used to monitor and optimise its performance is called a "digital twin"
+- it can be used in manufacturing to monitor the condition of machinery, predict maintenance requirements, and optimise production processes
+
+- the picture depicts a digital twin of factory that is capable of being linked to an external network such as the internet
+- the computer model that is continuously updated with information from the factory sensors is known as the "digital twin"
+-  this data could contain details regarding the movement of materials, the temperature of machinery, and vibration of motors
+
+- potential issues can be found early on with the help of digital twin
+- it can be used to predict when a motor will fail, for instance, if a sensor notices that the motor is beginning to vibrate excessively, preventive maintenance can be dine using this info, potentially reducing expensive downtime
+
+- production processes can also be optimised with the help of the digital twin
+- manufacturers can determine the most effective method to spend their resources by simulating several manufacturing scenarios
+- both cost and productivity can be reduced and raised respectively
+
+- Benefits of using digital twin:
+- **End-to-End IT/OT convergence**
+	- combining operational technology (OT) with info tech (IT)
+	- whereas OT systems are used to handle physical equipmen
+	- IT systems are used to manage corporate data
+	-  manufacturers can build a more unified and effective manufacturing system by combining IT and OT
+- **5G connectivity**
+	- the newest generation of cellular wireless network technology
+	- promises reduced latency and greater speeds 
+	- as real-time data is crucial in manufacturing applications, this makes it perfect for usage
+- **End-to-End security**
+	- security is crucial as backers can stop operations and harm machinery
+	- by enabling and testing and monitoring security systems without interfering with machinery, a digital twin can contribute to increased security
+- **Quality Control with Machine Vision**
+	- one application of AI is machine vision, which can be used to check for defects
+	- machine vision systems can be trained on digital twins and their performance can be tracked
+
+
+- In summary, the figure illustrates how digital twin can be used to develop smart manufacturing system that is safe, more effective, and productive
+- a digital twin is essentially a virtual representation of an actual process or asset
+- it helps you make an exact copy of ur asset or process so you can test it under different conditions and determine how effective or efficient it is
+- 5G is important for digital twin applications as it can provide high-speed, low-latency connectivity which is needed for real-time data transfer and interaction in digital twin environments
