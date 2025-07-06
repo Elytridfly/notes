@@ -479,3 +479,52 @@
 
 
 ## Deep Neural Networks with Dropout and Batch Normalization
+
+### Why not make the Neural Network bigger?
+- Universal Approximation Theorem: A single hidden layer (if large enough) can approximate any function
+	- But it needs to be infinitely large which is'nt practical
+- More layers = more parameters, which increases memory and risk of overfitting
+- Large models:
+	- need longer time to train
+	- need smaller batch size (slower optimization)
+	- Risk overfitting, especially on small datasets
+
+### Overfitting and Regularization
+- Overfitting: When the model memorizes training data but fails to generalize
+- Regularization techniques help prevent this:
+	- L1/L2 regularization: Adds a penalty for large weights
+	- Dropout: (Only used in neural networks)
+		- Randomly drops out nodes during training
+		- Each training step sees a different subset of the model
+		- results in an ensemble effect of many smaller networks
+		- implements in keras via tf.keras.layers.Dropout(rate)
+
+### Dropout
+- Only applied during training, not during evaluation
+- keras handles dropout automatically
+- makes the model less likely to overfit by reducing reliance on specific nodes
+
+### Batch Normalization (BatchNorm)
+- Problem: Internal Covariate Shift
+	- Changing parameters in earlier layers alters input distribution in later layers
+- Batch Normalization:
+	- Normalizes input in each mini-batch to mean = 0 and std = 1
+	- Stabilizes and speeds up training
+	- Improves model accuracy
+- Implemented using tf.keras.layers.BatchNormalization()
+
+#### How BatchNorm works
+- During training:
+	- Normalizes based on current batch's mean and std
+- During inference:
+	- Uses moving average of training batches for normalization
+- Introduces learnable scale and center parameters
+
+### Best Practices with Dropout & BatchNorm
+- Use Dropout after activation layers to reduce overfitting
+- Use BatchNorm between Dense Layers and their activations
+- flow eg,
+	- ``` Dense -> BatchNorm -> Activation -> Dropout```
+
+
+## Convolutional Neural Networks
