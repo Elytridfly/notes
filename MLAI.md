@@ -325,7 +325,7 @@
 - then the model produces 5 outputs
 - each output values is a weighted sum of the input pixel values
 - generally, all keras needs to know is the shape of their inputs to create their weights
-- so when a new sequential  model is created, it initally has no weights
+- so when a new sequential model is created, it initally has no weights
 - when you instantiated a sequential model without an input shape, it isnt built and thus has no weights
 - weights are created when model is first exposed to input data
 - simple alternatives is to pass input_shape argument to ur first later
@@ -341,3 +341,141 @@
 - activation function maps resulting values between 0 to 1 or -1 to 1 or other ranges depending on the function
 - this converts logits into probabilities
 - depending on binary or multiclass problem, u can apply sigmoid or softmax to obtain probability
+
+
+- softmax function converts vector of values to probability distribution
+- it exponentiates its inputs and then normalize them
+- exponentiation means that 1 more unit of evidence multiplicatively increases the weight
+- conversely 1 less unit of evidence will make the weight a factor of the earlier weight
+- softmax will normalize weight so they all add up to 1
+- forming a valid probability distribution
+- output will be softmax of the weighted average of the flattened input pixel values
+
+- dense layer has 1 output node for each class 
+
+### Compiling a model
+- before its ready for training, it must be first compiled with a few more settings
+- 3 settings:
+	- Optimizer
+		- how the model is updated based on data seen and loss function
+	- Loss Function
+		- measures how accurate the model is during training
+		- minimized so that model is more accurate
+	- Metrics
+		- monitor training and testing steps
+		- eg accuracy
+
+
+#### Optimizer
+- methods to update your model weights
+- to reduce losses
+- adjust learning rate to get results faster
+- eg, Adam optimization, popular stochastic gradient descent methods
+
+#### Loss Function
+- optimization needs a number to represent quality of ur solution
+- it tells optimizer if its moving in the right direction or not
+- in keras its used to compute quantity that model should seek to minimize during training
+- use SparseCategorialCrossentropy loss for classification with 2 or more labels. it will expect labels to be provided as integers
+-  if you want one-hot representation to provide labels, use CategorialCrossentropy loss
+
+#### Metrics
+- Keras has accuracy class, to calculate how often predictions = labels
+
+
+
+### Displaying the Model
+![[Pasted image 20250706112405.png]]
+- after its built, call the model summary to display contents
+
+
+#### Model Plotting Utilities
+- keras api has model plotting utils to convert keras model to dot format
+- tf.keras.utils.plot_model returns Jupyter Notebook image that enables in-line display of model in the notebook
+
+### Training the Model
+![[Pasted image 20250706112719.png]]
+- training sequential models need feeding of training data to the model
+- use model.fit and pass in training and validation datasets to train the model
+- training dataset is passed in to train the model 
+- validation dataset is passed in to report accuracy metrics
+
+### Evaluating the Model
+- evaluation is needed to understand whether number of epochs are enough for loss to converge
+- callback is object that perform actions at various stages of training
+- keras registers callbacks during training including history callback which records training metrics for each epoch such as loss, accuracy, validation loss or validation accuracy
+- by comparing learning data with validation data, plot provides insights for the slope - speed of convergence over epochs, status of convergence, and also insight if there is overtraining
+
+### Generating the prediction
+- call model.predict() on a few images in the evaluation dataset
+- reason for reshape is that model.predict() expects a batch of images
+- so we have to reshape the image tensor as a batch consisting of only 1 image
+- the predicted confidence values are called logits and are in range of -infinity to +infinity
+- predicted label from model is the label which has the highest confidence
+- you can convert logits to probabilities using softmax
+
+#### Error metrics
+- SparseCategorialCrossentropy loss used to minimize loss function on training dataset
+- business users expect more meaningful error metrics
+- most common is accuracy - fraction of instances that are classified correctly
+- however, accuracy fails when 1 class in dataset is represented by a very rare example
+
+
+### Plotting Predictions
+- looking at what model has learned, you can plot predictions of model on a few images from evalution dataset by defining custom plot_predictions() function
+
+
+
+## Neural Networks and Deep Neural Networks for Image Classification
+
+### Neural Networks
+- made of:
+	- Input layer
+	- Hidden Layer(s)
+	- Output Layer
+- each layer contains nodes (neurons) which are connected to nodes in next layer with weights (fully connected)
+- each node performs a linear computation (such as linear regression) and passes result to next layer
+
+### Roles of Activation Functions
+- Activation functions introduce non-linearity making neural networks different from simple linear models
+- Popular activations:
+	- ReLU (Rectified Linear Unit) : f(x) = max(0,x)
+	- Others: Sigmoid, Tanh, ELU
+- Without non-Linear activations, stacking layers will just result in another linear function
+
+### Building Neural Networks in Keras
+- use sequential model to stack layers
+- add dense (full connected) layers
+- compile the model with loss function and optimizers
+- train with model.fit(), evaluate with model.evaluate(), and predict with model.predict()
+
+### Training Neural Networks
+- training is similar to linear models
+- use model.compile() with metrics like accuracy
+- use model.fit() to train model on data
+- Monitor loss and validation loss to detect overfitting and poor optimization
+- Tuning tips:
+	- Adjust learning rate, loss function, batch size
+	- use more data or validation techniques
+
+### Deep Neural Networks
+- DNN has more than 1 hidden layer
+- More layers = more modeling power, but need more data
+- DNN are trained same way as NN (Compile, Fit, Predict)
+- Downsides:
+	- May perform worse with small datasets
+	- Prone to overfitting
+
+### Improving DNN performance
+- Techniques to boost performance:
+	- Dropout layers: prevents overfitting
+	- Batch normalization: Stabilizes learning
+	- Regularization, Early stopping, learning rate tuning
+
+### Key Concept: Feature Hierarchy
+- Neural Networks can learn their own features through layers (less need for manual feature engineering)
+- Each layer learns increasingly abstract representations of the data
+- This hierarchy is critical in more advanced models like Convolutional Neural Networks  (CNNs)
+
+
+## Deep Neural Networks with Dropout and Batch Normalization
