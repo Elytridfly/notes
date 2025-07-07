@@ -1316,4 +1316,114 @@ The design shows how smart home appliances can be fully integrated with 5G netwo
 	- Systems to manage and monitor visitors entering and exiting the building
 
 ### Interior Layout
-pg 8
+#### Ground Floor
+- Various offices and workspaces equipped with intelligent lighting and climate control systems
+- Visitor Management Systems at entrances
+
+#### Middle Floors
+- conference rooms, meeting spaces, workstations with smart infrastructure
+- Smart toilet systems and condition monitoring for facilities like elevators and chillers
+
+#### Top Floor
+- Server Room and data centers with advanced monitoring and fault detection systems
+- kitchen and recreational areas with connected lighting and climate control
+
+### Additional features
+- Solar Panels on roof for sustainable energy generation
+- WiFi and 5G connectivity throughout the building for seamless communication and operation of smart systems
+- Integration of various protocols and services to create a cohesive and efficient building management system
+
+- The smart building is a prime example of how cutting-edge technology can be used to give residents a more effective, safe, and comfortable living space
+
+
+## Recap of 5G Infrastructure
+![[Pasted image 20250707191550.png]]
+
+### 1. Recap of 5G Architecture (Infrastructure) and its Components
+The network architecture that enables the fifth generation of mobile networks – which are intended to offer faster speeds, reduced latency, and more connection than earlier generations – is also referred to as 5G infrastructure. As a recap, the essential elements/components of 5G infrastructure comprise of:
+
+a. Radio Access Network (RAN) 
+- Small Cells: These are low-powered cellular radio access nodes that cover small geographic areas and are critical for the dense network deployment required for 5G. 
+- Macro Cells: Larger cells that provide coverage over broader areas. 
+- Massive MIMO (Multiple Input Multiple Output): Technology that uses a large number of antennas to transmit and receive more data simultaneously. 
+- Beamforming: Advanced antenna technology that directs signals to specific devices rather than broadcasting them broadly.
+
+b. Core Network
+- Network Functions Virtualization (NFV): Allows network functions to be run on standard servers rather than dedicated hardware. 
+- Software-Defined Networking (SDN): Enables more flexible and efficient network management by separating the control plane from the data plane.
+- Edge Computing: Places computation and data storage	closer to the user to reduce latency.
+
+c. Transport Network
+- Fibre Optics: High-capacity fibre optic cables are crucial for connecting small cells and macro cells to the core network. 
+- Microwave Links: Used for wireless backhaul in places where fibre is not feasible.
+
+
+### 2. Individual Resources Needed for 5G Components
+
+a. Radio Access Network (RAN)
+- Small Cells and Macro Cells: 
+	- Hardware: Antennas, radios, and power amplifiers. 
+	- Sites: Physical locations for installation, often requiring new real estate or infrastructure sharing agreements. 
+	- Installation Services: Skilled labour for deployment and maintenance.
+	
+- Massive MIMO and Beamforming: 
+	- Antennas: Large arrays of antennas for MIMO.
+	- Beamforming Equipment: Advanced signal processing hardware and software.
+
+b. Core Network 
+- Network Functions Virtualization (NFV): 
+	- Servers: High-performance, general-purpose servers. 
+	- Virtualization Software: Platforms like VMware, OpenStack. 
+	
+- Software-Defined Networking (SDN): 
+	- Controllers: SDN controllers for network management.
+	- Switches: SDN-compatible switches and routers. 
+	
+- Edge Computing: 
+	- Edge Servers: Compact, high-performance servers placed close to users.
+	- Data Centres: Localised data centres for edge processing.
+
+
+c. Transport Network
+- Fiber Optics:
+	- Cables: High-capacity fibre optic cables.
+	- Transceivers: Devices to convert electrical signals to optical signals and vice versa.
+	- Installation Equipment: Trenching machines, splicing tools.
+
+- Microwave Links:
+	- Antennas: Microwave antennas for point-to-point communication.
+	
+- Transmitters/Receivers: High-frequency transmitters and receivers
+
+### 3. Suppliers of 5G Resources 
+a. Radio Access Network (RAN) 
+- Hardware: 
+	- Ericsson, Nokia, Huawei, Samsung: Leading suppliers of small cells, macro cells, MIMO, and beamforming hardware. 
+	- CommScope, Corning: Provide site solutions and installation services.
+
+b. Core Network 
+- NFV and SDN: 
+	- VMware, Red Hat, Cisco: Providers of virtualization and SDN software. 
+	- Dell, HPE, IBM: Suppliers of high-performance servers.
+- Edge Computing:
+	- NVIDIA, Intel: Suppliers of edge computing hardware. 
+	- Amazon Web Services (AWS), Microsoft Azure, Google Cloud: Providers of edge cloud services.
+
+c. Transport Network 
+- Fibre Optics: 
+	- Corning, Prysmian Group: Major suppliers of fibre optic cables. 
+	- Ciena, Infinera: Provide optical networking equipment.
+- Microwave Links: 
+	- NEC, Ericsson, Huawei: Providers of microwave transmission equipment.
+
+
+## AIoT Infrastructure
+
+### What is AIoT Infrastructure
+- Combination of IoT with AI technologies
+- makes use of AI's analytical and decision-making powers with IoT data collection capabilities
+- to construct intelligent, self-governing system
+- consists of
+
+a. IoT devices
+pg17
