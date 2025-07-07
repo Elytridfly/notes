@@ -1181,3 +1181,138 @@ Factories can find areas for optimisation and cut energy use by using sensors to
 - a digital twin is essentially a virtual representation of an actual process or asset
 - it helps you make an exact copy of ur asset or process so you can test it under different conditions and determine how effective or efficient it is
 - 5G is important for digital twin applications as it can provide high-speed, low-latency connectivity which is needed for real-time data transfer and interaction in digital twin environments
+
+
+## Healthcare and AIoT
+### Healthcare - 5G Use Cases
+1. Telemedicine
+	- remote doctor-patient consultation via mobile device
+	- use 5G for video calls over internet to replace traditional consultation
+2. Personal Health Systems
+	- Chronic disease monitoring, diagnosis, and treatment are made possible by wearable tech
+	- increasing no. devices such as Fitbits and apple watches will be linked to 5G network
+	- these gadgets can gather and examine larger volumes of user data as they are networked
+	- healthcare can now be preventive rather than treatment-based
+
+## Smart Healthcare
+![[Pasted image 20250707153441.png]]
+
+## Smart Home
+![[Pasted image 20250707153556.png]]
+
+- 5g networks when combined with network slicing, will enable home users to enjoy connectivity and data processing that is customized to meet needs of the individual applications while adhering to specific Service Level Agreement (SLA) agree upon with cellular network providers
+- this includes data speed, quality, latency, reliability, and security
+- 5G networks are an emerging trend in smart home market segment
+
+- Home appliances like washing machines, fridges, air cons, water heaters, and more are anticipated to be 5G-NR enabled as 5G network is rapidly deployed throughout the world
+- this will make it beneficial for 5G Home router (5G RAN) and wide range of linked items in smart home
+- Any plugged-in 5G home device will be able to connect directly to a 5G-enabled NG-EG over this new WAN, foregoing Wi-Fi in favor for more dependable performance
+- Smart home gadgets like cameras, security alarms, and video doorbells will make home networking system more dependable and able to maintain connectivity throughout the house regardless of no. people accessing the internet at once due to 5G's lower latency
+
+
+### Smart Home Layout:
+1. Network A
+	- Devices include:
+		- Security Camera
+		- Apple HomeKit
+		- Amazon Echo
+		- Google Home
+	- Connected via WiFi and Bluetooth
+	
+2. Network B
+	- Devices include:
+		- 5G devices like air purifiers
+		- Sonos speaker
+		- Smart Doorbell
+	- Connected via "Matter" protocol for home automation
+3. Network C
+	- Devices include:
+		- Zigbee devices like smart light blubs and sensors
+	- Connected via Zigbee protocol
+4. Central Network Hub
+	- NG-EG (Next-Gen Edge Gateway)
+		- Acts as the central router with WiFi and 5G capabilities 
+		- Connects smart devices including:
+			- Smart TV
+			- Media Player
+			- Digital Frame
+			- Desktop/Laptop
+			- Smartphone
+5. Home Router (5G-RAN)
+	- Provides 5G connectivity
+	- Wired Connectivity to central network hub
+	- supports multiple in-home users with 5G devices
+
+
+### 5G Core Network (Public MNO)
+1. Components:
+	-  UDR (Unified Data Repository):
+		- Stores subscription data, policy data, exposure data, and application data
+	- UDSF ( Unstructured Data Storage Function):
+		- Manages unstructured data
+	- Network Functions:
+		- AMF (Access and Mobility Management Function)
+		- NSSF (Network Slice Selection Function)
+		- NEF (Network Exposure Function)
+		- UDM (Unified Data Management)
+		- NRF (Network Repository Function)
+		- SMF (Session Management Function)
+		- AUSF (Authentication Server Function)
+		- SMSF (Short Message Service Function)
+		- PCF (Policy Control Function)
+	- NWDAF (Network Data Analytics Functions)
+		- Analytics and data processing
+	- IMS (IP Multimedia Subsystem)
+		- Provides Multimedia services
+
+2. Connections:
+- N2, N3, N4, N6, N9
+	- Different Network interfaces for connectivity
+- Internet:
+	- Connection to public internet and cloud services (AWS/Azure)
+
+3. Users:
+- Remote Home Users:
+	- can access the home network remotely
+- In-Home Users:
+	- Utilise 5G devices within the home
+
+
+The design shows how smart home appliances can be fully integrated with 5G network for improved functionality, security, and communication
+
+
+## Smart Buildings
+![[Pasted image 20250707160116.png]]
+- Picture depicts smart building that has many interconnected services and technologies that improve its efficiency and operation
+
+### Left Side of Building
+1. Energy Performance Contract:
+	- System, to monitor and optimize energy consumption and performance
+2. Air-Con as a service:
+	- Managed Air  conditioning service for efficient climate control
+3. Smart Toilet System:
+	- Intelligent toilet with automated features and maintenance monitoring
+4. Condition Monitoring of Chillers, Pumps, Lifts, etc:
+	- Systems for monitoring and maintaining essential building infrastructure like chillers, pumps, and lifts
+5. Emerging Service:
+	- New or developing services that are being integrated into the building's operations
+6. Room and Space Management, Hot-desk:
+	- Systems to manage room occupancy, space utilization, and flexible hot-desking arrangements
+
+### Right Side of the building
+1. Location Tracking
+	- Systems for tracking the location of individuals or assets within the building
+2. Fault Detection and Diagnostic Security
+	- Systems to detect and diagnose faults within building systems and enhance security
+3. Demand Response Program
+	- Programs to manage and respond to energy  demand dynamically
+4. Rodent Management System
+	- Systems to monitor and control rodent populations within the building
+5. Connected Light System
+	- Intelligent lighting system s that can be controlled and monitored remotely
+6. Video Surveillance and Analytics
+	- Video surveillance systems that can be controlled monitored remotely
+7. Visitor Management
+	- Systems to manage and monitor visitors entering and exiting the building
+
+### Interior Layout
