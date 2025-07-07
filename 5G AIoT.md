@@ -1316,3 +1316,4 @@ The design shows how smart home appliances can be fully integrated with 5G netwo
 	- Systems to manage and monitor visitors entering and exiting the building
 
 ### Interior Layout
+pg 8
