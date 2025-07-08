@@ -1384,3 +1384,315 @@ Output:
 
 
 ```
+
+
+
+## Recursive Programming
+
+## Recursive Methods
+- methods that calls itself
+
+```
+class TestRecursive {
+	 public static void main(String[] args) {
+		 shout();
+	 }
+	 
+	// recursive method
+	public static void shout() {
+		System.out.println("AHHHHH! ");
+		 shout();
+	}
+}
+
+Output:
+AHHHHH! 
+AHHHHH! 
+AHHHHH! 
+： 
+： 
+(endless)
+```
+
+
+- recursive method must have a condition to stop the further calling of itself
+```
+class TestRecursive {
+	 public static void main(String[] args) {
+		 shout(5);
+	 }
+	 
+	public static void shout(int x) {
+		System.out.println(x + ".AHHHHH! ");
+		if (x>1) shout(x-1);
+	}
+}
+
+
+Output:
+5.AHHHHH!
+4.AHHHHH!
+3.AHHHHH!
+2.AHHHHH!
+1.AHHHHH!
+(stop)
+```
+
+### Recursive Nature
+![[Pasted image 20250709004828.png]]
+![[Pasted image 20250709004837.png]]
+
+###  Factorial
+
+```
+
+class TestRecursive {
+	public static void main(String[] args) {
+	 System.out.println(fac(5));
+	}
+	
+	public static int fac(int x) {
+		if (x>1) {
+		 return (x*fac(x-1));
+		}
+		return(1);
+	}
+}
+
+
+Output:
+120
+```
+
+```
+Iteration Method
+
+public static void main(String[] args) {
+{
+	int result = 1;
+	for (int i=1; i<=5; i++) result *=i;
+		System.out.println("result "+ result);
+		
+	return 0;
+}
+
+
+
+We want to achieve 5! = 1*2*3*4*5
+– Start with result =1,
+– In the for-loop, when i=1, result *= i yields  (1*1)
+– Next loop, when i=2, result *= i yields (1*1*2)
+– Next loop, when i=3, result *= i yields(1*1*2 *3)
+– Next loop, when i=4, result *= i yields  (1*1*2 *3*4)
+– Next loop, when i=5, result *= i yields  (1*1*2 *3*4*5)
+
+```
+
+### Recursive Programming
+![[Pasted image 20250709005116.png]]
+- Process of solving a problem by reducing it to smaller versions of itself
+- General case for which the solution is obtained by calling the recursive function further
+- base case for which the solution is obtained directly and stop the recursion
+- all recursive algorithms can be implemented using iteration (conventional loop-structures)
+
+
+### Iterative vs Recursive
+|Iterative | Recursive|
+|---|---|
+|- Shorter Performance time|- Longer performance time|
+|- More code| - Less code|
+|- Usually start from "bottom" and iterate up  |- Start from "top"  and reduce to the bottom |
+|- Must have condition to end loop, else infinite loop| - Must have base case to stop recursion, else infinite recursion|
+
+### Considerations
+- Recursion can take up significant resources
+	- each call would cause a set of incomplete data and/or "unfinished" operations to be stored onto "stack" memory
+	- Solution that needs long nested recursion will take up lots of memory space
+- Recursion may not only be the only way to solve a problem
+	- there may be iterative or modified recursion that does not keep too many incomplete data pending arrival of base case
+- Iterative Solutions should be considered
+	- iterative solutions usually involve updating over the same variable spaces so less memory is used
+
+#### Recursion can be heavy on resources
+- However there are certain problems where recursion provides a much easier to understand solution
+- Recursion is fascinating to (Mathematicians) and some problems are more intuitively expressed in a recurrence relationship
+- Natural candidates are like
+	- Tower of Hanoi
+	- Fibonacci numbers
+
+### Fibonacci Numbers
+- Denoted by F<sub>n</sub>
+- forms a sequence called the Fibonacci sequence where each number is the sum of 2 preceding ones starting from 0 and 1
+- F<sub>0</sub> = 0 , F<sub>1</sub> = 1
+- F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub> &nbsp &nbsp    for  n>1
+
+![[Pasted image 20250709010720.png]]
+
+```
+class TestRecursive {
+	public static void main(String[] args) {
+		int count = 6;
+		for (int i=0; i<count; i++)
+			System.out.println( “Result = ” + f(i));
+		}
+	}
+	
+	public static int f(int n) {
+	 if (n == 0) return 0;         //Base Case
+	 else if (n==1) return 1;      //Base Case
+	 else return (f(n-1)+f(n-2));  //General Case
+	}
+}
+
+
+```
+
+
+### Tower of Hanoi
+
+- move all the disks from x to z via y 
+- only 1 disk at a time
+- removed disk must be placed on one of the towers
+- a larger disk cannot be placed on top of a smaller disk
+![[Pasted image 20250709011258.png]]
+
+- Base Case : first needle contains 0 disk
+	- Stop recursion
+- Generic Case : first needle contains only 1 or more disks
+	- Recursive algorithm in pseudocode
+
+</br>
+<u>**Algorithm**</u>
+- Assuming there are n disks (where n>= 1)
+- Start tower x
+- destination tower z
+- middle tower y
+- required actions:
+	- Move top (n-1) disk from x to middle (using z as intermediate)
+	- Move n directly from x to z
+	- Move top (n-1) disk from y to z (using x as intermediate)
+```
+public static void move(int n, char source, char dest, char intermediate) {
+	 if (n>=1) {
+		 move (n-1, source, intermediate, dest);
+		 System.out.println ("Move "+n+ " from "+source +" to "+ dest);
+		 move (n-1, intermediate, dest, source);
+	 }
+}
+```
+
+![[Pasted image 20250709011905.png]]
+
+### Big O Time Complexity
+- notation represents performance of algorithm as input size grows
+- notation provides upper bound (worst-case scenario) on growth rate of an algorithm's running time needed to solve a problem
+
+- Given: an array of integers
+	- int[ ] givenArray = {1,5,8,10,33,47}
+- Given a method that compute the sum of all elements in a given array:
+```
+int getSum(int[] givenArray) {
+	int[] total = 0;
+		for (int i=0; i<givenArray.length; i++)
+			total += givenArray[i];
+	return (total);
+}
+
+```
+
+
+### LinearTime Complexity
+
+```
+int getSum(int[] givenArray) {
+	int[] total = 0;
+	for (int i=0; i<givenArray.length; i++)
+		total += givenArray[i];
+	return (total);
+}
+```
+
+![[Pasted image 20250709012239.png]]
+
+![[Pasted image 20250709012249.png]]
+
+### Drop Coefficient
+```
+void printItems(int[] givenArray) {
+	for (int i=0; i<givenArray.length; i++)
+		System.out.println(givenArray[i]);
+	for (int i=0; i<givenArray.length; i++)
+		System.out.println(givenArray[i]);
+}
+
+```
+
+Number of operations = n + n = 2n
+
+- First Rule of simplification of Big O is to drop the coefficient:
+- Analysis of Time Complexity focuses on the "trend" as the input grows bigger
+![[Pasted image 20250709012422.png]]
+
+### Fastest Growing Trend
+- Second rule of simplification of Big O is to take fastest growing term as it is most significant when input gets larger
+![[Pasted image 20250709012506.png]]
+
+
+### Quadratic Time Complexity
+```
+2 nested for-loops
+
+void printItems(int n ) {
+	 for (int i=0; i< n; i++)
+		 for (int j=0; j< n; j++)
+			 System.out.println( i + “ ” + j );
+}
+
+printItems(10):
+0 0
+0 1
+0 2
+0 3
+:
+:
+0 9
+1 0
+1 1
+:
+:
+9 7
+9 8
+9 9
+
+```
+
+![[Pasted image 20250709012714.png]]
+
+### Constant Time Complexity
+```
+int squareLength (int[] a) { 
+return (a.length * a.length); 
+}
+```
+
+- Regardless of size of input, there is always 1 operation
+ ![[Pasted image 20250709012759.png]]
+
+### Logarithmic Time Complexity
+```
+void printItems(int n ) {
+	for (int i=1; i< n; i=i*2)
+	System.out.println( i );
+}
+```
+
+![[Pasted image 20250709012829.png]]
+![[Pasted image 20250709012834.png]]
+![[Pasted image 20250709012845.png]]
+![[Pasted image 20250709012940.png]]
+
+### Binary Search
+![[Pasted image 20250709012857.png]]
+- Best case: key is found in 1st iteration
+- Worst case: key is found at last round of iteration or not found
+![[Pasted image 20250709012933.png]]
