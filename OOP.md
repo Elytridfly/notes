@@ -839,9 +839,9 @@ following are concrete classes of data structures in Java and they are direct su
 #### Stack from LinkedList
 - simple stack can be implemented using concept of linked list
 
-</br>
+
 ![[Pasted image 20250702091716.png]]
-</br>
+
 
 
 ### Stack class in Java
@@ -852,9 +852,9 @@ following are concrete classes of data structures in Java and they are direct su
 
 
 ### Methods in List Classes
-</br>
+
 ![[Pasted image 20250702091914.png]]
-</br>
+
 
 ### Creating List Objects
 ```
@@ -909,9 +909,9 @@ CHANGI
 - allows bidirectional traversal of the list
 - List interface has methods that return Iterator and also ListIterator objects
 
-</br>
+
 ![[Pasted image 20250702092730.png]]
-</br>
+
 
 ### ListIterator
 - extends from Iterator
@@ -1074,16 +1074,16 @@ public static void main(String[] args) {
 ### DeQueue - "Double-ended" Queue
 - Data can be inserted and removed from either end
 
-</br>
+
 ![[Pasted image 20250702094835.png]]
-</br>
+
 
 ### Queue in Java
 - Queue in Java is an interface
 - deque is child interface of queue
-</br>
+
 ![[Pasted image 20250702094915.png]]
-</br>
+
 
 ### ArrayDeque class
 - implements Deque interface
@@ -1093,9 +1093,9 @@ public static void main(String[] args) {
 - no lListIterator
 - has supporting methods to be used as a stack
 - Methods:
-</br>
+
 ![[Pasted image 20250702095045.png]]
-</br>
+
 
 ### Using ArrayDeque Class
 - Create Deque and add an item, use iterator to retrieve item
@@ -1320,9 +1320,9 @@ Output:
 ```
 
 ### Map Interface
-</br>
+
 ![[Pasted image 20250702102554.png]]
-</br>
+
 
 ### Concrete Classes in Map
 - Map is a container that stores collection of key-value pairs
