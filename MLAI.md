@@ -528,3 +528,79 @@
 
 
 ## Convolutional Neural Networks
+
+
+### Origin and Inspiration of CNNs
+
+#### Neocognitron 
+- Hierarchical Network with simple cells (local feature extraction)  and complex cells (tolerance to local shift/deformation)
+- learns object shapes and inspired later CNNs
+-  Complex cells provide position (translation) tolerance via local pooling-like aggregation
+
+#### Direct Influence on CNNs
+- LeCun et al, explicitly drew on simply/complex cell like concepts to design convolution and pooling layers
+- "Pooling" in early CNNs correspond to complex-cell-like spatial aggregation
+
+#### LeNet
+- early CN architecture demonstrates end-to-end learning for handwriting recognition by composing simple to complex features
+- Trained on Digit images using conv -> subsampling stacks then full connected layers
+
+
+### Breakthroughs in CNN performance
+
+#### AlexNet (2012 ImageNet)
+- Deep CNN that beat runner-up by 10.9% points 
+- catalyzing fields shift to CNNs as default for vision
+-  key innovations such as ReLu activations, heavy data augmentation, dropout, GPU training, local response normalization used
+
+
+### Why CNNs > DNNs
+- Dense layers on megapixel images imply biullions of weights (each pixel to many neurons)
+- CNNs cut parameters using local receptive fields and weight sharing
+	- Parameter Sharing = one filter (kernel) slides over the image reusing the same weights across spatial locations)
+
+#### Structure Sensitivity
+- Dense DNNs: pixel order can be permuted with little effect (weights permute correspondingly)
+- CNNs: rely on spatial locality/hierarchy; randomly pixel shuffling destroys performance
+	- CNNs are translation-equivalent (shift in input -> shifted feature map) and pooling/striding introduce approximate translation invariance
+
+### Pre-2012 vision pipelines
+- heavy manual feature engineering (Gabor filters, co-occurrence matrices) to craft, edges, texture, shapes
+
+### Post-2012 paradigm
+- CNNs learn features automatically from data, reducing manual engineering and improving accuracy across tasks (classification and detection)
+
+### Core CNN layers
+- Convolutional Layer
+	- Learns filters over small neighborhoods (kernels) to detect patterns; parameters are learned via back propagation
+- Pooling Layer
+	- Downsampling (eg, max, average) to lower dimensionality and improve invariance 
+
+### Design Knobs in convolutions
+- kernel size, stride, padding, no. filters, determine receptive field all 
+
+#### Activations and normalization
+- modern CNNs typically use ReLU activations and batch normalization to stabilize training and allow deeper networks
+
+#### Regularization
+- Dropout, Weight Decay (L2) and data augmentation combat overfitting in CNNs
+
+#### Head Layers for classification
+- After Conv/Pool stacks, fully connected dense layers (or global average pooling ) map features to class logits
+
+#### Beyond Images
+- CNNs also work for audio, time-series, and signals, exploiting local correlations along time/frequency axes
+
+#### Notable Architectures after AlexNet: Inception
+- Multi-scale filter per stage
+- faster ResNet (Residual/Skip) connections enable very deep networks
+
+#### Receptive Field Growth
+- Stacking conv/pool (or dilated convs) increase the effective receptive field letting deeper capture global context
+
+#### Trade-offs of pooling
+- Reduces computation and overfitting but discards spatial precision
+
+
+#### Training at scale
+- Large datasets and GPU/TPU are critical for deep CNNs to generalize well

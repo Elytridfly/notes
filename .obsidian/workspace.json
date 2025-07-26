@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OOP.md",
-                "mode": "preview",
+                "file": "MLAI.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "OOP"
+              "title": "MLAI"
             }
           }
         ]
@@ -171,8 +171,8 @@
   },
   "active": "4b038e72807ff1e7",
   "lastOpenFiles": [
-    "Pasted image 20250702091914.png",
     "OOP.md",
+    "Pasted image 20250702091914.png",
     "Pasted image 20250702091716.png",
     "Pasted image 20250709012940.png",
     "Pasted image 20250709012933.png",
@@ -182,7 +182,6 @@
     "Pasted image 20250709012829.png",
     "Pasted image 20250709012759.png",
     "Pasted image 20250709012714.png",
-    "Pasted image 20250709012506.png",
     "5G AIoT.md",
     "MLAI.md",
     "ECS.md",
