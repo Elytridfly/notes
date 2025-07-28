@@ -604,3 +604,63 @@
 
 #### Training at scale
 - Large datasets and GPU/TPU are critical for deep CNNs to generalize well
+
+
+
+## Understanding Convolutions
+
+### What is a Convolution
+- Combines 2 functions:
+	- Input (image) 
+	- Weight matrix (kernel/filter) 
+	- to produce feature map
+
+- kernel slides over neighboring pixels 
+	- at each position it will multiply-and-sum pixels with kernel weights
+	- same kernel weights are used at all locations (Weights sharing)
+
+### 1D vs 2D vs 3D CNNs
+- 1D CNNs
+	- sequences time, audio, text
+- 2D CNNs
+	- images 
+- 3D CNNs
+	- volumetric/ video data
+	- eg, MRI/CT, videos
+- nD CNN
+	- n  spatial dimensions (independent on channels)
+
+### Tensor Shapes (Inputs)
+- Grayscale: H x W x 1
+- Color (RGB): H x W x 3
+- 3D image volume: D x H x W x C
+
+### Kernels/ Filters
+- kernel has its own learnable weights
+- each kernel produces 1 channel of output
+	- with K kernels u get K output depth
+- eg, RGB input 300x300x3 with 2 kernels
+	- output (spatially smaller) x 2 cahnnels
+	- 1 stride and no padding
+	- Hout = Hin - K +1 (so 5x5 kernel give 300 > 296)
+
+### Why output shrinks (no padding)
+- with 5x5 and 3x3 kernel, output is 3x3 because 5 - 3 +1 =3 (reduce of 2 on each side)
+- General rule (square kernel, stride 1, "valid") : size_out = size_in - kernel +1 per diemnsion
+
+### What different kernels detect
+- Horizontal Edge Detector (top row positive, bottom row negative) fires where row changes sharply
+- Vertical Edge Detector is same but rotated 90 degrees (positive left, negative right)
+- Center Heavy Kernel (High weight center, lower around )  highlights bright spots relative to neighbors (local maxima)
+
+### From Edges to Shapes
+- Stacking many learned filters let CNN combine low-level edges -> mid-level parts - > high-level objects
+
+
+### Kernel Sizes in practice
+- Early models like AlexNet used larger kernels (3x3 up to 11x11)
+- Modern Architectures mostly use 3x3 kernels repeated in depth
+
+### Hardware note
+- GPUs and TPUs speed up CNNs by computing many kernel positions in parallel
+
