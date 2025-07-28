@@ -664,3 +664,145 @@
 ### Hardware note
 - GPUs and TPUs speed up CNNs by computing many kernel positions in parallel
 
+## CNN Model Parameters
+### What are parameters
+- Model Params are learned weights (and biases) that transform inputs to outputs
+- More complex CNNs = more trainable parameters (more filters, deeper stacks, larger dense layers)
+
+### Tensor Shapes
+- Keras Conv2D expects 4D tensors: (batch, height, width, channels)
+- eg, RGB image: `[16, 256, 256, 3]`
+
+### Conv2D key arguments (Keras)
+- filters: no. output channels (one per learned kernel)
+- kernel_size: eg, 3 ( 3x3) or (3x5 rectangular). Modern CNNs favor small kernels (3x3) stacked deeply
+- strides: step of sliding window (default 1) Large stride = fewer outputs
+- Padding:
+	- "valid" -> no padding, spatial size shrinks
+	- "same" - > pads to keep output size  ≈ input size (for stride 1)
+- activation: usually ReLu for conv layers
+- input_shape: only for first layer
+
+### Output size formulas
+- No padding ("valid")
+$$
+H_{out} = \left\lfloor \frac{H_{in} - K_h}{S_h} \right\rfloor + 1
+$$
+
+$$
+W_{out} = \left\lfloor \frac{W_{in} - K_w}{S_w} \right\rfloor + 1
+$$
+
+- Same padding (Keras)
+$$
+H_{out} = \left\lceil \frac{H_{in}}{S_h} \right\rceil,  W_{out} = \left\lceil \frac{W_{in}}{S_w} \right\rceil
+$$
+- for stride 1, output height/width equals input
+
+- How much padding per side (odd square kernel k, stride 1)
+$$
+p = (k -1 )/2
+$$
+
+Note that +1 in output size formula is not bias; bias affect parameter count not actual spatial size
+
+### Parameter-count formulas
+- Convolution Layer
+$$
+params = (K_{h} * K_{w} * C_{in} +1) * C_{out}
+$$
+- +1 is bias per filter
+- Cout = no. filters
+
+- Pooling layer
+	- No learnable parameters = 0
+
+- Full connected (dense0 layer)
+$$
+params = (P+1) * C
+$$
+ - P = units in previous layer, C = units in current layer, +1 = bias per neuron
+
+### Worked Examples
+#### AlexNet first Conv 
+- Input : 227 x 227 x 3
+- Filters : 96 
+- kernel : 11 x 11
+- stride often 4 in classic AlexNet
+- Output Channel = 96
+- Spatial size with valid , stride 4:
+	- (227-11)/4 + 1 = 55 -> 55 x 55 x 96
+- Params : (11 * 11 * 3 +1) * 96 = (363 +1) * 96 = 344944
+- Stride Halving
+	- 256 x 256 input, stride = 2 (square kernel, valid) : output ≈ 128 x 128
+
+### What kernels detect
+- Edge detectors (sobel-like): horizontal/vertical edges
+- Center-Heavy kernels: bright spots
+- Stacking layers let networks combine edges -> parts -> objects
+
+### Practical Tips
+- prefer small kernels (3x3) and deeper stacks over large single kernels (eg 3x3 layers with 18 weights vs 1 9x9 with 81 weights)
+- use padding="same" to keep spatial sizes stable across layers for easier design
+- Start with strides 1 in conv; use pooling or stride 2 sparing to down sample
+
+
+## Working with Pooling Layers
+### Why Pooling?
+- CNNs can have millions or billions of parameters - > heavy compute and memory
+- Pooling reduces spatial size of feature maps -> fewer activations to pass forward, lower compute, no extra learnable weights
+
+### Types of pooling
+- Max pooling: 
+	- takes max in each window
+	- common for keeping strongest activation
+	- adds some translation invariance
+	- eg, 2x2 window, stride 2 on 4x4 map -> 2x2 output (halves H and W)
+- Average pooling:
+	- takes mean in each window
+	- smoother, less extreme than max
+- Global pooling:
+	- collapses each channel into a single value
+	- Global Max Pooling
+	- Global Average Pooling
+	- handy before classification to replace large Dense layers
+
+### Key properties
+- pooling layers have 0 trainable params
+- usually places after conv layers
+- Stride controls down sampling:
+	- stride 2 halves spatial size
+	- stride 1 keeps size (acts more as smoothing)
+
+### Why Conv > Dense first
+- Far fewer weights -> faster training, less memory, less overfitting
+- Conv uses local receptive fields + weight sharing
+- Dense connects every pixel to every neuron
+
+### MNIST comparison (28x28 grayscale -> 784 inputs)
+- Dense first layer:
+	- needs 1 weight per input per neuron
+	- 300 neusons -> 784x300 = ~235k weights just for 1 layer
+- Conv first layer:
+	- 5x5 kernel, 4 filters
+	- 5x5x1x5 = 100 weights (plus a few biases)
+
+### Typical MNIST CNN front end
+1. Conv2D (same padding) - preserves 28x28 size while learning edge/texture filters
+2. (Optional) more Conv2D + Pooling - progressively compress spatial dims, enrich features
+3. Flatten - turn feature maps into a vector
+4. Dense - Softmax(10) for digits 0-9
+
+### Key Conv2D parameters to remember
+- filters = output channels (one per kernel)
+- kernel_size = eg,3 or (5,5)
+- padding: "same" (keeps size), "valid" (shrinks)
+- strides: usually 1; :>1 down samples
+- activation: usually ReLu
+
+### Pooling's Role
+- no trainable params
+- reduces spatial size
+- keeps strongest/average signals
+- adds invariance
+
