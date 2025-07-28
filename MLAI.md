@@ -806,3 +806,90 @@ $$
 - keeps strongest/average signals
 - adds invariance
 
+# Dealing with Image Data
+
+## Preprocessing the Image Data
+
+### 1. Build dataset
+- Collect
+- Validate
+- Annotate
+
+### 2. Store efficiently
+- Avoid per-row CSV + JPG paths for large jobs (slow IO)
+- use TFRecord:
+	- Compact, splitable into many files
+	- Fast parallel reads, ideal for GPUs/TPUs and multi-host training
+
+### 3. Read with performant pipelines
+- Use tf.data.TFRecordDataset and tf.data API
+	- dataset = tf.data.TFRecordDataset(files).map(parse_fn, num_parallel_calls=AUTOTUNE).shuffle(...).batch(...).prefetch(AUTOTUNE)
+	- Enables distributed file reads, random augmentations, batching, prefetch
+
+### 4. Preprocess Images
+- Resize
+- Color space convert, crop, flip, rotate/transpose
+- Task-specific segmentation, compression tweaks (Task specific)
+
+#### Resizing Specifics
+- tf.image.resize(img,size) - may distort if aspect ratio changes
+- use tf.image.resize_with_pad to preserve aspect ratio (pads borders)
+- choose method via tf.image.ResizeMethod (bilinear, nearest, etc)
+- for best accuract in some tasks, consider, learned resizers (research result)
+
+#### Other handy tf.image tools
+- adjust brightness/contrast, bounding boxes, color conversions, decode/encode
+
+### 5. Keras preprocessing layers (recommended)
+- Plug preprocessing into the models graph so it runs in training and inference
+	- tf.keras.layers.Resizing(H,W)
+	- tf.keras.layers.Rescaling(1./255)
+	- plus augmentation layers like RandomFlip, RandomRotation, etc
+- Benefit: export a single SavedModel with preprocessing included; no special handing at predict time
+
+
+## Model Params and Data Scarcity Problem
+
+### Why data becomes a bottleneck
+- CNNs are data-hungry:
+	- more layers/filters -> more trainable params -> need more labelled data
+- Training starts from (near) random weights:
+	- more parameters -> more samples needed to estimate them
+
+### Param counts -- MNIST examples  (28x28, 10 classes)
+#### Linear (softmax) Model
+- Weights: H x W x nClasses = 28x28x10 = 7840
+- Biases: nClasses = 10
+- Total: 7850
+
+#### DNN (3 dense layers: first hidden has 200 units)
+- First hidden layer params (28x28) x 300 +300 = 235500
+- Whole DN = ~270k parmas 
+
+#### CNN front end
+- First Conv layer (10 filters of 3x3 stride 1)
+- Params per filter = 3x3xCin+1 (grayscale : 9 +1= 10)
+- Total 10 filters x 10 = 100
+- ENtrie CNN has = ~300k params
+- but 90% in final dense layers; conv layers are parameter efficient
+
+### When Labeled data is scarce
+#### 1. Data augmentation 
+- Make more data
+- Apply label-preserving transforms to training images to increase diversity:
+	- random flips/rotations
+	- crops
+	- translations
+	- zoom
+	- color jitter (brightness/contrast/saturation)
+	- noise
+	- cutout/mixup/cutmix
+- Helps reduce overfitting and improves generalization
+
+#### 2. Transfer Learning
+- Start with pretrained CNN (eg, on ImageNet)
+- Freeze early layers (generic features), fine tune later layers and the classifier head on ur dataset
+- needs far fewer labels than training from scratch and converges faster
+
+
+## Data Augmentation
