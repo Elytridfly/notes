@@ -1696,3 +1696,60 @@ void printItems(int n ) {
 - Best case: key is found in 1st iteration
 - Worst case: key is found at last round of iteration or not found
 ![[Pasted image 20250709012933.png]]
+
+
+
+# Graph
+
+- Non-linear data structure consisting of 
+	- vertices
+	- edges
+- vertices are connected by edges
+- used to represent relationships between different entities
+
+![[Pasted image 20250801005115.png]]
+
+- simple undirected graph has edges as bidirectional(eg, vertex 2 can go to vertex 1 and vice versa)
+- simple unweighted graph has no value (such as distance) attached to its edge
+
+
+- directed graph
+![[Pasted image 20250801005229.png]]
+
+- weighted graph
+![[Pasted image 20250801005245.png]]
+
+## Representation of Simple Graph
+- use simple ArrayList to house all vertices 1,2,3,4,5
+-  use another ArrayList for each vertex to house its neighboring vertices, aka adjacent lists (eg, edges)
+
+![[Pasted image 20250801005359.png]]
+
+
+## Traversal of Graph
+- 2 fundamental methods in traversing a graph
+	- Breadth First Search BFS
+	- Depth First Search DFS
+- aim is to visit all vertices 
+- every vertex can only be visited once
+
+
+### Breadth First Search
+- Prepare a visited List (initially empty)
+- Prepare a Queue (initially empty)
+![[Pasted image 20250801005545.png]]
+
+Steps:
+1. put root vertex in queue
+	a. while(queue is not empty)
+		pool() a vertex from queue
+		if (vertex has not been visited before)
+				process vertex 
+				push neighbors into queue
+		repeat till queue is empty
+
+![[Pasted image 20250801005710.png]]
+
+![[Pasted image 20250801005725.png]]
+
+pg 10
