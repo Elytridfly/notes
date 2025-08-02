@@ -1740,16 +1740,146 @@ void printItems(int n ) {
 ![[Pasted image 20250801005545.png]]
 
 Steps:
-1. put root vertex in queue
-	a. while(queue is not empty)
-		pool() a vertex from queue
-		if (vertex has not been visited before)
-				process vertex 
-				push neighbors into queue
-		repeat till queue is empty
+- put root vertex in queue
+- while(queue is not empty)
+	- pool() a vertex from queue
+	- if (vertex has not been visited before)
+		- process vertex 
+		- push neighbors into queue
+- repeat till queue is empty
 
 ![[Pasted image 20250801005710.png]]
 
 ![[Pasted image 20250801005725.png]]
 
-pg 10
+
+### Depth First Search
+- Prepare a visited List (initially empty)
+- Prepare a Stack (initially empty)
+![[Pasted image 20250802114133.png]]
+
+Steps:
+-  put root vertex in stack
+- while (stack is not empty)
+	- pop() a vertex from stack
+	- if(vertex has not been visited before)
+		- process the vertex
+		- push neighbors into stack
+- repeat till stack is empty
+
+![[Pasted image 20250802114312.png]]
+
+![[Pasted image 20250802114322.png]]
+
+
+## Implementing Traversal in BFS
+
+```
+class Vertex{
+	String label;
+	ArrayList<Vertext> adjLest = new ArrayList<>();
+	
+	Vertex (String label){
+		this.label = label;
+	}
+}
+
+```
+
+![[Pasted image 20250802114539.png]]
+
+
+```
+Vertex a = new Vertex("A");
+Vertex b = new Vertex("B");
+Vertex c = new Vertex("C");
+Vertex d = new Vertex("D");
+Vertex e = new Vertex("E");
+
+a.adjList.add(b);
+a.adjList.add(c); // what if d is added
+a.adjList.add(d); // before c?
+
+b.adjList.add(a);
+
+c.adjList.add(a);
+c.adjList.add(e);
+
+d.adjList.add(a);
+d.adjList.add(e);
+
+e.adjList.add(c);
+e.adjList.add(d);
+
+```
+
+
+### Traversal
+- Prepare visited Arraylist and Queue
+```
+ArrayList<Vertex> visited = new ArrayList<>();
+Queue<Vertex> q = new ArrayDeque<>();
+
+// set root
+q.add(b);
+
+```
+
+- Start loop with algorithm for BFS
+
+```
+while (!q.isEmpty()){
+	Vertex current = q.poll();
+	
+	if (!visited.contains(current)){
+		visited.add(current);
+		
+		for (int i=0; i<current.adjList.size(); i++){
+			q.add(current.adjList.get(i));
+		}
+	}
+}
+
+visited.forEach(z->System.out.print(z.label+" "));
+
+
+
+
+Output:
+B A C D E
+```
+
+
+
+## Implementing Traversal in DFS
+- instead of queue, use stack
+
+```
+ArrayList<Vertex> visited = new ArrayList<>();
+Stack<Vertex> s = new Stack<>();
+
+// set root
+s.push(b);
+```
+
+### Traversal
+
+```
+while (!s.isEmpty()){
+	Vertex current = s.pop();
+	
+	if (!visited.contains(current)){
+		visited.add(current);
+		
+		for (int i=0; i<current.adjList.size(); i++){
+			s.add(current.adjList.get(i));
+		}
+	}
+}
+
+visited.forEach(z->System.out.print(z.label+" "));
+
+
+Output:
+B A D E C
+```
