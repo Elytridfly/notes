@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OOP.md",
+                "file": "MLAI.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "OOP"
+              "title": "MLAI"
             }
           }
         ]
@@ -171,6 +171,7 @@
   },
   "active": "4b038e72807ff1e7",
   "lastOpenFiles": [
+    "5G AIoT.md",
     "Pasted image 20250802114539.png",
     "Pasted image 20250802114322.png",
     "Pasted image 20250802114312.png",
@@ -181,11 +182,9 @@
     "Pasted image 20250801005359.png",
     "Pasted image 20250801005245.png",
     "Pasted image 20250801005229.png",
-    "Pasted image 20250801005115.png",
     "ECS.md",
-    "OOP.md",
     "MLAI.md",
-    "5G AIoT.md",
+    "OOP.md",
     "ECS tutorials.md",
     "Untitled",
     "5G (Qualcomm).md"

@@ -892,4 +892,111 @@ $$
 - needs far fewer labels than training from scratch and converges faster
 
 
-## Data Augmentation
+# Data Augmentation
+
+## But why?
+- CNNs need lots of labeled data, but real datasets are often small
+- Data augmentation increases dataset size and diversity without collecting new images
+- Goal to improve generalization and reduce overfitting
+
+## Conceptual Idea
+- Adds new data points in feature space by applying label-preserving transformations
+- Works well when:
+	- Transformations don't change the class
+	- Transformations reflect realistic variation expected at inference time
+
+## Pitfalls
+- avoid transformations that create unrealistic samples (eg, flipped text)
+- use transformations relevant to the domain (brightness for outdoor photos, but not studio photos)
+
+## Common Augmentation Techniques
+
+### Geometric Transformations
+1. Flip (horizontal/vertical)
+2. Rotate
+3. Crop/ Random Crop
+4. Zoom/ Scale/ Resize
+5. Translate (shift position)
+
+### Color and intensity adjustments
+1. Brightness
+2. Contrast
+3.  Hue/ Saturation
+4. Convert to grayscale
+
+### Others
+1. Blur/ Sharpen
+2. Noise addition (Gaussian or speckle) 
+3. Cutout, Mixup, CutMix (advanced Methods)
+
+#### Example:
+- Classifying professional flower photos -> don't adjust brightness/contrast (since lighting is consistent)
+- Classifying real-world flower photos -> brightness/ contrast augmentation will help
+
+## Implementation Options
+1. tf.image + tf.data
+	- Use dataset.map for batch-wise augmentation
+	```
+	tf.image.flip_left_right(image)
+	tf.image.rgb_to_grayscale(image)
+	tf.image.stateless_random_brightness(image, max_delta=0.2, seed=(1,2))
+	tf.image.stateless_random_contrast(image, 0.8, 1.2, seed=(1,2))
+	```
+	- Parallelizable -> faster pipelines
+
+2. Keras Augmentation Layers
+	- Easy to integrate directly into a model
+	```
+	tf.image.flip_left_right(image)
+	tf.image.rgb_to_grayscale(image)
+	tf.image.stateless_random_brightness(image, max_delta=0.2, seed=(1,2))
+	tf.image.stateless_random_contrast(image, 0.8, 1.2, seed=(1,2))
+	```
+	- Train-time only, automatically skipped during inference
+	- Can be saved in the model -> prepossessing applied automatically
+
+
+
+## Training Considerations
+- Training with augmentation may take longer as dataset is effectively larger
+- Augmentation reduces overfitting and improves real-world accuracy if transformations are chosen wisely
+
+
+# Transfer Learning
+
+## Why?
+- Data scarcity problems : CNNs need lots of labeled data, but small datasets are common
+- Data Augmentation -> creates more data
+- Transfer Learning -> reduces data needs by starting from pretrained model with good initial weights
+
+
+## Core Idea
+- Use source model trained on large, general dataset (eg, ImageNet)
+- Transfer knowledge to target task with limited data
+- Benefits:
+	- Faster convergence than training from scratch
+	- Better performance on small datasets
+	- Lower compute and data cost
+
+## How it works
+1. Select Pretrained model (eg, MobileNet)
+2. Decide which layers to keep vs replace
+	- Early Convolutional Layers -> general Features (edges, textures)
+	- Later Layers -> task-specific (class-dependent features)
+3. Cut model after conv layers, attach own fully connected Dense head and tail for your task
+
+## Training Strategies
+- Freeze base model (feature extractor model)
+	- keep pretrained weights constant
+	- recommended for small datasets -> reduces overfitting risk
+- Fine-tune base model
+	- allow pretrained layers to continue updating
+	- recommended for larger datasets -> can capture domain-specific nuances
+
+
+## Implementation Notes
+- Pretrained Models on TensorFlow Hub can be loaded directly as Keras Layers
+- eg, MobileNet
+	- 1-4Mil parameters, trained on ImageNet
+	- provides high-quality embeddings for more natural images
+	- great starting point for flower, animal, or object classification tasks                                                            
