@@ -1426,4 +1426,384 @@ c. Transport Network
 - consists of
 
 a. IoT devices
-pg17
+- Sensors: devices including light, motion, humidity, and temperature sensors that gather info of the surrounding
+- Actuators: devices like motors, valves, and relays that take action based on AI's decision
+- Edge devices: reduces latency and bandwidth usage, they perform initial data processing  and occasionally make AI inferences near data source
+
+b. Connectivity
+- Network Protocols: allow IoT devices and central systems communicate with each other. Eg, Bluetooth, Wi-Fi, Zigbee, Lora, cellular networks
+- Gateways: handle data aggregation, security, protocol translation while bridging local IoT networks with cloud-based or centralised systems
+
+c. Data Management
+- Data Storage: Cloud-based and on-premise solutions for keeping enormous amounts of IoT data
+- Data Processing; systems for evaluating and processing info gathered from IoT devices
+
+d. Ai and Analytics
+- ML models: models and algorithms that use data analysis to predict or decide
+- AI Software Platforms: Tools and frameworks for developing , training, and deploying AI models in software
+
+e. Cloud and Edge Computing
+- Cloud Services: IoT device management, AI model execution, data storage platforms
+- Edge Computing Infrastructure: Relocated computing power near data source to facilitate AI and data processing
+
+
+### Suppliers of AIoT Resources
+a. IoT devices
+- Sensors and Actuators
+	- Bosch, Honeywell, Texas Instruments
+		- leading manufacturers of sensors and actuators
+	- STMicroelectroms, NXP Semiconductors
+		- suppliers of embedded systems and microcontrollers
+- Edge Devices
+	- NVIDIA, Intel
+		- providers of edge AI hardware such as Jetson and Movidius
+	- Raspberry Pi Foundation, Arduino
+		- popular for prototyping and developing IoT solutions
+
+b. Connectivity
+- Network Protocols
+	- Qualcomm, Broadcom
+		- providers of communication modules and chipsets
+	- Laird Connectivity, Murata
+		- Manufacturers of antennas and RF modules
+- GateWays
+	- Cisco, Advantech, Dell EMC
+		- Suppliers of industrial and commercial IoT gateways
+	- Sierra Wireless, MultiTech
+		- specialised providers of IoT gateway solutions
+
+c. Data Management
+- Data Storage
+	- AWS, Google Cloud, Microsoft Azure
+		- Major Cloud storage Providers
+	- IBM, Orcale
+		- suppliers of on-premise and cloud database solutions
+- Data Processing
+	- Apache Kafka, Apache NiFi
+		- Tools for building data pipelines
+	-  Splunk, Tableau
+		- Platforms for data analysis and visualisation
+
+d. Ai and Analytics
+- ML models
+	- OpenAi, Google Ai, DeepMind
+		- cutting edge Ai research and pre-trained models
+	- Kaggle, UCI ML repo
+		- sources for training datasets
+- Ai Software Platforms
+	- TensorFlow, PyTorch
+		- frameworks for developing AI models
+	- Amazon SageMaker, Google Ai platform
+		- training and deploying AI models
+
+e. Cloud and Edge Computing
+- Cloud Services:
+	- AWS, Microsoft Azure, Google Cloud
+		- Leading cloud computing services
+	- IBM Cloud, Oracle Cloud
+		- Additional service providers
+- Edge Computing Infrastructure
+	- NVIDIA, Intel
+		- hardware providers
+	- AWS IoT Greengrass, Azure IoT Edge
+		- platforms for managing and deploying AI workloads
+
+
+All these companies offer fundamental supplies needed to set up and operate effective AIoT Infrastructure, making it possible to combine AI and IoT Tech to build intelligent connected systems
+
+
+
+## 5G & AIoT Integration
+![[Pasted image 20250802175954.png]]
+
+-  5G networks architecture allows integration of AIoT by providing high-speed, low-latency and massive connectivity for IoT devices
+
+1. AIoT Devices
+- devices with edge AI capabilities, actuators, sensors
+- gather env data, process locally, make decisions
+
+2. 5G RAN
+- High-speed, low-latency connectivity to AIoT devices
+- made up of many gNB base stations
+
+3. 5G Core Network
+- NSSF, PCF, AMF, SMF
+- part of 5G ore network
+- help AIoT application by allowing network slicing, policy management,m session management
+
+4. AI Cloud
+- platform for data analytics and AI models are hosted in AI cloud
+- gathers data from AIoT devices
+- applies AI algorithm to process and generates decisions and insights
+
+5. AI Insights
+- For intelligent automation and decision-making 
+- AI cloud sends insights and decisions back to AIoT devices and other systems
+
+- Among use cases enabled by integration of 5G and AIoT are smart cities
+intelligent manufacturing, predictive maintenance, and autonomous systems
+- 5G's fast and low-latency connectivity allows real-time data transfer from AIoT devices to AI cloud
+- allowing for quick analysis and decision-making
+- furthermore, massive connectivity of 5G allows large-scale AIoT systems with many devices
+
+- Typically 5G cellular network's edge is home to Multi-Access Edge Computing (MEC) 
+- due to close proximity to end users
+- it can process data close to network's edge 
+- for applications with needs of low-latency and high speed
+
+
+## 5G & AIoT integration Challenges and Solutions
+
+
+![[Pasted image 20250802180905.png]]
+
+
+1. Infrastructure Cost and Deployment
+	1. Challenge: costly and time consuming, large investment is needed for hardware, software, licenses, insufficient 5G SA cell towers
+	2. Solution: share costs, public and private sectors can collab, incremental upgrades using current infrastructure
+2. Interoperability Issues
+	1. Challenge: issues when integrating 5G with current IoT systems and devices
+	2. Solution: develop standardized interfaces and protocols, use middleware and firmware upgrades
+3. Data Security and Privacy
+	1. Challenge: likelihood of cyberattacks and data breaches go up
+	2. Solution: strong encryption techniques, secure auth protocols, regular security audits, real-time threat detection
+4. Latency Reliability
+	1. Challenge: difficult to reliably get low latency due to different factors
+	2. Solution: process data near to source, edge computing, increase micro-cell coverage, repeater deployment
+5. Power Consumption
+	1. Challenge: IoT that run on battery, 5G may increase power consumption
+	2. Solution: develop energy-efficient hardware and communication protocols, use AI for power management
+6. Algorithmic Bias and Discrimination
+	1. Challenge: bias against particular race or ethnic group may be unintentionally be reinforces, troubling in healthcare, policing, facial recognition
+	2. Solution: inclusive data practices, stringent bias testing
+
+
+
+## UNSDG
+
+Integrating 5G and AIoT (Artificial Intelligence of Things) presents a huge opportunity to
+achieve the United Nations Sustainable Development Goals (UN SDGs). The innovative
+solutions that these technologies can accomplish each of the 17 goals are listed in the
+list below:
+
+1. No Poverty
+• Solution: Implement 5G-enabled AIoT technologies for precision agriculture to boost
+crop yields and save smallholder farmers' expenses. Livelihoods can be enhanced by
+real-time market information and intelligent irrigation systems.
+
+2. Zero Hunger
+• Solution: Utilise AIoT to implement smart farming practices that maximise resource
+efficiency and boost food yield. To improve crop management and cut down on food
+waste, automated devices can keep an eye on the weather and the state of the soil.
+
+3. Good Health and Well-being
+• Solution: Use 5G networks to provide telemedicine and remote health monitoring
+services that offer real-time diagnostics and health data, particularly in underserved or
+distant areas. AIoT can also more efficiently coordinate public health responses and
+track disease outbreaks.
+
+
+4. Quality Education
+• Solution: Make education more accessible by enabling 5G connectivity to support
+virtual classrooms and remote study. AI-powered personalised learning systems can
+improve learning outcomes by customising instructional materials to each learner's
+needs.
+
+5. Gender Equality
+• Solution: Give women access to digital resources and platforms that can improve their
+empowerment and access to the economy. Applications of AIoT in health and education
+can be especially helpful for women and girls living in underserved communities.
+
+6. Clean Water and Sanitation
+• Solution: Use AIoT to create intelligent water management systems that maximise
+distribution while keeping an eye on water quality. 5G-enabled sensors' real-time data
+may identify pollutants and leaks, guaranteeing clean and safe water.
+
+7. Affordable and Clean Energy
+• Solution: Use AIoT to optimise energy grids so they may incorporate renewable
+energy sources and operate more efficiently. Smart grids and metres help cut down
+on energy waste and offer remote communities reasonably priced power options
+
+8. Decent Work and Economic Growth
+• Solution: AIoT applications can improve worker safety and industrial efficiency.
+Automation and predictive maintenance can boost output, while 5G connection
+opens up new business and economic opportunities.
+
+9. Industry, Innovation, and Infrastructure
+• Solution: To monitor and maintain vital infrastructure, such as roads, buildings, and
+bridges, develop smart infrastructure using 5G-enabled sensors and AIoT systems.
+Promote innovation by using intelligent logistics and production.
+
+10. Reduced Inequalities
+• Solution: Ensure that underprivileged and marginalised populations have access to 5G
+in order to foster digital inclusion. Applications for the Internet of Things (AIoT) can offer
+opportunities and necessary services that can close the socio-economic divide.
+
+11. Sustainable Cities and Communities
+• Solution: Use 5G and AIoT to implement smart city solutions, such as intelligent traffic
+control, effective waste management, and energy-efficient building design. Both
+sustainability and urban living conditions can be enhanced by these methods.
+
+12. Responsible Consumption and Production
+• Solution: Reduce waste and optimise supply chains with AIoT. By tracking resource
+consumption and environmental effects, smart sensors can promote sustainable
+behaviour and lower carbon footprints.
+
+13. Climate Action
+
+• Solution: Use AIoT to monitor the environment and respond to emergencies. Realtime tracking of climate variables via 5G-enabled sensors provides information to
+anticipate and lessen the effects of climate change.
+
+14. Life Below Water
+• Solution: Utilise AIoT for pollution control and ocean monitoring. Monitoring water
+quality and marine biodiversity with sensors contributes to the preservation and
+sustainable use of marine resources.
+
+15. Life on Land
+• Solution: Use AIoT systems for habitat preservation and animal monitoring.
+Ecosystem preservation is facilitated by the use of smart sensors, which can monitor
+animal movements and environmental conditions.
+
+16. Peace, Justice, and Strong Institutions
+• Solution: AIoT applications for emergency response, crime prediction, and monitoring
+can improve public safety and justice. Systems that are effective and transparent can
+strengthen institutions and advance peace.
+
+17. Partnerships for the Goals
+• Solution: Enable governments, non-governmental organisations, and the corporate
+sector to collaborate globally by utilising 5G and AIoT platforms to facilitate data sharing,
+resource pooling, and coordinated actions.
+
+Summary:
+The combination of 5G and AIoT creates a powerful toolkit for achieving the UN SDGs.
+Using these technical advancements, we can create more thoughtful, practical, and
+inclusive solutions to the world's most pressing issues. With thoughtful design and
+widespread implementation, these advancements have the potential to significantly
+improve sustainable development on a global scale.
+
+
+### Apply 5GAIoT for UNSDG 2
+
+
+
+- **Company & Technology**: NeXtgen Agri (New Zealand) is testing a **sheep facial recognition system** in Australia.
+    
+- **Purpose**: Helps farmers **identify which ewes produce the best and most lambs**.
+    
+- **Challenge**: Difficult to **track parentage** among **tens of thousands of sheep**.
+    
+- **Solution**: Combines **camera, computer, neural networks**, and **proximity data** to **autonomously match lambs to ewes**.
+    
+- **Benefit**: **Simplifies lamb matching** and **enhances sustainable sheep farming operations**.
+
+The capabilities and effectiveness of sheep face recognition can be greatly increased by
+integrating 5G and the Internet of Things (IoT). This is an in-depth discussion of how to
+accomplish this integration:
+
+Implementation Example: Step-by-Step Process
+1. Deploy IoT Cameras: Install cameras at strategic locations to capture sheep faces.
+
+2. Set Up 5G Network: Ensure comprehensive 5G coverage across the farm for seamless
+connectivity.
+
+3. Install Edge Devices: Deploy edge computing units for initial data processing and realtime alerts.
+
+4. Connect to Cloud: Link edge devices to cloud servers for advanced AI analysis and data
+storage.
+
+5. Develop Dashboard: Create a user-friendly dashboard for real-time monitoring and
+management.
+
+6. Integrate Systems: Link the facial recognition system with other farm management
+tools for holistic insights.
+
+
+Farmers may manage their flocks with a high degree of automation, efficiency, and
+precision by combining 5G and IoT with facial recognition technology for sheep. This
+technology is an effective investment for modern agriculture since it improves
+agricultural operations while also improving animal comfort.
+
+
+
+
+### Apply 5GAIoT for UNSDG 9- 
+
+**Goal Link**: Supports **UNSDG Goal 9** (Industry, Innovation, and Infrastructure).
+    
+- **Method**: **Facial recognition door access systems** improve **building and infrastructure security**.
+    
+- **Tech Integration**:
+    
+    - **AI & AIoT** enhance **system intelligence and automation**.
+        
+    - **5G** (high-speed, low-latency) enables **real-time processing, communication, and data transfer**.
+- **Outcome**: **Stronger, smarter, and more efficient security infrastructure**.
+
+Here is a step-by-step guide on how to integrate 5G into a facial recognition door access
+system:
+
+1. Evaluate Infrastructure and Requirements:
+• Evaluate the current setup and ascertain what is needed to implement a facial
+recognition door access system.
+• Determine the positions of cameras, access points, and other hardware parts.
+• Find out if 5G networks are available and covered in the deployment area.
+
+2. Select Facial Recognition Hardware:
+• To take pictures of faces, choose high-definition cameras that have facial recognition
+built in.
+• At entry points, use access control terminals with integrated facial recognition sensors
+to confirm people's identities.
+
+3. Integrate 5G Connectivity:
+•To establish connectivity, install 5G-enabled modems or routers at centralised servers
+and access control terminals.
+• Set up access control terminals to communicate and transmit data in real time across
+5G networks.
+
+4. Develop AI Algorithms:
+•Develop or integrate AI facial recognition and authentication algorithms.
+• Ensure that AI algorithms are accurate and optimised for real-time processing, making
+use of 5G's low latency.
+
+5. Implement Edge Computing:
+• To process facial recognition data locally, implement edge computing capabilities on
+local servers or access control terminals.
+• To minimise delay and lessen reliance on centralised servers, offload computing
+workloads to edge devices.
+
+6. Enable Real-Time Communication:
+• Access control terminals and centralised servers, or cloud platforms, can communicate
+in real time by utilising 5G networks.
+• To facilitate fast facial recognition and access control decisions, ensure that there is low
+latency connectivity and high-speed data transfer.
+
+7. Ensure Security and Privacy:
+• Use authentication and encryption techniques to protect data being transferred across
+5G networks.
+• Respect privacy laws and industry best practices to safeguard people's personal
+information and facial features data.
+
+8. Test and Optimise:
+• To ensure the integrated system's reliability, effectiveness, and functionality, thoroughly
+test it.
+• To achieve the highest levels of accuracy and efficiency, optimise system settings,
+network setups, and AI algorithms.
+
+9. Deploy and Monitor:
+• Install the door entry system with integrated facial recognition in the intended setting.
+• To address any issues or concerns, keep monitoring on system performance, network
+connectivity, and security posture.
+
+10. Provide Maintenance and Support:
+• Establish procedures for the integrated system's continuing support, updates, and
+maintenance.
+• Employees should receive training on system maintenance best practices,
+troubleshooting, and operation.
+
+Summary:
+Deploying 5G connectivity, optimising AI algorithms for real-time processing, and
+ensuring security and privacy are all necessary steps in integrating 5G into a facial
+recognition door access system. Organisations may improve the functionality,
+dependability, and efficiency of facial recognition door access systems while offering
+smooth and secure access control solutions by utilising high-speed, low-latency 5G
+networks.
