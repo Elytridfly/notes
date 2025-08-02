@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5G AIoT.md",
+                "file": "ECS.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "5G AIoT"
+              "title": "ECS"
             }
           }
         ]
@@ -171,8 +171,9 @@
   },
   "active": "4b038e72807ff1e7",
   "lastOpenFiles": [
-    "ECS tutorials.md",
+    "Pasted image 20250803013527.png",
     "5G AIoT.md",
+    "ECS tutorials.md",
     "5G (Qualcomm).md",
     "ECS.md",
     "Pasted image 20250802180905.png",

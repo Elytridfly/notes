@@ -1339,3 +1339,62 @@ complete interaction diagram :
 
 
 
+# Liquid Crystal Display LCD
+
+## Intro
+- widely used as output devices
+- as they consume little current compared to LEDs
+- also physically smaller and have color capabilities
+- troublesome to interface with bare LCD
+- LCD modules incorporate graphics processor and interface electronics
+- modules have advantage of :
+	- easily interface and control powerful display functions
+	- not needing to refresh display
+- Selecting LCD need 2 basic design decisions
+	- size and format needed to display desired info
+	- optical characteristics that look best in package, attract user to product
+
+- Alphanumeric modules displays characters, numerals, symbols and some limited graphics
+- normally connected to host processor through parallel data bus, although serial interfaces are available too
+
+- various LCD modules are available from different manufacturers
+-  LCDs come in many sizes, 1-4 lines, 16-40 chars per line, 5x7 or 5x10 dot display fonts
+- Character heights spans 9.130" (3.31 mm) to 0.5" (12.71mm) 
+- most formats are available in variety of packages to meet various mounting requirements
+- multi line models offer best value when analysed by "cost per character" basis
+- by using backlight models, they will be visible both in day and night
+- extended temp modules can operate between -20 to +70 C
+
+- >4 lines or >40 char across, graphic formatted module
+- Graphic modules are also used for different sized chars, and when special fonts used like chinese or arabic
+
+
+### LCD Fluid Types
+- Fluid dye determines contrast ratio, viewing angle, temperature range
+- 3 basic dyes:
+	- TN (Standard)
+	- NTN (High Contrast)
+	- STN (Premium High Contrast)
+- Many TN and NTN models are available in extended temp range
+
+
+### Character LCD Controller
+- Software determines what, how, where data is displayed on LCD
+- Most char modules use Hitachi FD44780 IC or equivalent
+- Features:
+	- Built-in generator with 192 char modified ASCII char set
+	- Ability to program up to 8 user defined chars
+	- Bi-directional 8 or 4 bit bus interface
+	- 80 char RAM
+	- Auto reset on power up
+	- Wide range of instructions such as:
+		- Display Clear
+		- ON/OFF
+		- Cursor positioning
+		- Display or cursor shift on data entry
+
+## LCD Hardware Overview
+
+![[Pasted image 20250803013527.png]]
+
+General Operation
