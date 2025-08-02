@@ -1807,3 +1807,6 @@ recognition door access system. Organisations may improve the functionality,
 dependability, and efficiency of facial recognition door access systems while offering
 smooth and secure access control solutions by utilising high-speed, low-latency 5G
 networks.
+
+
+# 5G and AIoT Applications
