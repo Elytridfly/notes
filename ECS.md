@@ -1617,18 +1617,117 @@ complete interaction diagram :
 ## LCD Hardware Design
 
 
+### Power Supply Requirements
+<u>power Supply to Module Connection </u>
+
+
+- Modules require +5V at 1 to 10 mA
+- Extended Temp and some high contrast modules need -5V also at low current
+- inexpensive ICs convert +5V to -5V efficiently
+- if display has backlight required power must also be budgeted
+
+- module's logic ciurcuit have 3 connections to PSU
+- VDD ( +5V DC)
+- VSS (Ground)
+- V<sub>o</sub> (View Angle adjustments/ contrast/ bias control)
+- Contrast can also be controlled with DAC 
+
+![[Pasted image 20250803141444.png]]
+
+
+### Logic Connections
+- LCD Module appears as 2 8 bit registers to a microprocessor system
+- there are 3 control pins, making total 11 pins or 2 registers
+- interfacing with the module to existing system involves
+1. applying proper viewing angle voltage to displays V<sub>o</sub> pin
+2. connecting module to host processor - directly to port or through buffers and latches
+3. developing strobe signal for "E" signal
+4. applying appropriate "RS" and "R/W" signals to modules
+
+
+![[Pasted image 20250803144258.png]]
+
+- 8 bit mode is more straightforward and control is simple
+- we need 8 data bit and 3 control 
+- we need 2 8bit devices to interface with it
+
+
+![[Pasted image 20250803145517.png]]
+
+<u> Timing Aspect of Alphanumeric LCDs </u>
+- classified as slow peripherals
+- Enable "E" signal is key signal
+- this clocks the data and control signals into the LCD module
+- E signal must be clean positive going digital strobe
+- active while data and control information are stable
+- 2 control lines RS and R/W must be set before activation of E
+- must remain stable for 10 ns after fall of E
+
+- choice of host connections are RD and WR strobes (or R/W line) 
+- connect E pin as a chip select line
+- E strobes must be 450 ns wide (PW) minimum
+- most processors operate at higher speeds than this and its not practical to slow down the host for this purpose
+- often we latch both data and control info toggling E signal this way
+- or if a port is free, it may be used as well
+
+- When parallel port supplies RS, R/W and E, all lines should not change  together
+- it will result f a single instruction is employed, it would violate the set-up requirement
+- instead second instruction must independently set the E bit high after other lines are set
+
+- Another option is to tie R/W and RS pins to host address lines which are set up earlier in machine cycle
+- data bus must set-up 195s prior to fall of "E" 
+- the lines must hold for at least 10 ns after E falls
+- most host strobes meet these requirements
+
+- Normally E strobes would be approximately 40 ms apart
+- which is maximum display thoughput
+
+
+<u> 4 bit connection </u>
+- iadvantage is that only needs 4 data lines and 3 control lines
+- so 1 8bit port will be enough
+- reduces no. of 8 bit devices used
+- only slight increase in software complexity
+- 2 ways to connect up:
+	- directly to port
+	- through latch
+
+![[Pasted image 20250803150655.png]]
+
+- data transfer between module and host processor is completed after 4-bit data has been transferred twice
+- 4 high order bits (DB4 to DB7) first then low order bits (DB0 to DB3)
+- if busy flag is used, it must be checked after 4-bit data tranffered twice
+- one being instruction
+- 2 more 4-bit operation ten transfer busy flag and address counter data
+
+
+<u> 8 bit initialization </u>
+![[Pasted image 20250803150842.png]]
+
+- 15ms delay after power up before initialization starts
+- then 4 1 ms and 100 μs delays where "3X" codes are sent
+- following are sample init code for various configs (all in hex)
 
 
 
+1 line display with 5x7 font 30, 30, 30, 30, 08, 01, 06
+
+1 line display with 5x10 font 34, 34, 34, 34, 08 ,01, 06
+
+2 line display with 5x7 font: 38, 38, 38, 38, 08, 01, 06
+
+Of course, a 0E code should be sent to turn on the display!
 
 
+<u> 4 bit initialization </u>
 
+![[Pasted image 20250803151125.png]]
 
+- modules will operate from 4-bit wide data bus
+- data is transferred over data lines
+- D7-D4, D3-D0 may float
+- 8bit hex code is sent one nybble at a time
+- higher nybble first
+- function set in initialization routine must change to accommodate this mode:
 
-
-
-
-
-
-
-
+2 line display with 5x7 font 28, 28, 06, 0E, 01
