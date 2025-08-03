@@ -1,4 +1,5 @@
 # Intro to Embedded Systems
+---
 - Embedded computer systems are special versions of computers we use daily
 - ranging to remote controls to washing machines
 
@@ -267,6 +268,7 @@
 
 
 # Bus Systems and Devices
+---
 
 ## Intro
  - embedded processors have hundreds of kB size on-chip memory
@@ -550,6 +552,7 @@ This process is called “bootstrapping”. Other processors will jump to other 
 
 
 # Decoding on bus system
+---
 - although 8080 has 16 bits for addressing
 - we consider these 16 bits for memory chips
 - then first 6 bits for IO devices
@@ -680,6 +683,7 @@ the value 2H.
 
 
 # Keyboard interfacing
+---
 ## Intro
 - common input method from human to microprocessor is keyboard
 - low cost, large amount o info may be input
@@ -868,6 +872,7 @@ for (i = 0 ; i <= 12; i++)
 
 
 # Top Down Design with UML
+---
 ## Introduction
 - microprocessors are fabricated using Large Scale Integration (LSI) technology 
 - unit cost of each processor is very low
@@ -1340,6 +1345,7 @@ complete interaction diagram :
 
 
 # Liquid Crystal Display LCD
+---
 
 ## Intro
 - widely used as output devices
@@ -1397,4 +1403,232 @@ complete interaction diagram :
 
 ![[Pasted image 20250803013527.png]]
 
-General Operation
+<u>General Operation</u>
+- module interfaces with host processor through data bus
+- by controlling using RS pin, data goes to one of the 2 8-bit registers
+	- Instruction Register (IR)
+	- Data Register (DR)
+- IR stores instruction codes such as display clear or cursor shift, address info for display data RAM (DDRAM)
+- IR can only be written from host processor
+
+- When host processor writes to DR, register will temporarily hold the data
+- then it will auto transferred to DDRAM 
+
+- When address info is written into IR, data is read then stored into DR from DDRAM 
+- Data transfer from module is completed when host processor reads the DR
+
+- When reading from module, DR will hold data read from DDRAM
+- After host processor does a read, data at next address is auto read (Special feature of module)
+- data will be sent to DR in preparation for next read
+
+<u>Data Display RAM </u>
+- used to start data to be displayed
+- 8-bit chars "modified" ASCII codes
+- can handle 80x8 bits or 80 chars
+- if actual no. char are less than that, unused  DDRAM can be used as general data RAM
+
+<u> Character Generator ROM/RAM </u>
+- CGROM holds actual bit patterns to be shown on display
+- patterns are constructed using 5 x 8 bit matrix
+- internal logic in LCD module takes data from DDRAM
+- then calculate where bit patterns for that data is stored in CGROM
+- the patterns are shifted out to display drivers and then to individual LCD display elements
+
+- CGROM in standard module has 160 char in 5x8 bit pattern format and 32 char in 5x10 pattern
+
+- users can defined 8 special chars or symbols in 5x8 format (4 for 5x10)
+- the bit patterns are stored in CGRAM
+- once programmed, new chars may be accessed as if they are in normal CGROM
+- it must be reprogrammed if power is interrupted
+
+<u> Relationship between DDRAM and CGROM </u>
+- eg, value 62H (ASCII 'b') is send to DR. from there it goes into DDRAM at address specified by Address Counter
+- module logic will access bit pattern stored in CGROM
+- then its shifted out and displayed on actual display
+</br>
+![[Pasted image 20250803123428.png]]
+</br>
+
+- '1' will turn on the pixel in the row
+- char shown as 5 x 7 dot matrix but stored as 8 byte (8x8) array
+
+
+<u> Busy Flag BF</u>
+- when BF = 1, module is in internal operation mode
+- next instruction will not be accepted
+- if host processor performs a read, bust flag will output DB7
+- next instruction must be written after ensuring BF = 0
+
+<u> Address Counter AF </u>
+- AC used to access data in DDRAM and CGRAM
+- when "set address" instruction is sent  to IR, address info is sent from IR to AC
+- type of instruction determines if DDRAM or CGRAM is addressed
+
+- after writing to DDRAM, AC is auto incremented by 1
+- when reading, AC auto decrease by 1
+- AC contents are then output to DB0 - DB6
+- AC register holds only 7 bits
+
+- when addressing CGRAM, cursor/blinking effect will appear
+- ignore as AC is pointing to CGRAM address and thus not affect DDRAM 
+
+- through RS signal, 2 registers can be selected as shown
+
+|RS |R/W | Operation|
+|-|-|-|
+|0|0|Write to IR to start internal operation (eg, display clear)|
+|0|1|Read BF (DB7) and AC (DB0 to DB6)|
+|1|0|Write to DR for display (DR to DDRAM)|
+|1|1|Read from DR the contents of DDRAM (DDRAM to DR)|
+
+
+<u>Timing Generation Circuit </u>
+- generates timing signals for operation for internal circuits like DDRAM and CGROM
+- RAM reads timing for display and internal operation timing by host processor access are generated separately to avoid interfering with each other
+- thus when writing data to DDRAM, there will be no side effects such as flickering
+
+
+<u> Cursor/ Blink Control Circuit </u>
+- generates cursor or character blinking
+- blinking cursor will appear with digit located at DDRAM address set in AC
+
+- eg, when when AC is 08H, cursor position is displayed at DDRAM address 08H
+- when char is written to DR, ASCII char will appear at cursor position
+</br>
+![[Pasted image 20250803124627.png]]
+</br>
+
+### Relation between DDRAM and Display Characters
+- DDRAM has cap of 80 chars
+- physical display has < 80 chars
+- display is a "window" of the DDRAM
+</br>
+![[Pasted image 20250803125120.png]]
+</br>
+
+- when < 80 chars, display begins at starting position like above
+- 00H corresponds to char position 1
+
+- So when we write DDRAM address 00H, it will appear at display position 1
+
+</br>![[Pasted image 20250803125408.png]]</br>
+
+- in 2 line display, first char on the next line is not "one more" than the last char on previous line
+- it is actually found at 40H
+- to put data on second line, Set DRAM Address instruction must be sent
+
+- its possible to shift display so that first char does not correspond to DDRAM location 0
+- thus this can make some chars rotate thru the display when data is entered
+- it also lets small displays (eg, 2x16) to have data stored in non-visible areas of DDRAM and have them shifted to be viewed
+
+### Character code and bit patterns
+![[Pasted image 20250803130850.png]]
+
+
+## LCD Software Control
+- Only IR and DR of LCD module is accessible to host processor
+- by writing to them, we control how data is displayed
+
+### General Considerations - Timing
+- LCD module takes relatively long to execute instructions
+- on average it is around 40 μs
+- when instruction is being processed only BF read instruction can be executed
+- BF is set to 1 and will go to 0 when done
+
+<u> BF vs standard time delay </u>
+- Most of time, data is written to LCD module and keeping tack of state is usually done by processor
+- in this case its not necessary to read from LCD very often as we can just read BF and use a time delay of arnd 40 μs
+- in most cases, it will save the need of buffer (or bidirectional port) to accommodate the read function
+
+ 4 Categories of instructions:
+1. Setting of Modes of operations, such as display format, data length, etc
+
+2. Set internal address for both DDRAM and CGRAM
+
+3. Perform data transfer with internal RAM
+
+4. Perform miscellaneous functions
+
+
+- Normally most commonly used instructions are performing data transfer to DDRAM
+- auto increase/ decrease feature of AC register makes it easier to program the module
+
+### Default Initialization
+- before programming, we must know initial state when power is turned on
+- following instructions are executed during initialization period
+- lasts for 15 ms after power supply rises to 4.5V
+- BF = 1 until initialization ends
+- following is internal initialization routine:
+
+1. Clear Display
+2. Function Set
+	DL = 1 : 8 bit interface
+	N = 0 : 1 line display
+	F = 0 : 5x7 dot matrix
+3. Display OM/OFF Control
+	D = 0 : Display Off
+	C = 0 : Cursor Off
+	B = 0 : blink Off
+4. Entry Mode Set 
+	I/O =1 : +1 increment
+5. DDRAM is selected
+
+- if power is not applied successfully, routines will fail
+- is different parameters such as 2 line display, host has to perform initializing
+- after initializing, we should have clear display with flashing cursor in top left 
+- cursor will then increase to right with each EERAM write command
+
+### Instruction Table
+</br>
+![[Pasted image 20250803132509.png]]
+</br>
+
+
+### Special Operation Modes
+<u> 4 Bit operation </u>
+- LCD modules are able to receive bytes as 2 4 bit nybbles
+- many cases it can save extra 8bit latch
+- complexity increase can be hidden in host processor output routine
+- main user program then calls the routine with standard 8 bit byte
+- leaving 4 bit transfer to be handled by routine
+- also need to initialize module into 4 bit mode
+
+</br>
+![[Pasted image 20250803133249.png]]
+</br>
+
+
+<u> Display Shift </u>
+- DDRAM can be used for displays for advertising when combined with display shift operation
+- when S =1, display is shifted
+- what is displayed is depending on Entry Mode Set instruction
+- display shift operation only changes display position with DDRAM contents unchanged
+
+
+
+## Further Initialization considerations
+</br>
+![[Pasted image 20250803134305.png]]
+</br>
+
+- Set up 2 line LCD with 5x7 font, 8 bit data transfer with auto increment and shifting when writing
+
+
+## LCD Hardware Design
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
