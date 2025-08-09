@@ -1,4 +1,397 @@
-### Improve data Quality
+# Intro to AI and ML on Google cloud
+---
+
+## Why AI?
+
+### Case Study : Coffee on Wheels
+
+#### Company& Challenges
+- CoW, international coffee truck company (London, NY, SF, Tokyo)
+
+3 Main challenges:
+1. Location selection & route optimization
+	- Predict popular locations, high traffic, optimize routes (weather, traffic)
+2. Sales forecast & Real-time Monitoring
+	- Predict Sales, monitor performance live
+3. Marketing Campaign Automation
+	- Automate campaigns for efficiency and effectiveness
+
+### AI-Driven Solution
+- Partnered with Data Beans to use Google Cloud AI & Data Tools
+
+#### Dashboard Features:
+- City Stats
+	- Revenue, operations margin, no. trucks
+	- BigQuery. Looker, Gemini, Vertex AI
+- City-Specific Summary
+	- Compare revenue to avg, revenue per truck, customer loyalty
+- Weather-based routing
+	- Suggest new itineraries 
+	- eg, covered areas in cold weather
+- Event-based routing
+	- Avoid congestion near events
+- Truck-level data
+	- Street view, revenue forecast
+- Real-time menu
+	- identify underperforming items, generate suggestions for new products
+- Marketing automation
+	- AI-generated campaigns, targeted emails
+- Operational reporting
+	- Export to formats like Google Slides
+
+
+### How it Works
+1. Multimodal Inputs
+	- Text (reviews), Images (product photos), videos (street view)
+
+2. Prediction & Generation
+	- Predictive AI (sales forecast, customer segment analysis)
+	- Gen AI (marketing campaign automation)
+
+3. Visual Output
+	- Dashboards, reports for real-time decision making
+
+
+### Google Tools used
+- Gemini Multimodel - data acquisition
+- BigQuery - data analytics
+- Vertex AI - ML model development
+- Looker - Data visualization
+- Google APIs - App creation
+
+
+### Development Lifecycle
+- Data ingestion -> Analytics -> Engineering -> model Training -> Testing -> deployment
+- Supports predictive AI, Gen AI, Hybrid AI approaches
+
+
+### Business Benefits
+- Streamlined processes in marketing, commerce, and operations
+- Modernized customer service - Automated comment replies
+- Enhanced productivity - GenAI for code assistance, & marketing content creation
+
+
+
+## ML Model Categories
+
+### AI vs ML
+
+#### AI
+- Umbrella Term for computers mimicking human intelligence
+- eg, robots, self-driving cars
+
+#### ML 
+- Subset of AI
+	- computers learn without explicit programming
+- Learns from data instead of following fixed instructions
+- Mains types : Supervised & Unsupervised Learning
+
+#### Deep Learning (DL)
+- Subset of ML
+	- multiple layers between input and outputs for deeper learning
+
+#### Gen AI
+- Produces content or performs tasks from prompts
+- Uses Large Models like Large Language Models (LLMs) 
+
+
+### Supervised vs Unsupervised Learning
+
+#### Supervised
+- Needs labelled data
+- task-driven (has a goal)
+- predicts outputs from known input-output pairs
+- 2 types:
+	- Classification : predict categorical values
+		- eg, Cat vs Dog
+		- Model eg: Logistic Regression
+	- Regression : predict numerical values
+		- eg, Sales forecast
+		- Model eg: Linear Regression
+
+
+#### Unsupervised 
+- Unlabelled Data
+- data-driven (finds patterns)
+- 3 types:
+	- Clustering : Group similar data points
+		- eg, Customer Segmentation
+		- Model eg: K-Means clustering
+	- Association : Identify relationships between items
+		- eg, Products often bought together
+		-  Technique: Apriori
+	- Dimensionality Reduction : Reduce no. features for efficiency
+		- eg, Combining Customer traits to calculate insurance
+		- Technique: Principal Component Analysis (PCA)
+
+
+### Examples  & Model Selection
+#### Predict Customer spending from purchase history
+- Type: Supervised
+- Subtype: Regression
+- Model: Linear Regression
+
+#### Identify Customer Segments from purchase history
+- Type: Unsupervised
+- Subtype: Clustering
+- Model: K-Means Clustering
+
+
+## AI Development Options
+4 Main approaches
+
+### pre-Trained APIs
+- use Google's ready made ML models
+- NO training data needed
+- handles vision, video, natural language and audio
+- Fast (no training time)
+- No hyperparameter tuning
+- Best for Low ML experience and common perceptual tasks
+
+### Big Query ML
+- Build ML models using SQL queries directly in BigQuery
+- Only supports tabular data
+- needs SQL knowledge and data in BigQuery
+- Allows some hyperparameter tuning
+- Needs large dataset
+- Best for Analysts/data engineers familiar with SQL
+
+### AutoML (Vertex AI)
+- No-code, point-and-click model building on Vertex AI
+- Supports tabular, image, text and video data
+- needs ur own training data
+- no hyperparameter tuning
+- faster than custom training
+- Best for building custom models with minimal coding
+
+### Custom Training
+- Fully code-based
+- build ur own ML env and pipeline
+- Supports tabular, image, text and video data
+- Needs alrge dataset & high ML expertise
+- Full hyperparameter tuning & workflow control
+- Longest training time
+- Best for experienced ML engineers/scientists wanting full control
+
+### Comparisons
+| Feature| pre-Trained API | Big Query ML | AutoML (Vertex AI)|Custom Training|
+|-|-|-|-|-|
+|Data Types| Tabular, Image, Text, Video, Audio|Tabular| Tabular, image, text, video| Tabular, iamge, text, video|
+|Training Data| None| Large | Large| Large|
+|Ease of Use| Very Easy| Easy | Easy| Hard|
+|Hyperparam Tuning| No | Yes| No| Yes|
+|Training Time| No | Short | Medium | Long|
+|Best For| no experience| SQL users with tabular data| Minimal coding| Full Control and customization|
+
+
+### Choosing the right option
+- No ML experience, no training data → Pre-trained APIs.
+
+- Have tabular data in BigQuery & SQL skills → BigQuery ML.
+
+- Custom model, minimal coding → AutoML (Vertex AI).
+
+- Full control, coding skills, large data → Custom Training (Vertex AI).
+
+
+
+## Pre-Trained APIs
+
+- Pre-trained APIs = Ready made ML models provided as services
+- No need to build, curate, or train your own dataset
+- Ideal if u lack large, high-quality training data (hundred of thousands of records)
+- API analogy: like plugging into electric socket - just connect and use without knowing the internal wiring
+- Benefits: Save, time, effort, and complexity; focus directly on making predictions
+
+### Main Categories of Google Cloud Pre-trained APIs
+
+#### Speech, Text & Language APIs
+- eg, Natural Language APIs
+	- Entity Analysis: Identify subjects (proper nouns like "Google" locations, people; common nouns like "Android")
+		- Use Cases: Auto-Tagging, Document classification, information extraction/summarization
+	- Sentiment Analysis: Detect positive/negative/neutral tone; score -1 - +1; magnitude shows emotional strength
+		- Use Cases: Analyzing customer feedback, social media comments, conversation tone
+	- Syntax Analysis: Extract linguistic info for further training
+	- Category Analysis: Classify entire text into categories (eg, " Internet and Telecommunications")
+
+#### Image & Video APIs
+- eg, Vision API - Recognizes Objects/ content in images
+- eg, Video Intelligence API - Detects motions/ actions in videos
+
+#### Document & Data APIs
+- eg, Document API - Text extraction, form parsing
+- use cases: Lending, contracts, procurement, identity verification
+
+#### Conversational AI APIs
+- eg, Dialogflow API - Build Conversational Interfaces/chatbots
+
+
+### Gen AI APIs (Foundation Models)
+- Gemini Multimodal - Process text, image, video together
+- Embeddings - convert text/ multimodal data into vectors for ML models
+- Gemini for text & chat - Language tasks & natural conversations
+- Imagen - Generates images/captions
+- Chirp - Speech processing for voice-enabled apps
+- Codey - Code generation, completion, debugging help
+
+
+### Why user Pre-trained APIs
+- No ML experience needed
+- No training data
+- immediate results
+- Acts as buildding blocks for larger applications
+- supports multiple data types: text, images, video, audio documents
+
+
+## Vertex AI
+### Background & Purpose
+- Google invested in AI from scikit-learn (2007) -> Vertex AI & Generative AI
+- AI used in Gmail, Maps, Photos, Translate
+- Challenges in ML development:
+	- Handling Large data volumes
+	- Selecting/ Training the right models
+	- High compute requirements
+	- Moving models into productions (scalability, monitoring, CI/CD, retraining)
+	- Low ease of use
+	- Lack of unified workflow -> tool fragmentation
+- Gartner : Only ~50% of enterprise ML projects pass pilot phase
+
+### Definition
+- Unified Platforms for end-to-end ML workflow + predictive & gen AI
+- 2 Main aspects:
+1. End-to-End ML Pipeline:
+	- Data readiness: Upload from Cloud Storage, BigQuery, or local
+	- Feature readiness: Create & Share processed features via Feature Store
+	- Training: Model training + hyperparameter tuning
+	- Deployment & Monitoring: Porduction deployment, automated monitoring, continuous improvements (MLOps)
+
+2. Covers Predictive AI & Gen AI
+	- Predictive AI: Forecasting, Classification
+	- Gen AI: Create Multimodal Content
+
+
+### Development Approaches in Vertex AI
+1. AutoML (No Code)
+	- UI-based, easy navigation
+	- focus on solving business problems not coding
+	- best for minimal coding needs
+
+2. Custom Training (Code Based)
+	- Full control over environment & process
+	- Use Vertex AI Workbench & Colab
+	- Can connect BigQuery < - > Vertex AI via SQL in Workbench
+
+### Key Benefits - 4S's
+1. Seamless - Smooth Experience from data upoad -> training -> prroduction
+2. Scalable - MLOps automatically manages scaling of storage & compute
+3. Sustainable - Artifacts/ Features reusable & shareable
+4. Speedy- Model requires 80% less lines of code vs competitors
+
+### Extra Capabilities
+- Supports gen AI tools for embedding AI into applications & generating content
+- Integration with predictive AI for structured data problems
+
+
+
+## Auto ML
+### Definition
+- Automates data preparation -> model selection -> parameter tuning -> deployment
+- Saves time for data scientists by reducing repetitive manual work
+- Introduced 2018, integrated into Vertex AI since 2021
+- Goal: Speed, accuracy, reduced bias, no-code usability
+
+### How AutoML Works - 4 Phases
+
+#### Data Processing
+- Automates part of data preparation
+- Converts Numeric datetime, categorical, arrays, and nested fields into ML-ready formats
+
+#### Model Search & Parameter Tuning
+- Uses 2 key technologies:
+	- Transfer Learning: 
+		- Uses pre-trained models (eg, LLMs) as a base
+		- Fine-tune with smaller, domain-specific datasets (retail, finance, entertainment)
+		- Reduces required data & computation time
+		- Achieves higher accuracy with less effort
+	- Neural Architecture Search (NAS)
+		- Automatically explores multiple model architectures
+		- Compares performance and tunes parameters to find the best fit for data
+
+### Model Assembly
+- Selects top N models (typically ~10, depends on budget)
+- Combines Them (eg, averaging predictions) for better accuracy
+
+#### Prediction
+- Deploy assembled models for inference
+
+### Key technologies in Auto ML
+- Transfer Learning : Builds on large pre-trained (eg, LLMs) -> fine-tunes for specific use cases
+- Neural Architecture Search: Systematically finds the optimal model architecture + hyperparams
+- Ensemble Methods: Combines multiple top models instead of relying on a single one
+
+### Advantages
+- Fully no-code
+- Automates: Feature engineering, architecture search, hyperparam tuning, and model assembly
+- Faster and more accurate results, even with smaller datasets
+- Accessible to users without deep ML coding expertise
+
+
+## Custom Training
+### Purpose
+- DIY Solution for full control over ML environment and pipeline
+- Alternative to:
+	- Pre-trained APIs -> no model buiilding
+	- BigQuery ML -> SQL-based ML
+	- Auto ML -> no-code UI model building
+
+### Environment Setup
+- 2 Container options
+	- Vertex AI workbench
+		- Jupyter Notebook environment for full workflow (explore -> train -> deploy)
+	- Colab Enterprise
+		- Familiar to coding experience, integrated into Vertex AI
+
+### ML Libraries
+- Pre-written code collections for ML tasks -> Saves time
+- Popular : TensorFlow, Scikit-Learn, Pytorch
+
+### TensorFlow Overview
+- End to End ML Platform by Google with multiple abstraction layers:
+
+#### Hardware Layer
+- Runs on CPU, GPU, TPU
+
+#### Low-Level APIs
+- Custom Ops in C++, numeric processing in Python
+
+#### Model Libraries
+- Building Blocks (layers, metrics)
+
+#### High-Level APIs
+- eg, Keras
+- abstract ML details, automate training
+
+- vertex AI supports all abstraction levels with managed services
+
+### Building Model with TF Keras
+1. Create Model - Define Neural Network Layers
+2. Compile Model - Specify loss functions, optimizers, metrics
+3. Train Model - .fit() with input data, target output, and epochs
+4. Deploy Model - After Training, pushing to production for predictions
+
+
+### Other Frameworks
+- JAX
+	- High performance, flexible numerical computation library
+	- Useful for both research & productions
+
+
+
+
+</br>
+
+---
+## Improve data Quality
 
 ##### Attributes related to data quality
 
@@ -127,10 +520,15 @@
 - if lots of data, use held-out test dataset
 - if little data, use cross-validation
 
+</br>
 
 
 
+---
 # Computer Vision Fundamentals
+---
+
+</br>
 
 ## What is Computer Vision
 - Subset of ML and AI
