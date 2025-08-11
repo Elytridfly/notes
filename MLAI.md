@@ -505,10 +505,8 @@
 
 ![[Pasted image 20250508221942.png]]
 
-	- Precision = True Positive / total positive 
-	- Recall = True Positive/ all positive
-	- Accuracy = True Positive / total
 
+![[Pasted image 20250811232750.png]]
 
 ## Generalization and Sampling
 
