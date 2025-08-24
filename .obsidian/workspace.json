@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0ba943c492ec211f",
+        "id": "8cc5b070e7a3c367",
         "type": "tabs",
         "children": [
           {
-            "id": "ee2141c6d5f86bbc",
+            "id": "ed8557a1a9d0679c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "5G AIoT.md",
-                "mode": "preview",
-                "source": false
+                "file": "ECS.md",
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "5G AIoT"
+              "title": "ECS"
             }
           }
         ]
@@ -161,6 +161,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": true,
       "graph:Open graph view": true,
       "canvas:Create new canvas": true,
@@ -169,8 +170,11 @@
       "command-palette:Open command palette": true
     }
   },
-  "active": "ee2141c6d5f86bbc",
+  "active": "ed8557a1a9d0679c",
   "lastOpenFiles": [
+    "Pasted image 20250824173214.png",
+    "Pasted image 20250824172811.png",
+    "Pasted image 20250824172400.png",
     "5G AIoT.md",
     "MLAI.md",
     "Pasted image 20250811232750.png",
@@ -182,8 +186,6 @@
     "Pasted image 20250803163302.png",
     "Pasted image 20250803163130.png",
     "Pasted image 20250803151125.png",
-    "Pasted image 20250803150842.png",
-    "Pasted image 20250803150655.png",
     "ECS tutorials.md",
     "5G (Qualcomm).md",
     "OOP.md",

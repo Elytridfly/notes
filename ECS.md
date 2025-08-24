@@ -1961,3 +1961,153 @@ void main (void)
 
 
 ```
+
+# D2A, A2D Interfacing
+---
+
+## Intro
+- 2 types of signals can be generated/measured in electronic systems
+- digital (discrete)
+- analog (continuous)
+ 
+- when electronic measurement techniques are used, data is derived from analog form from a transducer
+- it is possible to process and store analog data using purely analog system
+- however, it may lead to difficulties in reading/writing
+
+- Digital Electronic systems can manipulate and store large amnts of data
+- due to low cost digital microprocessor systems, cost of implementing digital data processing is reduced
+- many high integration microprocessors have analog to digital converters built into them
+
+- Before digital system can be used, analog measurements made must first be converted to digital form
+
+![[Pasted image 20250824172400.png]]
+
+- there are some areas where analog techniques are more useful, eg, presentation of data where peek or null is to be determined
+
+## D2A Conversion techniques
+- digital-to-analog converter converts digital value into analog voltage or current by way of resistive network
+- input could be binary or BCD and output will be DC voltage or current
+- theoretically, we want digital value be directly proportional to the analog output
+- eg, 
+	- 8 bit DAC has value of 255 or FFH input to it, this causes an output voltage of 5 volts
+	- when 127 or 7FH is input, it should output 2.5V
+
+- typical DAC consists of:
+	- resistor network
+	- current/voltage switches
+	- reference voltage source
+	- output amplifier for converting current to voltage
+- note that converter does not know analog value being output
+- it is controlled entirely by external hardware and essentially is just a scaling factor
+
+![[Pasted image 20250824172811.png]]
+
+Resistance-ladder network
+- diagram shows how voltage mode R-2R converter may be done in practice
+- accuracy of DAC is dependent on resistor network
+- we need buffers for in and out 
+- stable voltage reference is needed
+- for more demanding applications, DAC IC is needed
+
+![[Pasted image 20250824173214.png]]
+- more expensive option
+- MC1408
+- chip only takes place of ladder network and data switches
+- you still have to supply reference voltage, amplifier, and other discrete components
+- but other DACs will have a data latch built in as well
+
+
+- due to discrete nature of digital to analog process.
+- if we want analog waveform, it will be stepped
+- eg, sawtooth waveform comes out as series of steps
+- Low pass filter (reconstruction filter) is used to smooth out waveform
+
+### Generating Waveforms
+- in many applications, we have to create analog periodic waveforms digitally
+- aka synthesis
+- manually compute digital values and put these into a lookup table
+- or into EPROM
+- 3 factors to consider:
+	- max analog value
+	- output frequency
+	- no. samples per period
+- first factor concerns quantisation error which determines how much digital value approximates analog equivalent
+- we want to use full range of analog signal to correspond to full range of allowable digital values
+- this minimizes quantisation error which determines scaling factor
+- also we must know if DAC can handle negative voltages
+- if not we may need to add offset voltage so minimum value of wave = 0
+- second factor is limited by execution speed of processor
+- third factor is combination of 1 and 2
+
+#### Generating Sine Waves
+- DAC inputs 0 to 255 and outputs proportionally from 0 to max analog voltage
+- but due to components used, there maybe clipping after certain voltage
+
+- assume we have 8bit DAC with 5V Vcc
+- expect DAC to produce analog outputs from 0 to 5V
+- sine peak to peak 4V
+- Digitizing 8 bits does not allow negative values
+- we add offset so that min V is 0V
+- we make full use of voltage rage that can be digitized and reduce quantization noise
+
+- for sine amplitude is half peak to peak voltage = 2V
+- offset will = 2V
+
+eqn:
+```
+V = 2(1 + Sin θ ) V
+``` 
+
+where θ depends on no. of samples per cycle 
+more generally, V V<sub>amp</sub>* θ + V <sub>offset</sub>
+
+- we should let lowest value of waveform be equal to zero for ease of computation
+- in this case its already true.
+- eg, rectified sine wave does not have offset as lowest value is zero
+
+<u>Resolution</u>
+- From description of analog wave, we can find full scale value
+- it should be equivalent to largest digital value DAC can handle 
+- in this case, since we have 8bit DAC, an input of FFH will result in 5V being output
+- Thus 1V the equivalent digital value is:
+	255/5 = 51<sub>10</sub>
+- aka Scale Factor
+
+<u> Samples per period </u>
+- since we want 24 samples per period
+- compute value of sine wave at each sample point
+- one period of sine wave is equivalent to 360 degrees
+- so each value at each sample point will be 360/no. samples
+- full treatment of samples per period will depend on things like Nyquist criterion
+- which states that sampling frequency should be twice that of highest frequency present in the signal
+
+- less samples per cycle gives a more digital output
+- in this case, 24 samples 
+- 1 cycle of sine wave, we calculate 360/24 =15 degree intervals
+
+|S/no|2|sin 2 | V = 2(1 + sin 2) | Fscale * V 10| Rounded|
+|---|---|----|---|---|---|
+|0|0|0|2|102|102|
+|1|15|0.2588|2.5176|128.3976|128|
+|2|30|0.5|3|153|153|
+|3|45|0.7071|3.4142|174.1242|174|
+|4|60|0.866|3.732|190.332|190|
+|5|75|0.9659|3.9318|200.5218|201|
+|6|90|1|4|204|204|
+|7|105|0.9659|3.9318|200.5218|201|
+|8|120|0.866|3.732|190.332|190|
+|9|135|0.7071|3.4142|174.1242|174|
+|10|150|0.5|3|153|153|
+|11|165|0.2588|2.5176|128.3976|128|
+|12|180|0|2|102|102|
+|13|195|-0.2588|1.4824|75.6024|76|
+|14|210|-0.5|1|51|51|
+|15|225|-0.7071|0.5858|29.8758|30|
+|16|240|-0.866|0.268|13.668|14|
+|17|255|-0.9659|0.0682|3.4782|3|
+|18|270|-1|0|0|0|
+|19|285|-0.9659|0.0682|3.4782|3|
+|20|300|-0.866|0.268|13.668|14|
+|21|315|-0.7071|0.5858|29.8758|30|
+|22|330|-0.5|1|51|51|
+|23|345|-0.2588|1.4824|75.6024|76|
