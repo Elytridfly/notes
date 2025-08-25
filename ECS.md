@@ -2479,3 +2479,143 @@ The structure of the network is balanced so that the current supplied from any s
 ![[Pasted image 20250825230717.png]]
 ![[Pasted image 20250825230723.png]]
 
+- Reflection characteristic of reflective (non-emissive) display is controlled by voltage (U, low current) 
+- switching between black (absorption, low reflectance) and white (high reflectance)
+- they are thus readable in bright light but not in dark
+- as ambient light is used, power consumption is very low "green displays"
+- eg, segmented monochrome LCDs, e-paper displays
+- e-paper is bistable, where power is only needed when changing pixel status
+
+- Transmissive display is term for color LCDs (mostly active matrix)
+- equipped with bright backlight
+- Voltage is needed to change transmission between low (black) and high value (white) of Liquid Crystal Layer (cell)
+- to modulate light from backlight
+- power consumption of basic liquid crystal cell is low but display is high due to backlight
+- due to reliance on integrated light, transmissive LCD are also known as emissive displays or LED displays
+
+- Emissive displays generate light by converting electrical power into visible light
+- Note that "I" is the symbol here since they are often current driven
+- relative to reflective technology, higher power are typically needed.
+- for emissive display, power consumption also depends on actual data shown
+- hence black bg is preferable in this context
+- eg, OLED,PDP, CRT, VFD, FED, EL, and LED
+
+- Transmissive and emissive displays typically provide high-quality optical performance under indoor ambient conditions
+- but outdoor use is limited due to need of very high luminance to provide sufficient contrast
+- leading to higher power consumption
+- reducing battery life and longevity of display system by heat generation
+
+- there is no single display tech that exists that fits all applications
+- key decision point is the choice between low-power monochrome displays and multimedia screens that consume large amnt of power
+
+### Display Driving Principles
+- 2 fundamental approaches
+![[Pasted image 20250826013622.png]]
+- direct drive
+	- all segments (instead of typical pixels) are directly connected to driving electronics
+	- so there is full control of voltage and waveform of any segment
+	- arrangement and shape can be individually designed for application
+- matrix drive
+	- passive matrix 
+	- active matrix drive
+
+#### Passive Matrix
+- pixels are addressed row by row
+- called time multiplexing
+- all pixels in row 1 are updated first then row 2 
+- if display with 3 rows, each row is addressed 1/3 of the total time
+- on retro displays (CRTs) its possible to see effect as continuous sweeping
+- for LCDs this reduces contrast of display which limits total no. rows possible
+- this method is often called multiplex driving for segmented displays
+- cost-effective as it doesn't need extra hardware
+- however only a few display technologies have the characteristics for passive matrix drive
+
+#### Active Matrix
+- each pixel has at least 1 transistor
+- sometimes multiple transistor and capacitors
+- eg, in OLED each pixel contains a quite sophisticated circuit with 5-10 transistors
+- by adding transistors to the pixel, it can be easily controlled
+- as they offer a threshold voltage which is important for display matrix to function properly
+- capacitor stores energy when pixel is not addressed
+- allows all pixels to maintain their state even for large no. rows
+- eg, apple iMac display achieve 2880 rows with no problem
+- drawback is high price point since fabrication needs expensive deposition process
+
+![[Pasted image 20250826014630.png]]
+
+
+## Types of interfaces of display devices
+
+### Composite Video
+- RPi was thought that providing composite video would allow many countries that rely on old TV to change to RPi without need to buy dedicated monitor
+- composite video connection transmit basic analog video signal between devices
+- send standard-definition video only (no audio)
+- if u use composite video signal for picture then u need separate connection to hear audio
+
+### DSI
+- Digital Serial Interface
+- highspeed serial interface on no. data lanes (1GBi)
+- total voltage swing of data lines is only 200mV which is super small
+- low voltage differential signalling (LVDS) 
+- electromagnetic noise created and power consumed is very low
+
+### HDMI
+- High Definition Multimedia Interface
+- used to transmit uncompressed video or digital audio data to Computer Monitor, Digital TV, etc
+- Generally, HDMI port helpsto connect current embedded design to digital Tv
+- most casts, simply plugging in HDMI-equipped monitor  with a standard HDMI cable will auto lead to device using best resolution monitor supports
+
+### GPIO
+- General Purpose Input Output
+- multiplexed with other functions so they need to be setup before use
+- u can reconfig each pin as either Input or Output
+- also can use for various types of devices
+- displays can use DPI, SPI, I2c, even UART, or some ad-hoc interface
+- Some interface like DPI are very fast but need many GPIO pins
+- others like SPI and I2C need little pins but not as fast
+
+#### DPI
+- Display Parallel Interface (or Parallel Display Interface) allows for cheap displays by driving manually
+
+<u>Pros</u>
+Very Fast, easily drives at 60Hz
+No complicated interface hardware
+Pixel Perfect output. Digital not analog
+Easy to understand protocol
+No bulky connectors
+Very inexpensive
+
+<u>Cons</u>
+Uses many GPIO pins
+Ribbon cable breaks easily if not careful
+Short Range
+
+- DPI allows displays to be attached to RPi GPIO either in RGB24 or RGB666 or RGB565
+- if we want to drive at full 24 bit true color (RGB24), we need 8 pins for each R,G,B and pins for hsync, vsync, clock, and display enable
+- total 28 pins
+- 1 way to reduce is to omit 2 LSB on each color bus giving us 18 bit high color (RGB666)
+- or RGB565 (5 red 6 green 5 blue)
+- we lose color info but not as bad 
+- another way is use SMI 
+
+#### SPI/I2C
+- Serial Peripheral Interface
+- Inter-Intergrated Circuit bus
+- are serial interfaces on GPIO
+- with SPI amnt of pins needed is much less than DPI
+- only need 4-5 pins
+- more than 1 device can be connected to SPI but not recommended for that
+- I2C needs few pins
+- technically only needs 2 
+- another advantage is that its very easy to connect >1 device to I2C bus
+- disadvantage is that it will be small and low resolution
+
+#### UART
+- Universal Asynchronous Reciever/Transmitter
+- main purpose to transmit and receive data
+- almost all mcu have dedicated UART hardware built in
+- main reason is that serial communication only needs 2 wires (and ground) for comms
+
+
+# Graphical User Interfaces
+---
