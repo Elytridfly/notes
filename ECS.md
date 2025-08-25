@@ -2327,4 +2327,72 @@ first order sigma delta ADC
 - when conversion starts, switch is open, voltage across capacitor is constant until conversion is done
 ![[Pasted image 20250825140236.png]]
 
+## Errors in DA and AD conversion
+several sources of errors when converting data
+
+### Quantization Errors in DA conversion
+- analog output of DAC is not infinitely variable but is quantized into small but definable steps
+- hence voltage produced at output of DAC is seldom able to be exactly the same as voltage at output of true analog system
+![[Pasted image 20250825222843.png]]
+
+- a portion of DAC output waveform is superimposed onto ideal analog saveform
+- difference in voltage arises from quantized nature of output of DAC aka Quantization Error
+- to reduce, DAC needs to be controlled by more bits
+- if fill-scale voltage remains the same, increase in bits will reduce quantization interval
+- quantization error is often referred to as Resolution
+
+**Resolution** can be expressed in several ways 
+eg, for 8bit A/D
+- as no. bits - 8bit
+- as % - 0.39% (1/2^8 * 100)
+- as relative size of LSB - 1 in 256
+- as absolute value (eg in 5v range) - 19mV (5V/2^8)
+
+### Other sources of Errors
+#### Gain Error
+This is often caused by errors in the feedback resistor on the converter op-amp. The error is usually a linear scale to the expected output.
+![[Pasted image 20250825223234.png]]
+#### Offset Error
+This is when the output is non-zero when a zero input is used. This error can be caused by op-amp errors or leakage currents in the current switches. The error can be corrected by taking readings at zero input value and subtracting from the output.
+![[Pasted image 20250825223248.png]]
+
+#### Linearity Error
+This error is usually caused by errors in the current source resistor values. Hence the output loses its proportionality.
+![[Pasted image 20250825223257.png]]
+
+### Internal Details of D/A converters
+The structure of the network is balanced so that the current supplied from any switch is halved at every junction. A binary relationship between each of the switches and hence the current resulting from the switches can be used to represent binary numbers.
+
+![[Pasted image 20250825223425.png]]
+
+- 2 practical low cost method to implement DAC 
+- R-2R network implemented with discrete resistors
+- buffer or latch is used to drive resistor network
+- opamp is capable of 0V output 
+- circuit may be used for many applications without much quality loss
+- we can use network in 2 modes
+- voltage mode is easier to implement and understand
+- current mode produces less noise and does not need a high performance opamp buffer and is preferred in IC versions of R-2R ladder
+
+
+### Details of Sigma-Delta Conversion
+- Basic operation
+	- use integrator + comparator + 1bit DAC in feedback loop
+	- Comparator output -> serial 1bit data stream
+	- DAC feedback adjusts average voltage so summing mode = input voltage (Vin)
+- Bitstream Representation
+	- Density of 1s and 0s encodes input level
+		- Near +Vref  ->  mostly 1s
+		- Near  -Vref  ->  mostly 0s
+		- Near midscale -> roughly equal 1s and 0s
+- Output Characteristics
+	- Single bit stream looks random in time domain
+	- Meaningful value only after averaging /filtering
+- Digital Filtering & Resolution
+	- Low-pass digital filter (decimator) averages bitstream
+	- more samples averaged -> higher resolution
+		- 4 samples averaged -> 2 bits resolution
+		- 8 samples averaged -> 3 bits resolution
+	- Resolution improves with longer averaging (greater dynamic range)
+
 
