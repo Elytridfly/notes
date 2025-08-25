@@ -2396,3 +2396,55 @@ The structure of the network is balanced so that the current supplied from any s
 	- Resolution improves with longer averaging (greater dynamic range)
 
 
+# Graphic Display Technology 
+—-
+## Introduction
+- human visual system responds to pics more readily than words 
+- Some pictures have universal meanings so that comms across languages is simple
+- However, user interfaces from early computers were text based due to cost and performance constraints
+- GUI for computers were developed in 1970s but were expensive and require lots of computing power
+- Todays computers provide high computing power at low cost
+- Demand for graphical interfaces to various equipment have driven down cost of graphical interface devices
+- Now quite feasible to have low cost embedded system with graphical interface
+- Earlier tech worked with analog video signals but currently all digital data video is coming commonplace
+
+## Considerations in Graphical Displays
+-  we in age of mobile info tech which relies heavily on visualisation of multimedia data and user input
+- Often performed by high resolution electronic displays equipped with touch screens or user input devices like keypads
+- Choosing big or small display, connecting via HDMI connector or GPIO pins, needing touch capabilities
+- These are some decisions that one will have to take depending on the end goal
+- Ultimately it will be a trade off with what the project needs and whats left on the platform to connect and drive a display
+
+## Nature of computer image
+- due to nature of computers, images are constructed in form of a grid
+- Each cell of a grid is called pixel
+- Each pixel has color value
+- Generally, pixels are square
+- No. Pixels that make up image is known as resolution
+- The amnt of data needed to reprsent color is known as color depth
+- Entire digital image has to be stored in frame buffer which may be part of system memory
+-  Frame buffer data needs to be transferred to DACs which convert digital data into analog color 
+- Amnt of data that needed to be computed and moved to display can tax resources of hardware
+
+- Most color displays are based on RGB
+- Can be superimposed in various wats so human eyes see just the actual color
+
+- Computer images are displayed at fixed res
+- Color at each pixel is represented by digital data
+- Commonly used quantities are 1 bit 4 bit 8 bits gray nad color, 24 bit color, 32 bits color
+- Easiest to store is 24 bit color where each pixel has 3 bytes of color stored
+
+- 8 bit color scheme is special type of img data storage
+- However, its not possible to produce all 16mil colors used in images
+- Its good enough for an approximation os most colors using 256 for most common colors 
+- This process of quantization uses only 1/3 of data needed which is good for saving space
+- All can be done by hardware at high speedsso job of finding most common 256 colors to represent a picture is done quickly
+- But often for photographs, the effect of reducing colors result in posterization where large patches of a single color will replace a large area of smoothly changing colors
+- Thus using 256 colors should be used for artificially generated images like cartoons or animations
+- Each of 256 colors are stored in image as 3 bytes entries akak palette
+- So each pixel of 8bit image points to 3 byte entry in palette
+- As each image is different a palette has to be stored with every image
+- Not true for 8 bit grayscale images as 8bit images actually represents just the brightness info only
+
+- Gray colors are often created by linear combination of RGB color
+- By suitable thresholding of gray values, 1 biuit or black and white images can be obtained
