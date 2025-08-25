@@ -2421,7 +2421,7 @@ The structure of the network is balanced so that the current supplied from any s
 - Each pixel has color value
 - Generally, pixels are square
 - No. Pixels that make up image is known as resolution
-- The amnt of data needed to reprsent color is known as color depth
+- The amnt of data needed to represent color is known as color depth
 - Entire digital image has to be stored in frame buffer which may be part of system memory
 -  Frame buffer data needs to be transferred to DACs which convert digital data into analog color 
 - Amnt of data that needed to be computed and moved to display can tax resources of hardware
@@ -2431,20 +2431,51 @@ The structure of the network is balanced so that the current supplied from any s
 
 - Computer images are displayed at fixed res
 - Color at each pixel is represented by digital data
-- Commonly used quantities are 1 bit 4 bit 8 bits gray nad color, 24 bit color, 32 bits color
+- Commonly used quantities are 1 bit 4 bit 8 bits gray and color, 24 bit color, 32 bits color
 - Easiest to store is 24 bit color where each pixel has 3 bytes of color stored
 
 - 8 bit color scheme is special type of img data storage
 - However, its not possible to produce all 16mil colors used in images
-- Its good enough for an approximation os most colors using 256 for most common colors 
+- Its good enough for an approximation is most colors using 256 for most common colors 
 - This process of quantization uses only 1/3 of data needed which is good for saving space
-- All can be done by hardware at high speedsso job of finding most common 256 colors to represent a picture is done quickly
+- All can be done by hardware at high speeds
+- so job of finding most common 256 colors to represent a picture is done quickly
 - But often for photographs, the effect of reducing colors result in posterization where large patches of a single color will replace a large area of smoothly changing colors
 - Thus using 256 colors should be used for artificially generated images like cartoons or animations
-- Each of 256 colors are stored in image as 3 bytes entries akak palette
+- Each of 256 colors are stored in image as 3 bytes entries aka palette
 - So each pixel of 8bit image points to 3 byte entry in palette
 - As each image is different a palette has to be stored with every image
 - Not true for 8 bit grayscale images as 8bit images actually represents just the brightness info only
 
 - Gray colors are often created by linear combination of RGB color
-- By suitable thresholding of gray values, 1 biuit or black and white images can be obtained
+- By suitable thresholding of gray values, 1 bit or black and white images can be obtained
+
+
+![[Pasted image 20250825230030.png]]
+
+- to display 8 bit color image, values of palette are loaded into hardware lookup table
+- used to drivie color DACs which  provide signals for appropriate color
+
+![[Pasted image 20250825230449.png]]
+
+### Display Technology
+- many different tech used to build a display
+- Acronym for primary electro-optical effect used to emit/modulate visible light at pixelated level, eg CRT, LCD, OLED
+- May be further divided into other sub categories 
+- Emissive: generate their own light
+- Reflective/transmissive : those that modulate light generated separately
+- Display are also referred as direct view, virtual or projected to describe the manner in which image is viewed by user
+    - Direct View Displays - user looks direct onto display
+    - Projection displays - user sees image of microdisplay projected onto reflective screen
+    - Microdisplay - user views image which is typically displayed near the eye
+    - 3D display - displays which produce 3d images
+
+![[Pasted image 20250825230545.png]]
+
+- Emissive Displays generate light by converting electrical power to light
+- Reflective displays modulates their reflectance, typically via voltage-controlled effect
+- LCDs are labelled as both reflective (7-segment display are used in a watch) and transmissive
+
+![[Pasted image 20250825230717.png]]
+![[Pasted image 20250825230723.png]]
+
