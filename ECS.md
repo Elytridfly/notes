@@ -2619,3 +2619,312 @@ Short Range
 
 # Graphical User Interfaces
 ---
+## General User Interface Design
+- UI design is often associated with software interface and frequently referred to Human-Computer Interface or HCI
+- UI design must be considered whenever users interact with controls or displays
+- application of interface design is commonly found such as watch, DVD player, aircraft cockpit, software program
+- many cases, good tech is not readily accepted as product is not easy or efficient to use
+- products usability, acceptance, marketability are often depended on user feeling that is easy to learn
+- UI design increases intuitiveness, efficiency, and comfort level with a product
+- this translate into product acceptance and use
+- successful product = good tech and usability
+- many technologies innovations rely upon UI design to elevate their technical complexity
+- technology alone may not win user acceptance 
+- when applied to computer software, UI design is also known as Human-Computer Interaction HCI 
+- Interface Design not only for computers, but also products where user interacts with controls or displays
+- Military Aircrafts, vehicles, Airports, Audio equipment, and computer peripherals are products that apply UI design
+
+
+### User-Interface in Embedded Systems 
+- Embedded systems involve close real world physical components and mechanisms
+- interactions take form of control, coordination, or monitoring of actual electronic or electromechanical devices
+- real-world objects and sequence of events or transactions taking place between embedded software, external physical objects and their users is important
+
+- embedded system for given application must exhibit same effective behavior and external characteristics regardless of how internal program is realized
+- the features and capabilities can be embodied into which performance must conform to requirements 
+
+
+## Principles to consider for effective UI design
+- ease of use of interface play great part in productivity for user
+
+### Consistency
+- importance of maintaining strict consistency varies according to level of task needed 
+- useful to be aware of when to apply them
+- important to be visually inconsistent when things must act differently as it is to be visually consistent when things act the same
+- we should avoid uniformity for its own sake
+- make objects consistent with their behavior
+- make objects that act differently look different
+- most important consistency is consistency with user expectation
+
+### User Efficiency
+- people cost lots more money than machines and while it might appear that increasing machine productivity must result in increasing human productivity
+- when judging efficiency of a system, look beyond just machine efficiency 
+- Fitts law : " The time to acquire a target is a function of distance to and size of target"
+	- meaning that often used objects or actions should be large and easily accessible
+
+### Human Interface Objects
+- representations of objects that humans can relate to
+1. They can be seen, heard, touched, or otherwise perceived
+2. Visual Interface objects are quite familiar in graphic user interfaces, although those using other human senses are available
+3. Since they relate to standard objects, they must have standard way of interacting with it
+4. they must also have standard resulting behavior and not produce surprises
+
+- Some familiar objects are folders, documents, and trashcans
+- thus icons are typically used to represent them pictorially
+
+<u> Metaphors </u>
+- representation of system objects that correspond to familiar real world objects
+- so handling them would not require extra training, as they operate like actual objects
+- eg, Windows has object called briefcase
+	- purpose is to help electronic documents more portable
+- choosing metaphors well will enable users to instantly grasp the fine details of the conceptual model
+- bring metaphors alive by appealing to people's perception of sight, sound and touch as well as triggering memories 
+
+## Ergonomic Guideline for UI design
+- ergonomics is 1 major factor that made big difference for effective GUI design
+- design concept will always have end user in mind
+- good ergo makes every effort to ensure user friendly and comfortable user env
+- following points are guidelines to good software interface design
+- they apply to content of screens
+- effective software also necessitates using techniques such as 'storyboarding' to ensure flow of info from screen to screen is logical, follows user expectations, and follows task requirement 
+
+### Consistency
+- certain aspects of interface should behave in consistent ways at all time for all screens
+- terminology should be consistent between scenes
+- icons should be consistent between screen 
+- colors should be consistent between screens of similar functions
+
+### Simplicity
+- break complex tasks into simpler task
+- break long sequences into separate steps
+- keep tasks easy by using icons, words, etc
+- use icon/objects that are familiar to user
+![[Pasted image 20250826124056.png]]
+
+### Human Memory Limitations
+- organize info into small no. "chunks"
+- try to create short linear sequences of tasks
+- dont flash important info onto screen for short time periods
+- provide cues/navigation aids for user to know where they are in software or at what stage they are in an operation
+- provide reminders or warnings as needed
+- provide ongoing feedback on what is happening or what just happened
+- let users recognize info by making it available rather than try to rmb it
+
+### Cognitive Directness
+- refers to mental processes that users need to use in order to get device to perform a function
+- to make this process more "direct" is to reduce amnt of mental work needed 
+- a user uses less effort to accomplish a task
+- shortest no. steps taken to perform an operation may not be most intuitive
+
+- minimize mental transformations of info (eg, using ctrl + I  to indent a paragraph)
+- use meaningful icons/letters
+- use appropriate visual cues, such as direction arrows for movement of info
+- use 'real-world' metaphors whenever possible (desktop metaphor, folder metaphor, trash can metaphor)
+
+### Feedback
+- useful to identify types off feedback that can be used
+- makes us think more carefully abt how we use them
+
+for time related considerations:
+- acknowledge all button clicks visually or aurally within 50ms
+- display "waiting" indicator for any actions that may take 1/2 to 2 seconds
+- animate indicator so users wont think system hung
+- display messages indicating potential length of wait for any action that will take longer than 2 s
+- communicate actual length thru animated progress indicator
+- if possible show text msgs to users informed and entertained while waiting for long processes to complete
+- have system give large signal upon return from lengthy (>10s) processes so users know when to return to using the system
+
+for other feedback types:
+- give informative feedback at appropriate points - in form of msgs
+- provide appropriate sensory feedback
+- confirm physical operation you just did (type 'help' and 'help' appears on the screen)
+- this includes all forms of feedback such as auditory feedback (eg, system beep, mouse click, key clicks)
+
+- provide appropriate semantic feedback -- semeantic means "meaning" 
+- this kind is meaningful to action being performed 
+- it is also time consuming to implement as it has to recognize context of an action
+	- eg, when adding up a series of numbers, a running total is shown, or when selecting an object, a set of icons showing possible actions are shown
+
+- provide appropriate status indicators to show user progress with lengthy operation
+	- eg, copy bar when copying file, hour glass when process is being executed
+
+### System Message
+- provide user-centered wording in messages 
+	- eg, there was a problem in copying the file to your disk rather than execution error 159
+- avoid ambiguous msgs
+	- hit 'any' key to continue
+	- there is no 'any' key
+	- reword to press return key to continue
+- avoid threatening or alarming msgs
+	- fatal error, run aborted, kill job, catastrophic failure
+- use specific, constructive words in error msgs
+	- avoid general msgs such as 'invalid entry'
+	- use specifics such as 'please enter your name'
+- make the system 'take the blame' for errors
+	- eg, 'illegal command' vs 'unrecognized command'
+
+### Anthropomorphization
+- dont anthropomorphize (dont attribute human characteristics to objects)
+- avoid "have a nice day" messages from ur computer
+	- may come across as patronizing rather than cute
+
+### Modality
+- a mode is an interface state where what user does has different actions than in other states 
+	- eg, changing shape of cursor can indicate whether user is in an editing mode or browsing mode
+- make actions easily reversible
+	- use 'undo' commands but use sparingly
+- allow escape routes from operations
+
+### Attention
+- use attention grabbing techniques cautiously
+	- avoid overusing blinks on webpages, flashing msgs, 'you have mail', bold colors, etc
+- dont overuse audio or video
+- use colors appropriately and make use of expectations
+	- eg, dont have an OK button colored red
+	- use green for OK
+	- yellow for caution
+	- and red for danger/stop
+- dont use blue text (hard to read) 
+- blue is okay background color
+- dont put red text on blue background
+- use high contrast color combinations
+- use colors consistently
+
+![[Pasted image 20250826135543.png]]
+
+### Display issues
+- maintain display inertia
+	- make sure screen changes little from one screen to the next within a functional task situation
+- organize screen complexity
+	- eliminate unnecessary info
+- use concise, unambiguous wording instructions and msgs
+- use easy to recognise icons, be sensitive to cultural interpretation
+
+### Individual Differences
+- accommodate individual differences in user expertise
+	- from novice to the computer literate
+- accommodate user preferences by allowing some degree of customization of screen layout, appearances, icons etc
+- allow alternative forms for commands
+	- eg, key combination thru menu selections or mouse click selection
+
+## User Interface Design for Embedded Systems
+- embedded systems are part of a product and there is a close level of interaction between user
+- in fact there may be used on a daily basis by untrained users
+- also these systems may be controlling critical systems 
+- thus must recognise that UI is key and must put users at center of design and dev process
+- if interfaces are bad, complaints abt control equipment will surface
+- users may have to refer to manual
+- to some extent, users may use only a fraction of capabilities of systems
+
+- when it comes to UI, embedded systems differ from "standard" applications dev that use the entire computer screen as primary interaction interface
+- product containing embedded system almost completely determines or constrains appearance of interface to user
+
+- input devices are limited to switches, keypads outputs to LEDS, buzzers and screens of any sort are difficult to come by
+- however, there may be great amnt of freedom in the placement these devices subject to constraint of a product
+- for eg, given a certain chassis size, there is quite a lot of freedom in where to place switches and LEDs
+- but its difficult to change these once positions are fixed
+
+### User-Centered Design
+- more than just user-oriented
+- makes end users focus that informs the entire design process
+- user-centered design is not about 'user friendliness'
+- but about making systems that are easier for users to make use of, simply, quickly, and reliably tat makes it easier to do things
+
+- better UIs can be designed if u keep in mind some broad principles about human-machine interaction
+
+- keeping user informed means signals or msgs to users must be clear and clearlyy distinguishable
+- sometimes the output devices for embedded systems applications are somewhat simplified
+- there might be only a set of LEDs or small LCD panel
+- but even such simple devices  can be used remarkably effectively to communicate a range of info
+
+- an effective way to get better UI is to take a critical, investigative approach, studying the UI, studying users, and studying them using the UI
+
+![[Pasted image 20250826141819.png]]
+
+-  bad consistency 
+	- groupings of data has no pattern
+	- improperly arranged
+	- showing lack of symmetry
+- cognitive directness
+	- too many buttons
+	- not explained well
+	- no icons
+	- difficult to know what to do
+- simplicity
+	- no indication of overall tasks and subtasks
+	- dunno where to start
+
+improved:
+![[Pasted image 20250826142242.png]]
+
+
+### Critical Test
+- give someone a prototype/ simulation 
+- tell them what system is supposed to do
+- then let try to let them use without manual or further instrutions
+- to get most from the studies, should video the session 
+- then review it with the user 
+- see what troubles the user has
+- every mistake or misstep they make indicates a probable design flaw
+
+### Usability for GUI in Embedded Devices
+- adding graphical display to ur product may allow u to add more features in smaller places
+- but also raises usability issues
+
+- with non-graphical display, 1 layout of buttons and displays has to be designed and evaluated white a GUI, there is no limit to no. possible layouts
+- making each one user friendly, while remaining consistent with others is a big challenge
+
+![[Pasted image 20250826142915.png]]
+
+- While GUI has many advantages, it is important to note a couple of disadvantages
+1. Though GUI allows a no. different controls on the screen, they have same tactile feel when making input, needing more visual attention compared to a push button or switch
+2. Another disadvantage of GUI is space does not generally permit the important controls to be permanently visible. A related problem is that if only a GUI is used, it will not be possible for all controls visible at all times, this means users have to explore the interface to find some of the functions
+
+<u> GUI used with hardware </u>
+- Many embedded products get best of btoh worlds by adding graphics screen to support peripheral info
+- while important user dialogs still take place using custom controls
+- next level of GUI is to provide interactions where input and output is graphical by nature
+- not just a set on controls that could have been implemented with mechanical switches, dials, and sliders
+- eg, instead of outputting numerical value, value could be graphed over time giving user better sense of changes within control process
+
+### Different GUI interactions
+- GUI can be made up of several types of controls which user manipulates
+- or to display info
+- in some systems they can be known as widgets
+![[Pasted image 20250826143657.png]]
+
+
+## Appendix
+CASE STUDY
+
+### Description
+embedded system for AC system
+control consists of the following subsystems:
+1. Data Acquision board with integrated analog and digital IO
+2. 9 inch LCD screen
+3. Heater
+4. Cooler
+5. Fan Temp sensor
+
+![[Pasted image 20250826143834.png]]
+
+- Heater and cooler are both turned on or off with digital signals
+- analog signals are used to inform heater and cooler how much air need to be heated or cooled
+- fan has 5 speeds controlled by digital signals
+- from temperature gauge the current temperature is sent by analog signal
+
+the relationship between classes are represented in UML
+
+**Sub Systems**
+Climate System component is comprised of 5 classes
+	Climate Controller
+	Fan
+	Heater
+	Cooler
+	Temp Sensor
+
+Design of GUI 
+![[Pasted image 20250826144404.png]]
+knob in upper left controls desired temp
+right side current system info is displayed
+
