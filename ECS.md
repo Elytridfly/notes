@@ -2985,5 +2985,125 @@ right side current system info is displayed
 - Multitasking is one of the main features of real-time OS
 
 ## Multitasking Systems
-- 
+- various definitions of terms task, process and thread
+- program as is exists on disk containing both code and data
+- when loaded into memory by OS, code become sets of instructions in memory which is called a task
+- tasks that are separate executing programs are called processes
+- while tasks that are executed in context of single program are called threads
+- in embedded application, multithreading is more commonly used than multiprocessing
 
+- multitasking is a method where multiple tasks aka process and threads, share common processing resources such as CPU
+- in case of computer, with a isngle CPU, only 1 task is said to be running at any point of time
+- meaning that CPU is actively executing instructions for that task
+- multitasking solves the problem by scheduling which task may be the one running at any given time and when another waiting task gets a turn
+- the act of reassigning CPU from 1 task to another is called context switch
+- when context switching occurs frequently enough, it gives illusion of parallelism
+
+- using multitasking operating system has 2 important benefits
+- first embedded system can perform more work in same amnt of time
+- due to OS avoiding unnecessary delays encountered in executing a task
+	- eg, OS has to run Task A and B
+	- A runs to point where needs to wait for input
+	- in single-tasking system, system waits to complete A before going to B
+	- in multitask, it goes to B while waiting for input for A
+	- when A gets input, OS can stop B and continue A
+- Second benefit is system has capability to handle multiple tasks simultaneously
+
+## Multiprocessing and Multithreading
+- program consists of algorithms expressed in program code
+- process is activity of performing work according to these algorithms
+- process consists of collection of memory areas allocated to process by OS
+- plus current CPU state
+- when program is launched OS creates process and allocates collection of memory areas (code, stack, data, heap, and system memory)
+
+- process owns its memory area
+- running process is also defined by current CPU state
+- CPU state consists of general purpose registers (IP, SP, Flags, and other CPU registers) that can be modified by application program
+- when program is not running, CPU state is saved in process's system memory area
+
+- Running >1 process at same time = multiprocessing
+- OS runs multiple processes by constantly switching from 1 process's context to another
+- process context consist of CPU state and memory area
+- OS switches context by suspending execution of current process, saving CPU state into memory area, then loading context of next process
+- scheduler program in OS determines when to terminal and what is next process to execute in multiple process env
+- in real-time embedded system, each task must be executed in predictable manner and within time constraints 
+- scheduler program must be able to meet these requirements to support real-time OS
+
+![[Pasted image 20250826222919.png]]
+
+- thread is an independent flow of execution in process
+- multithreading OS, process consists of 1 or more threads
+- all threads share the code, data, heap, and system memory areas
+
+![[Pasted image 20250826223017.png]]
+
+- each thread has a separate CPU state and stack, a block of memory allocated out of process' stack memory area
+- as all threads of a process share same data and heap memory areas, all global variables in process can be accessed by any of the threads
+- however, each thread has its own stack, all local variables and fn arguments are private to specific thread
+
+- as threads shared the same code and global data, they are tied more closely than processes
+- they tent to interact much more than separate processes
+- synchronization objects are likely to be used more frequently in multithreading applications than multiprocessing applications
+
+- context switching between threads ion same process involves simply saving CPU state for current thread and loading state of new thread
+- as less work is needed for context switching between threads than processes, they are sometimes called lightweight processes
+
+- processes are normally created when programs are launched, either by user or another process calling OS
+- some systems (Linux) processes can also clone themself to make new processes
+	- eg., fork() fn call 
+- processes created in this way often share code memory to conserve memory use 
+- but they get their own stack, data, heap, and system data areas
+- processes created by cloning may sound like threads as they run from same program code but they are a process as they have their own separate global data unlike threads
+
+- summary, threads are more desirable than tasks as they use less resources
+- but threads have to be initialized by programmer but tasks are managed by OS as soon as program is loaded into memory
+
+## Scheduling
+- Multitasking OS worked by running tasks then switch to another task can be done:
+1. Cooperative - program gives way to one another when doing Input/Output
+	- eg, waiting for user to press a key
+	- However, its slow from computer POV
+2. Pre-Emptive - program forced to give way to each other
+	- prevents 'hogging'
+
+
+- amnt of time OS let a task execute is called time slice, often of fixed duration
+- OS partitions out time slice for each task, one after another
+- when time slice for current task ends, program in OS (scheduler) determines which task will have next time slice
+
+- task can be 1 of 3 states
+1. Running - Task is executing
+2. Ready - Task is waiting for their turn for CPU
+3. Blocked - Task is waiting for smth to happen
+
+- Scheduler maintains 1 or more internal lists for keeping track of state of each task
+- typically, it has 1 ready list and a separate blocked list for each synchronization object which tasks are waiting on
+- task at head of ready list is nerxt task to be run
+- task on any of block lists are suspended (as they are waiting)
+- wen event occurs for a task on block lists happens, it is removed from blocked list and put onto ready list
+
+- Schedulers have different algorithms
+- many use FIFO or round robin
+- for real-time OS, its critical for scheduling algorithm to be deterministic
+	- eg, always possible to predict which task will run next
+- round robin is simple and predictable
+
+![[Pasted image 20250826224329.png]]
+- contexts for tasks that are ready are kept on ready list
+- implemented as a linked list of task control blocks (TCB)
+- assuming all tasks has equal priority, scheduler removed TCB from head and makes the linked task the current this is referred to as switching-in the task's context
+- task runs for a time slice, at end of which scheduler (awoken by timer interrupt) saves task state
+- places its TCB at end of list, pull TCB off new head of list, and run that task
+- scheduler repeats the process with each task running for equal time slice
+
+- some tasks have more priority than others
+- programmer can assign each task a priority (numeric value that indicates importance level)
+- when its time for the scheduler to choose next task to run, it selects from ready list with highest priority
+- Implementing task priorities are important in real-time scheduling algorithm
+- real-time OS has to implement deterministic scheduling so programmer can always identify which task in application will run
+- scheduler in real time OS always selects highest priority
+- it is immediately scheduled again and get the next time slice
+- by contrast, Windows OS occasionally boosts priorities of low priority tasks to ensure they get some CPU time
+- to guarantee system meets real time deadlines, programmer has to have complete control over which task or tasks are eligible to run
+
+## Synchronization
