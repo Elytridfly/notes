@@ -2928,3 +2928,62 @@ Design of GUI
 knob in upper left controls desired temp
 right side current system info is displayed
 
+
+# Embedded OS & Multitasking
+---
+- some embedded systems need to deal with lots of data
+- they have to receive input data and also need to output their results
+- at first users wrote their won programs to do this
+- and many have same features
+
+- with increasing computing power, more data was collected to be processed
+- users had to organize their data onto hard disks
+- they also had to be able to transfer data between each other
+- they want auto ways of letting their programs run
+- tasks such as :
+	- Getting input from user
+	- Outputting to display/ or printer
+	- Creating, reading, writing to files
+	- Load, run, and terminate computer programs
+
+- over the years programs to do these tasks were collected and standardized so they can work with each other
+- such a collection is called Operating Systems (OS)
+- eg, Windows, Linux
+
+- smaller embedded systems need not all features of an OS
+- extra features may even take up space
+
+- development of some concepts:
+
+<u> UI </u>
+- from text-only output of early computers, now we have GUIs
+
+
+<u> File System </u>
+- csallows for orderly management of data
+- facilities may range from simple 'copy' or 'move' to auto data recovery when power failure
+
+
+<u> Task Management: Loading/Running/Terminating program </u>
+- Users can schedule computer to load various programs to perform tasks needed
+- computer has to keep track of every process that is executing
+- needs to reserve memory to run, hard disk space and to reclaim resources when done
+- computer can only execute 1 program at a time
+- but as it executes instructions at much higer rate than humans
+- it can execute several program portions at time
+- giving impression of doing several things at once
+- eg, computer can print while allowing user to enter data into field
+- called multitasking
+- frequently used due to increasing power of embedded processors
+
+- embedded OS for embedded systems
+- these OS are designed to be very compact and efficient
+- forsaking many functions that non-embedded computer OS provide
+- and which may not be used by specialize d applications they run
+- they are frequently also real-time OS 
+- requiring fixed time to respond to IO requests
+- Multitasking is one of the main features of real-time OS
+
+## Multitasking Systems
+- 
+
