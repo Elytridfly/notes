@@ -3107,3 +3107,48 @@ right side current system info is displayed
 - to guarantee system meets real time deadlines, programmer has to have complete control over which task or tasks are eligible to run
 
 ## Synchronization
+- sometime tasks need to interact
+- sometimes can do directly some times need shared resources
+- interactions need to be coordinated or synchronized to prevent race condition
+	- race conditions is when outcome of computation of 2 or more tasks depend on how quickly task executes
+
+
+![[Pasted image 20250827132150.png]]
+- eg, is Task 1 and 2 need access to global counter variable
+- each task increments counter using: Counter++
+- after compilation, variable might look like this:
+	- LOADA counter
+	- INCRA
+	- STOREA counter
+
+- first instruction loads counter into CPU's accumulator
+- next adds 1 
+- final stores result back
+
+- suppose task 1 reaches instructions where counter has value of 3
+- it executes LOADA and load 3 into accumulator
+- before task 1 can execute the INCRA instruction, time slice ends and scheduler switches it out
+- 3 is still stored in accumulator 
+- scheduler stars 2
+- Task 2 reaches instructions to LOADA
+- but 1 never store result
+- 2 will fetch 3 into accumulator too
+- then execute INCRA and STOREA 
+- now the global variable counter is 4
+
+- some time later, Task 1 is rescheduled
+- since 4 is still in counter, and task 1 does INCRA, global counter value = 5
+- task 1 will store 5 instead of 4
+
+- BOOM system explode no worky worky
+- since none of tasks have guarded access to global counter variable, race condition occurred
+
+- code section that shared resource is call critical section
+- to avoid race condition need tasks to be mutually exclusive
+- ensure only 1 task can be executing at critical section at once
+
+- Use synchronization objects
+- 3 kinds:
+	-  Mutex
+	- Semaphore
+	- Event
