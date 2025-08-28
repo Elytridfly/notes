@@ -3152,3 +3152,112 @@ right side current system info is displayed
 	-  Mutex
 	- Semaphore
 	- Event
+
+### Mutex Object
+- aka critical section object
+- use of coordination mutually exclusive access to shared resource
+- mutex object can be in 1 of 2 states, owned or free
+- owned by only 1 task at a time
+- OS that support mutex provide 2 fn calls to manipulate them
+	- wait call and release call
+
+- when task want to acquire mutex, it issues wait call
+- when mutex is free, call returns immediately and calling task acquires ownership
+- if mutex is already owned, wait call doesnt return and calling task is block
+- task waiting on mutex become unblocked when owner issues release call on mutex
+
+- mutex is similar to room built around critical  section of code
+- room has 1 in and 1 out
+- furthermore, guard at door admits only 1 tasks into room at all times
+- tasks arriving at entrance while room is occupied must wait at door until its empty
+- also guard sees to it that those waiting at door are admitted in task priority order
+
+### Semaphore Objects
+- consists of data item called a count
+- and pair of operations, wait and release
+- implemented into OS APIs
+- a task requesting access to whatever resource the semaphore guards neds to perform a wait operation on semaphore
+- when task is finished with resource, it performs a release on the semaphore
+
+- semaphore count determines what happens when wait or release operation executes
+- when program create semaphore, initial count is positive value
+- value is no. task semaphore will let pass before closing door
+- when task performs wait operation, OS checks to see if count >0
+- if call operation succeeds, task is allowed to continue, semaphore count--
+- if count == 0, task is blocked
+
+- when task has finished using resource guarded by semaphore, task issues release call
+- OS will make semaphore count ++
+- semaphore object allow multiple tasks to simultaneously access common resource, such as network connection
+
+
+### Even Object
+- typically used to synchronize tasks processes rather than control access to shared resources
+- mechanism that lets task go to sleep until, for eg, some data is ready for it to process or request is ready for it to service
+
+- OS fns allow task to set to signaled and reset to non-signaled an event object
+- event objects can be created in either signaled or non-signaled state
+- when task waits on an non-signaled event object, task is blocked until another thread sets event object
+- when task waits on signaled event object, task is not blocked
+- common use if to notify task when pending IO operation has been completed
+
+- 2 types of event objects, auto reset and manual reset
+- auto reset events are auto set to non-signaled state when single waiting task is released (unblock)
+- if multiple task are waiting, only highest priority waiting task is released
+- next time running task set the event, another waiting task is released and so on
+- manual reset event remain set signaled state after a task sets them
+- if multiple tasks are waiting on the event, they are all released (unblocked) when a task sets the event
+- subsequent tasks that wait on the event object proceed immediately without blocking
+- to cause task to block event again, task must explicitly reset event to non-signalled state
+
+## Appendix
+<u> Creating Multithreading application </u>
+- default: process start with 1 thread
+- extra threads need to be stated explicitly using pthread_create()
+
+prototype:
+```
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg)
+
+```
+
+parameters:
+- thread: stores ID of new thread
+- attr: thread attributes (priority, stack size, etc) Null -> default
+- start_routine: function pointer (thread entry point) must take void* arg
+- arg: argument to pass (can be pointer to struct if multiple args needed)
+
+<u> Initializing a Mutex </u>
+```
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr
+```
+
+parameters:
+- mutex: address of variable to contain mutex object
+- attr: address of variable containing mutex attributes object
+
+- state after init: unlocked
+
+- Locking/Unlocking
+	- Lock: 
+		- ```  int pthread_mutex_lock(pthread_mutex_t *mutex) ```
+		- Blocks if already locked until available
+		- Thread that locks becomes owner until unlock
+	- Unlocked:
+		- ```  int pthread_mutex_unlock(pthread_mutex_t *mutex) ```
+
+<u> Thread Synchronization </u>
+- waiting for thread termination
+	- ```  int pthread_join(pthread_t thread, void **status) ```
+	- thread: thread to wait for
+	- status: location to store exit status (NULL not needed)
+- condition variables:
+	- Wait (Sleep):
+		- ```  int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex) ```
+		-  cond: condition variable
+		- mutex: associated mutex
+	- Signal (wake up waiting thread)
+		-  ```  int pthread_cond_signal(pthread_cond_t *cond) ```
+
+# Embedded C
+---
