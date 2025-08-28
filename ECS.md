@@ -3523,3 +3523,108 @@ if((flags1 & (EXTERNAL | STATIC)) == 0) s++;
 if((flags2.external ==0) &&(flags2.static ==0)) s++;
 ```
 
+### Use ROM space for variables
+- table messages and other non volatile data should not be kept in RAM
+- typically they use up lots of space and should be kept in ROM
+- be careful to make sure they dont get copied into RAM by compiler's code
+- use 'const' directive to store in EPROM
+- eg:
+```
+const unsigned char ScanTable[12]{
+0x7D, 0xEB, 0xED, 0xEE, 0xDB, 0xDD, 0xDE, 0xBB, 0xBD, 0xBE, 0x7B, 0x7E
+};
+```
+
+### Arrays
+- if an array element or set of elements are frequently used, then efficiency will be increased
+- by setting pointer to elements and using pointer to refer to it
+- if possible, use 1d arrays
+- higher orders will involve multiplication which will be very slow
+- eg,
+```
+
+example()
+{
+	short arr[20];
+	short I,*p;
+	
+	t = arr[ I ];
+	p = arr + I;
+	
+	t = *p;
+	p = arr + I;
+	t = *p;
+}
+```
+
+### Functions
+- if fn is non-recursive, and does not require local variables, then stack allocation/deallocation overhead on functions entry and exit can be avoided by:
+```
+function ( args )
+/* argument declarations here */
+{
+	/* a non-recursive function with no local variables */
+}
+```
+
+for fns, try not to pass data in them
+``` function (arg1, arg2, arg3)```
+this takes up space on the stack
+
+### Use Global Variables
+- Function params take up stack space
+- local variables in fn take up extra RAM
+- save space using global variables
+- not recommended in C
+- as modules may modify global variable by accident
+- But make sure they save RAM space and improve speed
+
+```
+unsigned char argument1, argument2
+
+function()
+	result1 = argument1 ...
+	result2 = argument2 ...
+
+```
+
+### Interfacing to assembler
+- 1 C statement can generate many bytes of assembly code
+- if certain parts of program needs to be sped up
+- may need to write that part in assembler
+
+- this assumes one is able to come up with more efficient algorithm to achieve the task
+- thats why its useful to examine code produced by compiler
+- to see if compiler done good job of generating machine code
+- we can interface to main program using standard linking techniques and inline code
+
+#### Linking object modules
+- most cross compilers allow you to assemble program modules separately and combine at link time
+
+#### Inline code
+- inserts actual assembler instructions into C program
+- compiler needs to generate assembly line from C program 
+- then invoke assembler to convert intermediate program into object file
+
+- use asm("CLI") directive to embed assembler portion
+
+- if assembler program needs to access C program variables, need to be careful of what 'real' name actually is
+
+- eg, 'ScanCode' becomes '_ScanCode'
+
+**Advantages**
+- no need to maintain separate file for assembler routines
+- everything is in C program
+
+- if we are linking external assembler routine
+- it is not possible to know absolute locations of program code and variables when debugging
+- using inline code, this is possible as all addresses refer to same source program
+
+**Disadvantages**
+- As compiler has to generate intermediate assembler file,. it is slower
+- also assembler has to be called up after that
+
+## Other Considerations
+- Macros and Functions
+- for faster execution, use macros
+- to minimize memory, use functions
