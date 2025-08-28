@@ -3260,4 +3260,266 @@ parameters:
 		-  ```  int pthread_cond_signal(pthread_cond_t *cond) ```
 
 # Embedded C
+
 ---
+
+## Intro
+- C is high level language developed in 1970's Bell Labs
+- used in developing UNIX OS, for optimized system dev
+- UNIX was made readily available for academic 
+- C also became very popular 
+- original version known as K&R version
+- named after Brain Ritchie and Kernighan
+- when vendors implemented the language, they added vendor specific extensions
+- losing the advantages of portability
+- American National Standards Institute (ANSI) formed a committee to standardize 
+- finalized in 1989 known as ANSI C
+- standardization took on global nature under ISO and was now known as standard C
+- more effort provided support for multinational applications which resulted in C++ and Java and other stuff
+
+### Advantages
+Portability:
+- same program source can run across variety of processors - 4/8/16/32 bit with little modifications
+- quick upgrades with much change
+
+Efficient:
+- Program code can be as small or fast as an assembler program
+
+Productivity:
+- same as all high level languages
+- details of memory space, hardware resources are taken care by compiler
+	- eg, no need to worry about location of data whether ROM or RAM
+- Concentrate on problem not on machine characteristics
+- May be possible to write program on PC test using PC compilers then bring over to target processor
+
+### Disadvantages
+Cryptic:
+- program can be hard to read 
+- often called write-only langugage
+- many non intuitive operations and their order of evaluation can cause confusion
+
+Protection:
+- indiscriminate use of and management of pointers can corrupt system very easily 
+
+Debug:
+- difficult to debug on dev tools that use assemblers only
+
+## Using C on embedded system
+- various standards groups like ANSI have specified how C is to be used
+- these specs are oriented towards desktop computers, workstations, and larger systems
+- in these systems, processor storage consists of RAM for OS and user apps
+- this is available in terms of several megabytes
+- secondary storage runs into thousands of MB 
+- processor runs at several hundred Millions of instructions per second  (MIPs)
+
+### Cross Compilers
+- Modern C compilers which run on desktop machines but produce code for another processor are called cross compilers
+- cross compilers for embedded systems provide various mods to standard C called extensions
+- this helps in using processor more efficiently
+- they also provide various header and include files to access processor resource more easily like predefined register names
+
+- This may also make program less portable
+- but objective is to use lowest cost processor for project
+- however programming job may be overall more efficient than using assembler
+
+### Design Constraints for embedded systems
+- typical embedded system have much more modest resources
+- for lower end processors, a few kB of nonvolatile program memory a few hundred bytes of RAM and processor speed up to 1 MIP
+- some embedded systems which have as much computing power and resources as a desktop. only difference is no keyboard, screen or mouse
+
+- programmer must take note of machine architecture when writing code
+- embedded system typically have a few kB of ROM for program but more crucial only a few hundred bytes of RAM on chip
+- if we exceed this, extra memory chips have to be added to hardware and possibly decoding hardware
+- this increases size of PCB 
+- for mass produced devices, this can drive up cost alot
+- overall product may also be larger as well
+- goal is to be use all on-chip facilities as efficiently as possible
+
+
+## Development of embedded C program
+- embedded system is part of another product
+- eg, processor in ac unit is port of or "embedded" in the main ac unit
+- the fn of embedded system is fixed due to embedded software
+
+- theres >1 way to implement software fns
+- due to this we need to look at how cross compilers generates assembly or machine code
+- in order to make better use of processor
+
+### Differences in C and assembler programming
+- Writing an embedded C program is very similar to typical C program
+- main difference is conversion and transferring of code to that system which is thru EPROM or serial communication
+
+![[Pasted image 20250828152443.png]]
+
+- When compared to standard assembler programming, the main diff is debugging method
+
+### Debug facilities
+- some considerations to take note of are the choice of debugging languages
+- its preferred to debug in C 
+- but processor executes machines instructions
+- 1 line of C may generate several bytes of machine code
+- its very useful to be able to debug in C, assembler, or a comb of both in both simulator and emulator
+
+- sim and emu both work mainly in machine level
+- they need to know variable names in source file and where they are in processor memory
+- also need to know which C source line corresponds to which machine code its executing
+- all the info are produced by compiler and has to be transferred somehow to sim or emu
+- but due to lack of standards in embedded C compilers, its not possible to debug at source level
+
+## Some features of using embedded C
+- for general purpose desktop microprocessor systems such as PCs, all program and data fns are in RAM
+
+- but microcontrollers:
+- Program is normally in EPROM - read only not writable
+- Variables is normally in RAM - read/write volatile
+- limited RAM space
+- C fn and their use of stack space for local variable
+
+- since microcontrollers has to control devices
+- there are several features that differ from normal C programming
+- eg, accessing processor registers that control timer or interrupts
+- the registers have standard names and are convenient to use
+- also standard IO devices like display, kb, mouse and hard disk are not present
+
+### Accessing Processor Resources
+- IO registers in embedded C are normally kept in header files and should be included
+- thus its possible to use these registers by referring to them correctly
+
+- standard library functions like printf, scanf may not be available
+- IO is usually done via serial devices
+- Compiler vendors may provide custom IO libraries
+- for other needs (ports, string routines, multi-precision arithmetic, floating point)
+	- often must be user-written routines
+- always check what features are available 
+- don't assume desktop C library support
+
+- Uninitialized variables are not guaranteed to be zero 
+- need to do explicitly or modify C startup routine
+
+### Accessing IO devices
+
+<u> Type casting for memory mapped IO </u>
+- since task of microcontrollers is to used control devices
+- interfacing plays and important role
+- for IO devices which are memory mapped
+- we treat external memory and normal read from an address:
+```  data = *((int *)) 0x1000); ```
+
+- however, this is 16 bit operation 
+- we must make result fit into 8 bits does by casting into char*
+
+```
+to read : data = *(char *) 0x1000);
+to write: *((char *) 0x1000) = data;
+```
+
+<u> IO mapped IO </u>
+in PC/104 since we are using IO mapped operations, extensions to C language allows use of input and output statements
+
+```
+to read: data = _inp(0x332);
+to write: retcode = _outp(0x331, data);
+```
+
+<u>Optimising Compilers </u>
+- another consideration are optimising compilers
+- these try to make user program smaller or faster 
+- they do this by examining the program to remove what is considered as redundant code
+- eg, common situation with external device is that values present in the registers change without processor taking any actions 
+- eg, in keypad the value read from it changes depending on whether someone has pressed a key without intervention from processor
+
+```
+# define KbdPort *((char *) 0xA000)
+
+KbdPort = Col7Lo;    //1
+ScanCode = KbdPort;  //2
+```
+
+- here value of ScanCode comes from keypad port
+- if its compiled it will mot work
+- the compiler's optimiser assumed that as no WRITE occur between 1 and 2
+- KbdPort cannot have changed
+- hence code generated to make second access to keypad port is optimized out and we will get ScanCode being equal to Col7Lo
+```
+KbdPort = Col7Lo;
+	ldab 0FF
+	stab 0A000
+ScanCode = KbdPort;
+	stab _ScanCode
+```
+
+- solution is declare KbdPort as "volatile" thus:
+``` #define KbdPort *((volatile char *) 0xA000)```
+
+now optimiser will not try to remove subsequent access to register as sow below:
+```
+KbdPort = Col7Lo;
+	ldab 0FF
+	stab 0A000
+ScanCode = KbdPort;
+	ldab 0A000
+	stab _ScanCode
+
+```
+
+## Generating efficient code
+- due to limited resources available to an embedded system, we need to look at various considerations to make code more efficient in terms of speed and code size
+
+- typically depends on word size of processor - 8 16 or 32 bits
+- access and processing variables of longer length than this will generate more instructions and use up more memory
+- choice of variables will affect code generated
+
+### Use short and/or unsigned variables
+- objective is to conserve use of scarce internal RAM
+- try using 'unsigned char' types for unsigned quantities or 'short int' as they are 1 byte
+- 'int' is 16 bits (2 bytes)
+- for 1 line statements involving addition
+- size of code produced is shown
+- variables with s, i, u are short (8 bit signed), integer (16 bit signed), unsigned integers (8bit unsigned)
+-  Mixed variables use the most code as they have to convert from 1 form to another
+
+![[Pasted image 20250828161659.png]]
+
+### Use bit flags
+- use bit flags for variables that take on 1 value of only true of false or 1 and 0
+- thus instead of using eight bytes for eight variables you only need a byte
+
+- six operations can be performed and they work on bit by bit basis
+- in same way as assembler equivalent
+- the following summarizes operation of bit variables
+- A here has value 0x55 or 0101 0101 in binary
+- in 6811 equivalent assume A contains the value
+![[Pasted image 20250828161936.png]]
+bit flags can be set up in 1 or 2 ways
+1. use defines 
+```
+#define STATIC 01
+#define EXTERNAL 02
+
+unsigned short flags1
+```
+2. use structure
+```
+struct{
+	unsigned short static:1;
+	unsigned short external:1;
+} flags2;
+```
+
+to set bit flag, look at following eg:
+
+```
+flags1 |= (EXTERNAL|STATIC);
+flags2.external = 1;
+flags2.static = 1;
+
+```
+
+note that in structure, MSB are asigned first
+to branch on bit flag value:
+
+```
+if((flags1 & (EXTERNAL | STATIC)) == 0) s++;
+if((flags2.external ==0) &&(flags2.static ==0)) s++;
+```
+
