@@ -1319,7 +1319,7 @@ diagram helps uncover user requirement that may not be stated earlier on
  
 <br/>
 
-**<u/>Developing User Case - "Cook Egg"**
+**Developing User Case - "Cook Egg"**
 - once microprocessor reads key entered and process it, it activates LCD display to show egg selected
 - timer will start running for certain period of time depending on egg type selected and activate the heater coil
 
@@ -1579,9 +1579,9 @@ complete interaction diagram :
 - cursor will then increase to right with each EERAM write command
 
 ### Instruction Table
-</br>
+
 ![[Pasted image 20250803132509.png]]
-</br>
+
 
 
 ### Special Operation Modes
@@ -1593,9 +1593,9 @@ complete interaction diagram :
 - leaving 4 bit transfer to be handled by routine
 - also need to initialize module into 4 bit mode
 
-</br>
+
 ![[Pasted image 20250803133249.png]]
-</br>
+
 
 
 <u> Display Shift </u>
@@ -1607,9 +1607,9 @@ complete interaction diagram :
 
 
 ## Further Initialization considerations
-</br>
+
 ![[Pasted image 20250803134305.png]]
-</br>
+
 
 - Set up 2 line LCD with 5x7 font, 8 bit data transfer with auto increment and shifting when writing
 
